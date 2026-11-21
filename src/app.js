@@ -40,7 +40,7 @@
     },
     en: {
       label: '영어', flag: '🇺🇸', views: ['home', 'english', 'en-situations', 'en-cafe'],
-      navLabel: '나의 작은 영어 여행', note: '그림으로 익히는 영어 한마디 · 상황 회화 7가지'
+      navLabel: '나의 작은 영어 여행', note: '질문 + 대답 Q&A 세트 · 상황 회화 7가지'
     }
   };
 
@@ -65,7 +65,7 @@
     lang: 'ja',
     view: 'home', kanaScript: 'hiragana', kanaRow: 'all',
     vocabCat: 'all', vocabMode: 'orig', cardModes: {},
-    sentCat: '전체', sentMode: 'orig', enCat: '전체', rate: 1
+    sentCat: '전체', sentMode: 'orig', enCat: '전체', rate: 1, qaMode: 'orig'
   };
   var state = Object.assign({}, DEFAULTS);
   function load() {
@@ -334,14 +334,21 @@
   var KANA_BG = ['#FBE7D9', '#E2EFE6', '#FBF1CE', '#E2EDF6', '#F9E3E7', '#E9E4F4', '#F7E9D8', '#E3F0EA', '#FAEFD9', '#E6EEF6'];
   var JPF = "'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP','Hiragino Sans','Malgun Gothic',sans-serif";
 
-  function kanaSVG(ch, inner, idx) {
+  function kanaSVG(k, idx) {
     var bg = KANA_BG[idx % KANA_BG.length];
-    return '<svg viewBox="0 0 200 200" role="img" aria-label="' + esc(ch) + ' 연상 그림" preserveAspectRatio="xMidYMid meet">' +
+    var g = (typeof KANA_GLYPH !== 'undefined' && KANA_GLYPH[k.ch]) ? KANA_GLYPH[k.ch] : null;
+    var ink = k.ink || '#1B4D3E';
+    var glyph = g
+      ? '<path d="' + g.d + '" transform="' + g.t + '" fill="' + ink + '" stroke="' + ink +
+        '" stroke-width="26" stroke-linejoin="round" stroke-linecap="round"/>'
+      : '<text x="100" y="104" text-anchor="middle" dominant-baseline="central" font-family="' + JPF +
+        '" font-size="140" font-weight="600" fill="' + ink + '">' + esc(k.ch) + '</text>';
+    if (k.dy) glyph = '<g transform="translate(0,' + k.dy + ')">' + glyph + '</g>';
+    return '<svg viewBox="0 0 200 200" role="img" aria-label="' + esc(k.ch) + ' 연상 그림" preserveAspectRatio="xMidYMid meet">' +
       '<rect width="200" height="200" fill="' + bg + '"/>' +
       '<circle cx="26" cy="28" r="18" fill="#fff" opacity=".34"/>' +
       '<circle cx="178" cy="174" r="24" fill="#fff" opacity=".28"/>' +
-      '<text x="100" y="104" text-anchor="middle" dominant-baseline="central" font-family="' + JPF + '" font-size="150" font-weight="600" fill="#1B4D3E" opacity=".10" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="3" paint-order="stroke">' + esc(ch) + '</text>' +
-      inner +
+      (k.back || '') + glyph + (k.front || '') +
       '</svg>';
   }
 
@@ -353,25 +360,11 @@
       '</svg>';
   }
 
-  /* 영어 카드: 정사각 연상 그림(잘리지 않게) */
-  function enArtSVG(inner, bg) {
-    return '<svg viewBox="0 0 200 200" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet">' +
-      '<rect width="200" height="200" fill="' + (bg || '#F6F1E7') + '"/>' +
-      '<circle cx="34" cy="30" r="18" fill="#fff" opacity=".35"/>' +
-      (inner || '') +
-      '</svg>';
-  }
-
-  /* 상황 카드: 넓은 장면 + 오른쪽에 연상 그림 */
-  function enScene(bg, key) {
-    var inner = (window.EN_ART && EN_ART[key]) || '';
-    return '<svg viewBox="0 0 400 160" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">' +
-      '<rect width="400" height="160" fill="' + (bg || '#F7EFE2') + '"/>' +
-      '<circle cx="58" cy="42" r="26" fill="#fff" opacity=".45"/>' +
-      '<circle cx="24" cy="128" r="14" fill="#fff" opacity=".35"/>' +
-      '<path d="M0 138c44-16 82-16 126 0s82 16 126 0 82-16 126 0" stroke="#fff" stroke-opacity=".5" stroke-width="5" fill="none"/>' +
-      '<g transform="translate(196,-4) scale(.72)">' + inner + '</g>' +
-      '</svg>';
+  /* 상황 장면: 사람·소품·제스처가 그려진 400x180 장면 그림 */
+  function enScene(bg, key, fit) {
+    var inner = (typeof EN_SCENES !== 'undefined' && EN_SCENES[key]) || '';
+    return '<svg viewBox="0 0 400 180" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid ' + (fit || 'slice') + '">' +
+      '<rect width="400" height="180" fill="' + (bg || '#F7EFE2') + '"/>' + inner + '</svg>';
   }
 
   function sceneSVG(inner, bg) {
@@ -390,7 +383,7 @@
     kana: '글자 모양이 그림과 겹쳐지는 순간, 가나가 저절로 외워져요.',
     vocab: '여행에서 바로 쓰는 41개 단어. 표기를 바꿔 가며 눈에 익혀 보세요.',
     sentences: '상황별 20문장. 듣고, 표기를 바꾸고, 한 번 따라 말해 보세요.',
-    english: '카페·식당·호텔·길찾기·쇼핑·공항·교통. 그림을 보면 뜻이 먼저 떠오르는 19마디.',
+    english: '카페·식당·호텔·길찾기·쇼핑·공항·교통. 발음을 보고 바로 듣는 19마디.',
     'en-situations': '상대의 말과 내 대답을 짝으로 익히는 7가지 상황 회화.',
     'en-cafe': '주문부터 영수증까지, 카페에서 실제로 오가는 6마디 대화.'
   };
@@ -412,6 +405,75 @@
     var d = new Date();
     var seed = (d.getFullYear() * 372 + d.getMonth() * 31 + d.getDate()) % Math.max(1, ENGLISH.length);
     return ENGLISH[seed] || ENGLISH[0];
+  }
+
+  /* ---------------- 오늘의 Q&A 세트 ---------------- */
+  function qaBubbleHTML(role, text, read, meaning, lang, audio) {
+    return '<div class="qa-turn" data-who="' + role + '">' +
+      '<span class="qa-who">' + (role === 'q' ? '상대' : '나') + '</span>' +
+      '<div class="qa-bubble">' +
+      '<p class="qa-text">' + text + '</p>' +
+      (read ? '<p class="qa-read">' + read + '</p>' : '') +
+      (meaning ? '<p class="qa-mean">' + meaning + '</p>' : '') +
+      '<div class="spk-row">' + spkBtn(audio, lang, 1, '보통') + spkBtn(audio, lang, 0.85, '천천히') + '</div>' +
+      '</div></div>';
+  }
+
+  function qaSetHTMLEN(s, i) {
+    return '<article class="qa-card">' +
+      '<div class="qa-art">' + enScene(s.bg, s.scene) +
+      '<span class="qa-tag">' + esc(s.place) + '</span><span class="qa-set">SET ' + (i + 1) + '</span></div>' +
+      '<div class="qa-body">' +
+      '<div class="qa-head"><h4>' + esc(s.title) + '</h4></div>' +
+      qaBubbleHTML('q', esc(s.q.text), '[' + esc(s.q.pron) + ']', esc(s.q.ko), 'en', s.q.text) +
+      '<div class="qa-arrow" aria-hidden="true">↓</div>' +
+      qaBubbleHTML('a', esc(s.a.text), '[' + esc(s.a.pron) + ']', esc(s.a.ko), 'en', s.a.text) +
+      '<div class="qa-tip"><b>바꿔 끼우기</b><span>' + esc(s.tip) + '</span>' +
+      '<div class="qa-swaps">' + s.swaps.map(function (w) {
+        return '<button type="button" class="qa-swap" data-act="speak" data-text="' + esc(w.say) + '" data-lang="en" data-rate="1">' +
+          esc(w.from) + ' → <b>' + esc(w.to) + '</b><small>' + esc(w.say) + '</small></button>';
+      }).join('') + '</div></div>' +
+      '</div></article>';
+  }
+
+  function qaSetHTMLJA(s, i) {
+    var hira = state.qaMode === 'hira';
+    function line(o) {
+      var text = hira ? o.kana : o.orig;
+      return { text: esc(text), read: '[' + esc(o.ko) + ']', mean: esc(o.meaning), audio: text };
+    }
+    var q = line(s.q), a = line(s.a);
+    return '<article class="qa-card">' +
+      '<div class="qa-art">' + enScene(s.bg, s.scene) +
+      '<span class="qa-tag">' + esc(s.place) + '</span><span class="qa-set">SET ' + (i + 1) + '</span></div>' +
+      '<div class="qa-body">' +
+      '<div class="qa-head"><h4>' + esc(s.title) + '</h4></div>' +
+      qaBubbleHTML('q', '<span class="qa-jp">' + q.text + '</span>', q.read, q.mean, 'ja', q.audio) +
+      '<div class="qa-arrow" aria-hidden="true">↓</div>' +
+      qaBubbleHTML('a', '<span class="qa-jp">' + a.text + '</span>', a.read, a.mean, 'ja', a.audio) +
+      '<div class="qa-tip"><b>바꿔 끼우기</b><span>' + esc(s.tip) + '</span>' +
+      '<div class="qa-swaps">' + s.swaps.map(function (w) {
+        var say = hira && w.kana ? w.kana : w.say;
+        return '<button type="button" class="qa-swap" data-act="speak" data-text="' + esc(say) + '" data-lang="ja" data-rate="1">' +
+          esc(w.from) + ' → <b>' + esc(w.to) + '</b><small>' + esc(say) + ' · ' + esc(w.ko) + '</small></button>';
+      }).join('') + '</div></div>' +
+      '</div></article>';
+  }
+
+  function qaSection(lang) {
+    var isEn = lang === 'en';
+    var sets = isEn ? (typeof QA_EN !== 'undefined' ? QA_EN : []) : (typeof QA_JA !== 'undefined' ? QA_JA : []);
+    if (!sets.length) return '';
+    var tools = isEn
+      ? '<div class="qa-tools"><span class="qa-tools-label">질문을 먼저 듣고, 내 대답으로 답해 보세요</span></div>'
+      : '<div class="qa-tools"><div class="seg" role="group" aria-label="Q&amp;A 표기">' +
+        '<button type="button" class="seg-btn' + (state.qaMode !== 'hira' ? ' is-active' : '') + '" data-act="qa-mode" data-mode="orig">원래 표기</button>' +
+        '<button type="button" class="seg-btn' + (state.qaMode === 'hira' ? ' is-active' : '') + '" data-act="qa-mode" data-mode="hira">히라가나</button>' +
+        '</div><span class="qa-tools-label">질문을 먼저 듣고, 내 대답으로 답해 보세요</span></div>';
+    return '<div class="section-head"><h3>' + (isEn ? '오늘의 영어 Q&A 세트' : '오늘의 일본어 Q&A 세트') + '</h3>' +
+      '<span class="count">' + sets.length + '세트</span><span class="hint">질문 → 대답을 한 세트로</span></div>' +
+      tools +
+      '<div class="qa-list">' + sets.map(isEn ? qaSetHTMLEN : qaSetHTMLJA).join('') + '</div>';
   }
 
   function courseHTML(items) {
@@ -471,7 +533,9 @@
       '<div class="stat"><b>' + SENTENCES.length + '문장</b><span>여행 · 일상 회화</span></div>' +
       '</div>' +
 
-      '<div class="quick-grid">' + cards.map(quickCard).join('') + '</div>' +
+      qaSection('ja') +
+
+      '<div class="quick-grid" style="margin-top:26px">' + cards.map(quickCard).join('') + '</div>' +
 
       '<div class="section-head"><h3>오늘의 일본어 한마디</h3><span class="hint">매일 바뀌어요</span></div>' +
       '<div class="panel" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">' +
@@ -498,7 +562,7 @@
   function viewHomeEn() {
     var p = todayEnglish();
     var cards = [
-      { view: 'english', title: '영어 한마디', desc: '상황별 19마디를 그림과 함께', count: ENGLISH.length + '마디', icon: 'globe', bg: '#E3EBF6', color: '#3E5F86' },
+      { view: 'english', title: '영어 한마디', desc: '상황별 19마디, 발음·듣기 중심', count: ENGLISH.length + '마디', icon: 'globe', bg: '#E3EBF6', color: '#3E5F86' },
       { view: 'en-cafe', title: '카페 주문 대화', desc: '주문 · 포장 · 계산까지 6마디', count: DIALOGUE.length + '마디', icon: 'cup', bg: '#FBEADB', color: '#A9693A' },
       { view: 'en-situations', title: '여행 영어 회화', desc: '7가지 상황에서 주고받기', count: EN_SITUATIONS.length + '상황', icon: 'map', bg: '#FBF1CE', color: '#937228' }
     ];
@@ -509,8 +573,8 @@
       '<div class="hero-copy">' +
       '<span class="eyebrow">TODAY\u2019S LITTLE ENGLISH · ENGLISH</span>' +
       '<h1>주성 님, 오늘은<br>영어 한마디 어때요?</h1>' +
-      '<p>카페 주문부터 공항 게이트까지. 그림으로 뜻을 떠올리고, 짧은 한마디를 소리 내어 따라 말해 보세요.</p>' +
-      '<div class="hero-meta"><span>🎧 보통 · 천천히 듣기</span><span>🖼️ 그림으로 익히는 영어</span><span>🗣️ 카페 대화 6마디</span></div>' +
+      '<p>카페 주문부터 공항 게이트까지. 질문과 대답을 한 세트로 익히고, 짧은 한마디를 소리 내어 따라 말해 보세요.</p>' +
+      '<div class="hero-meta"><span>🎧 보통 · 천천히 듣기</span><span>💬 질문 + 대답 Q&A 세트</span><span>🗣️ 카페 대화 6마디</span></div>' +
       '<button type="button" class="btn btn-primary" data-act="go" data-view="english">영어 한마디 시작 ' + ICONS.arrow + '</button>' +
       '</div>' +
       '<div class="hero-art">' + HERO_ART_EN + '</div>' +
@@ -522,11 +586,12 @@
       '<div class="stat"><b>' + DIALOGUE.length + '마디</b><span>카페 주문 대화</span></div>' +
       '</div>' +
 
-      '<div class="quick-grid">' + cards.map(quickCard).join('') + '</div>' +
+      qaSection('en') +
+
+      '<div class="quick-grid" style="margin-top:26px">' + cards.map(quickCard).join('') + '</div>' +
 
       '<div class="section-head"><h3>오늘의 영어 한마디</h3><span class="hint">매일 바뀌어요</span></div>' +
       '<div class="panel today-en" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">' +
-      '<div class="today-en-art">' + enArtSVG(EN_ART[p.art], p.bg) + '</div>' +
       '<div style="flex:1 1 260px;min-width:0">' +
       '<span class="eyebrow" style="color:#A9693A">' + esc(p.cat) + ' · ' + esc(p.tag) + '</span>' +
       '<p style="font-size:23px;font-weight:750;letter-spacing:-.01em;margin:6px 0 4px">' + esc(p.en) + '</p>' +
@@ -538,7 +603,7 @@
 
       '<div class="section-head"><h3>추천 코스</h3><span class="hint">그림 → 대화 → 상황 순서로</span></div>' +
       courseHTML([
-        { view: 'english', title: '영어 한마디', desc: '그림으로 익히는 19마디', icon: 'globe', bg: '#E3EBF6', color: '#3E5F86' },
+        { view: 'english', title: '영어 한마디', desc: '발음·듣기 중심 19마디', icon: 'globe', bg: '#E3EBF6', color: '#3E5F86' },
         { view: 'en-cafe', title: '카페 주문 대화', desc: '6마디로 주문 끝내기', icon: 'cup', bg: '#FBEADB', color: '#A9693A' },
         { view: 'en-situations', title: '여행 영어 회화', desc: '7가지 상황 주고받기', icon: 'map', bg: '#FBF1CE', color: '#937228' }
       ]) +
@@ -564,7 +629,7 @@
     var cards = shown.map(function (k, i) {
       var idx = list.indexOf(k);
       return '<article class="kana-card">' +
-        '<div class="kana-art">' + kanaSVG(k.ch, k.art, idx) + '</div>' +
+        '<div class="kana-art">' + kanaSVG(k, idx) + '</div>' +
         '<div class="kana-body">' +
         '<div class="kana-line"><span class="kana-char">' + esc(k.ch) + '</span><span class="kana-ro">' + esc(k.ro) + '</span></div>' +
         '<div class="kana-ko">' + esc(k.ko) + ' 소리</div>' +
@@ -623,7 +688,7 @@
 
       return '<article class="word-card">' +
         '<div class="word-top">' +
-        '<div class="word-art">' + iconSVG(w.art, w.bg) + '</div>' +
+        '<div class="word-art">' + iconSVG((typeof VOCAB_ART !== 'undefined' && VOCAB_ART[w.id]) || w.art, w.bg) + '</div>' +
         '<div class="word-headings">' +
         '<div class="word-main" data-tone="' + mode + '">' + esc(form) + '</div>' +
         '<div class="word-meaning">' + esc(w.mean) + '</div>' +
@@ -723,14 +788,13 @@
 
   function enCard(p) {
     return '<article class="en-card" data-lang="en" data-cat="' + esc(p.cat) + '">' +
-      '<div class="en-top">' +
-      '<div class="en-art" style="background:' + p.bg + '">' + enArtSVG(EN_ART[p.art], p.bg) + '</div>' +
       '<div class="en-body">' +
       '<span class="en-cat">' + esc(p.cat) + ' · ' + esc(p.tag) + '</span>' +
       '<p class="en-text">' + esc(p.en) + '</p>' +
       '<p class="en-ko">' + esc(p.ko) + '</p>' +
       '<p class="en-pron">[' + esc(p.pron) + ']</p>' +
-      '<div class="en-actions">' + spkBtn(p.en, 'en', 1, '보통') + spkBtn(p.en, 'en', 0.85, '천천히') + '</div>' +
+      '<div class="en-actions">' + spkBtn(p.en, 'en', 1, '보통') + spkBtn(p.en, 'en', 0.85, '천천히') +
+      '<button type="button" class="en-scene" data-act="go" data-view="en-situations">상황 회화 →</button>' +
       '</div></div></article>';
   }
 
@@ -762,7 +826,7 @@
       '<div class="chips">' + chips + '</div>' +
       body +
       '<div class="note" style="margin-top:24px">' + ICONS.info +
-      '<div>그림을 먼저 보고 영어를 읽으면 뜻이 오래 남아요. 영어는 <b>보통(1.0x)</b>과 <b>천천히(0.85x)</b>로 들을 수 있고, 소리가 안 나면 온라인 음성으로 자동 전환됩니다.</div></div>';
+      '<div>문장을 먼저 소리 내어 읽고 <b>듣기</b>로 확인해 보세요. 그 상황이 궁금하면 카드의 <b>상황 회화 →</b>에서 장면 그림과 주고받는 대화를 볼 수 있어요. <b>보통(1.0x)</b>·<b>천천히(0.85x)</b> 모두 지원합니다.</div></div>';
   }
 
   /* ---------------- english · 상황 회화 ---------------- */
@@ -781,7 +845,7 @@
   function viewEnSituations() {
     var cards = EN_SITUATIONS.map(function (s) {
       return '<article class="sit-card">' +
-        '<div class="sit-art">' + enScene(s.bg, s.art) + '<span class="sent-tag">' + esc(s.label) + '</span></div>' +
+        '<div class="sit-art">' + enScene(s.bg, s.scene) + '<span class="sent-tag">' + esc(s.label) + '</span></div>' +
         '<div class="sit-body">' +
         '<div class="sit-head"><h3>' + esc(s.label) + '</h3><span>' + esc(s.sub) + '</span></div>' +
         '<div class="sit-lines">' + s.lines.map(sitLine).join('') + '</div>' +
@@ -805,13 +869,11 @@
       return '<div class="dlg-row' + (me ? ' me' : '') + '">' +
         '<span class="dlg-who">' + (me ? '나' : 'Mia') + '</span>' +
         '<div class="dlg-bubble">' +
-        '<div class="dlg-main">' +
-        '<div class="dlg-art">' + iconSVG(EN_ART[d.art], d.bg) + '</div>' +
         '<div class="dlg-text">' +
         '<p class="dlg-en">' + esc(d.en) + '</p>' +
         '<p class="dlg-ko">' + esc(d.ko) + '</p>' +
         (d.pron ? '<p class="dlg-pron">[' + esc(d.pron) + ']</p>' : '') +
-        '</div></div>' +
+        '</div>' +
         spkBtn(d.en, 'en', 0.95, '듣기') +
         '</div></div>';
     }).join('');
@@ -820,6 +882,7 @@
       '<div class="page-head">' +
       '<div><span class="eyebrow">ENGLISH · CAFE</span><h2>카페 주문 대화</h2><p>' + esc(SUBTITLES['en-cafe']) + '</p></div>' +
       '</div>' +
+      '<div class="cafe-scene">' + enScene('#FBEADB', 'cafe', 'meet') + '</div>' +
       '<div class="panel cafe-panel">' +
       '<div class="section-head" style="margin:0 0 14px"><h3>주문하고 받기</h3><span class="count">' + DIALOGUE.length + '마디</span><span class="hint">Mia의 말 다음에 내 대답을 따라 해 보세요</span></div>' +
       '<div class="dialogue">' + rows + '</div>' +
@@ -1124,6 +1187,7 @@
       return;
     }
     if (act === 's-mode') { state.sentMode = el.getAttribute('data-mode'); save(); render(); return; }
+    if (act === 'qa-mode') { state.qaMode = el.getAttribute('data-mode'); save(); render(); return; }
     if (act === 'sent-cat') { state.sentCat = el.getAttribute('data-cat'); save(); render(); return; }
     if (act === 'en-cat') { state.enCat = el.getAttribute('data-cat'); save(); render(); return; }
   });

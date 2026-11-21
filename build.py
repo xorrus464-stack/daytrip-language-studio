@@ -18,10 +18,13 @@ SHELL = SRC / "shell.html"
 CSS = SRC / "styles.css"
 DATA = [
     SRC / "data-ui.js",
+    SRC / "kana-glyphs.js",
     SRC / "data-kana.js",
+    SRC / "vocab-art.js",
     SRC / "data-vocab.js",
     SRC / "data-sentences.js",
     SRC / "data-english.js",
+    SRC / "data-qa.js",
 ]
 APP = SRC / "app.js"
 OUT = ROOT / "index.html"
@@ -77,9 +80,11 @@ def main() -> None:
         print(f"<{tag}> open={opens} close={closes}", "OK" if opens == closes else "MISMATCH")
 
     # 데이터 개수
-    print("hiragana:", len(re.findall(r"\{ ch: '", data.split("var KANA_KATA")[0])))
-    print("katakana:", len(re.findall(r"\{ ch: '", data.split("var KANA_KATA")[1].split("var WORDS")[0])))
-    print("english:", len(re.findall(r"\{ id: '", data.split("var ENGLISH = [")[1].split("var DIALOGUE")[0])))
+    print("hiragana:", data.split("var KANA_HIRA")[1].split("var KANA_KATA")[0].count('ch: '))
+    print("katakana:", data.split("var KANA_KATA")[1].count('{ ch: '))
+    print("glyphs:", len(re.findall(r'"(.{1})": \{ d: ', data)))
+    print("english:", data.split("var ENGLISH = [")[1].split("var DIALOGUE")[0].count('{ id: '))
+    print("qa sets:", data.count("id: 'cafe-order'") + data.count("id: 'ja-cafe-order'"))
     print("written:", OUT)
 
 

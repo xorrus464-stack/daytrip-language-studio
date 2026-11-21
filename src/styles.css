@@ -213,7 +213,7 @@ img,svg{display:block;max-width:100%}
   transition:transform .18s,box-shadow .18s;
 }
 .kana-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.kana-art{position:relative;aspect-ratio:1.15/1;background:#F6F1E7;overflow:hidden}
+.kana-art{position:relative;aspect-ratio:1/1;background:#F6F1E7;overflow:hidden}
 .kana-art svg{width:100%;height:100%}
 .kana-body{padding:13px 14px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
 .kana-line{display:flex;align-items:center;gap:9px}
@@ -485,6 +485,12 @@ body.modal-open{overflow:hidden}
   .tab-ico svg{width:21px;height:21px}
   .kana-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
   .sit-grid{grid-template-columns:1fr}
+  .qa-list{grid-template-columns:1fr}
+  .qa-tools .seg{width:auto;flex:0 0 auto}
+  .qa-tools .seg-btn{flex:0 0 auto;padding:8px 12px}
+  .qa-card{border-radius:18px}
+  .qa-text{font-size:14.5px}
+  .qa-jp{font-size:15.5px}
   .sit-line{flex-wrap:wrap}
   .sit-line .spk{margin-left:auto}
   .en-art{width:88px;height:88px;flex-basis:88px}
@@ -520,4 +526,67 @@ body.modal-open{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+
+/* ---------- 오늘의 Q&A 세트 ---------- */
+.qa-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:-4px 0 14px}
+.qa-tools-label{font-size:12.5px;color:var(--muted);font-weight:650}
+.qa-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:18px}
+.qa-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.qa-art{position:relative;background:#F5EFE4;aspect-ratio:16/6.4;overflow:hidden}
+.qa-art svg{width:100%;height:100%}
+.qa-tag{position:absolute;left:14px;top:13px;background:rgba(255,255,255,.94);color:var(--green);padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:800;box-shadow:0 3px 10px rgba(36,49,41,.08)}
+.qa-set{position:absolute;right:13px;top:13px;background:rgba(27,77,62,.86);color:#fff;padding:4px 9px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.05em}
+.qa-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:8px;flex:1}
+.qa-head h4{font-size:16.5px;font-weight:800;letter-spacing:-.01em}
+.qa-turn{display:flex;gap:9px;align-items:flex-start}
+.qa-turn[data-who="a"]{flex-direction:row-reverse}
+.qa-who{flex:0 0 auto;font-size:10.5px;font-weight:800;color:#6B7468;background:#EFEAE0;border-radius:999px;padding:3px 8px;margin-top:6px}
+.qa-turn[data-who="a"] .qa-who{background:#DFEDE2;color:#3D6B51}
+.qa-bubble{position:relative;background:#FBF9F4;border:1px solid var(--line-soft);border-radius:16px 16px 16px 4px;padding:10px 12px;min-width:0;flex:1}
+.qa-turn[data-who="a"] .qa-bubble{background:#F3F8F3;border-color:#E2EBDD;border-radius:16px 16px 4px 16px}
+.qa-text{font-size:15px;font-weight:750;line-height:1.45;color:var(--ink);letter-spacing:-.005em}
+.qa-jp{font-family:var(--jp);font-size:16.5px;font-weight:600;line-height:1.55;letter-spacing:.01em}
+.qa-read{font-size:12px;color:#9A9384;margin-top:3px;font-weight:600}
+.qa-mean{font-size:13px;color:#57534A;font-weight:700;margin-top:2px}
+.qa-bubble .spk-row{margin-top:9px}
+.qa-bubble .spk{height:32px;padding:0 10px;font-size:11.5px}
+.qa-arrow{text-align:center;color:#C6BCA9;font-size:12px;line-height:1;margin:-2px 0}
+.qa-tip{background:#F7F8F2;border-left:3px solid #BFD8C6;border-radius:0 12px 12px 0;padding:9px 12px;font-size:12.5px;color:#6B7468;line-height:1.6;margin-top:2px}
+.qa-tip b{color:#3D6B51;font-weight:800;margin-right:5px}
+.qa-swaps{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.qa-swap{border:1px dashed #DCD3C2;background:#fff;border-radius:10px;padding:6px 9px;font-size:11.5px;color:#7E786C;text-align:left;display:flex;flex-direction:column;gap:1px;line-height:1.35}
+.qa-swap:hover{border-color:#C9BEA8;color:var(--ink)}
+.qa-swap b{color:var(--green);font-weight:800}
+.qa-swap small{color:#A29A8B;font-size:10.8px}
+
+/* 영어 카드 — 텍스트 중심 */
+.en-card{padding:16px 17px 15px;gap:0}
+.en-card .en-body{gap:5px}
+.en-scene{margin-left:auto;align-self:center;height:34px;padding:0 11px;border-radius:999px;border:1px dashed #CFE0D3;background:#F5FAF5;color:var(--green);font-size:11.5px;font-weight:750;white-space:nowrap}
+.en-scene:hover{background:#EDF6EE;border-color:#B9D4C0}
+.cafe-scene{border-radius:22px;overflow:hidden;margin:0 auto 16px;width:100%;max-width:680px;aspect-ratio:400/180;background:#FBEADB;box-shadow:var(--shadow-sm)}
+.cafe-scene svg{width:100%;height:100%}
+.sit-art{aspect-ratio:16/6.2}
+.dlg-bubble{max-width:min(100%,560px)}
+.dlg-bubble .dlg-text{min-width:0}
+
+/* Q&A 세트 — 좁은 화면 (파일 끝: 위 규칙을 덮어씁니다) */
+@media (max-width:900px){
+  .qa-list{grid-template-columns:1fr}
+  .qa-tools{flex-direction:column;align-items:flex-start;gap:8px}
+  .qa-tools .seg{width:auto;flex:0 0 auto}
+  .qa-tools .seg-btn{flex:0 0 auto;padding:8px 12px}
+  .qa-card{border-radius:18px}
+  .qa-text{font-size:14.5px}
+  .qa-jp{font-size:15.5px}
+  .qa-bubble{padding:9px 11px}
+  .en-scene{height:32px;font-size:11px;padding:0 10px}
+}
+@media (max-width:520px){
+  .qa-art{aspect-ratio:16/7}
+  .qa-body{padding:13px 13px 15px}
+  .qa-who{font-size:10px;padding:3px 7px}
+  .qa-bubble .spk{height:30px;font-size:11px}
+  .qa-swap{font-size:11px}
 }

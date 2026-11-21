@@ -10,20 +10,24 @@ var ICONS = {
   chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12.4c0 3.6-3.6 6.5-8 6.5-1 0-2-.1-2.9-.4L4 20.5l1.3-3.4A6.4 6.4 0 0 1 4 12.4C4 8.8 7.6 6 12 6s8 2.8 8 6.4z"/><path d="M8.6 11.6h6.8M8.6 14.4h4.2"/></svg>',
   globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8"/><path d="M12 3.6c2.4 2.3 3.6 5 3.6 8.4S14.4 18.1 12 20.4C9.6 18.1 8.4 15.4 8.4 12S9.6 5.9 12 3.6z"/></svg>',
   arrow: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h14"/><path d="m13 6.5 5.5 5.5L13 17.5"/></svg>',
-  info: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#5C7A63" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.4"/><circle cx="12" cy="7.9" r="1" fill="#5C7A63" stroke="none"/></svg>'
+  info: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#5C7A63" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.4"/><circle cx="12" cy="7.9" r="1" fill="#5C7A63" stroke="none"/></svg>',
+  cup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8.5h12v6.2a4.8 4.8 0 0 1-4.8 4.8H9.3a4.8 4.8 0 0 1-4.8-4.8z"/><path d="M16.5 10h1.8a2.6 2.6 0 0 1 0 5.2h-1.8"/><path d="M7 5.6c-.6-1 .7-1.6 0-2.6M11 5.6c-.6-1 .7-1.6 0-2.6"/></svg>',
+  plane: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 13.2l7.2-2.4V5.6a1.5 1.5 0 0 1 3 0v5.2l7.2 2.4v2.2l-7.2-1.3v3.6l2.3 1.6v1.6L12 20l-3.9 1v-1.6l2.3-1.6v-3.6l-7.2 1.3z"/></svg>',
+  map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.4-5.7-6.4-10.4A6.4 6.4 0 0 1 12 4.2a6.4 6.4 0 0 1 6.4 6.4C18.4 15.3 12 21 12 21z"/><circle cx="12" cy="10.4" r="2.3"/></svg>'
 };
 
-var HERO_ART = '' +
+function makeHeroArt(leftText, rightText, leftFont, leftSize) {
+  return '' +
   '<svg viewBox="0 0 340 280" role="img" aria-label="커피 한 잔과 인사말 그림" preserveAspectRatio="xMidYMid meet">' +
   '<ellipse cx="176" cy="146" rx="146" ry="118" fill="#FFF7ED" opacity=".72"/>' +
   /* left bubble */
   '<g><rect x="6" y="52" width="136" height="44" rx="15" fill="#1B4D3E"/>' +
   '<path d="M34 94l-7 15 22-13z" fill="#1B4D3E"/>' +
-  '<text x="24" y="81" font-family="' + JP_FONT + '" font-size="17" fill="#F7F1E4">こんにちは</text></g>' +
+  '<text x="24" y="81" font-family="' + leftFont + '" font-size="' + leftSize + '" fill="#F7F1E4">' + leftText + '</text></g>' +
   /* right bubble */
   '<g><rect x="196" y="20" width="140" height="46" rx="15" fill="#FFFFFF"/>' +
   '<path d="M300 64l10 14-24-11z" fill="#FFFFFF"/>' +
-  '<text x="210" y="49" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13.5" font-weight="600" fill="#3E4C43">A coffee, please.</text></g>' +
+  '<text x="210" y="49" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13.5" font-weight="600" fill="#3E4C43">' + rightText + '</text></g>' +
   /* plant */
   '<g><path d="M276 196h46l-6 38h-34z" fill="#DCC3A2"/>' +
   '<path d="M299 196c-2-26-14-38-28-44 3 20 11 34 28 44z" fill="#7FB392"/>' +
@@ -47,3 +51,7 @@ var HERO_ART = '' +
   '<path d="M262 116l2.4 7.2 7.2 2.4-7.2 2.4-2.4 7.2-2.4-7.2-7.2-2.4 7.2-2.4z" fill="#E9A88D"/>' +
   '<path d="M86 96l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#9DC3AA"/>' +
   '</svg>';
+}
+
+var HERO_ART = makeHeroArt('こんにちは', 'A coffee, please.', JP_FONT, 17);
+var HERO_ART_EN = makeHeroArt('Hello!', 'Here you go!', '-apple-system,Segoe UI,Roboto,sans-serif', 17);

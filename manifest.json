@@ -1,0 +1,58 @@
+{
+  "name": "한마디 여행 · 영어와 일본어",
+  "short_name": "한마디 여행",
+  "description": "가나 연상 그림, 필수 단어장, 자주 쓰는 문장, 영어 한마디 — 듣고 따라 말하는 여행 언어 학습.",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "background_color": "#F9F7F3",
+  "theme_color": "#F9F7F3",
+  "categories": [
+    "education",
+    "travel"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "영어 한마디",
+      "short_name": "영어",
+      "url": "./#english"
+    },
+    {
+      "name": "가나 첫 수업",
+      "short_name": "가나",
+      "url": "./#kana"
+    }
+  ]
+}

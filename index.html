@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F9F7F3">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="한마디 여행 · 영어와 일본어 — 가나 연상 그림, 필수 단어장, 자주 쓰는 문장, 영어 한마디. 듣고 따라 말하는 여행 언어 학습.">
+<title>한마디 여행 · 영어와 일본어</title>
+<style>
+/* ============================================================
+   한마디 여행 · 영어와 일본어 — design system
+   ============================================================ */
+:root{
+  --cream:#F9F7F3;
+  --cream-2:#F3EEE4;
+  --paper:#FFFFFF;
+  --line:#E9E3D6;
+  --line-soft:#F0EBE0;
+  --ink:#243129;
+  --ink-2:#3E4C43;
+  --muted:#8A857A;
+  --green:#1B4D3E;
+  --green-2:#2A6A55;
+  --green-soft:#E5F0E8;
+  --mint:#DDEDE2;
+  --peach:#FBE6D8;
+  --peach-2:#F6D0B7;
+  --butter:#FBF0CC;
+  --sky:#E1ECF5;
+  --rose:#F9E0E4;
+  --lilac:#E8E2F3;
+  --gold:#E8A33D;
+  --r-lg:24px;
+  --r-md:18px;
+  --r-sm:12px;
+  --shadow:0 10px 28px rgba(36,49,41,.06);
+  --shadow-sm:0 4px 14px rgba(36,49,41,.05);
+  --font:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Noto Sans CJK KR",system-ui,"Segoe UI",Roboto,sans-serif;
+  --serif:"MaruBuri","Noto Serif KR","Noto Serif CJK KR","Nanum Myeongjo","Apple SD Gothic Neo",ui-serif,Georgia,serif;
+  --jp:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","Noto Sans CJK JP","Noto Sans CJK KR","Hiragino Sans","Malgun Gothic",sans-serif;
+  --tab-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--font);font-size:16px;line-height:1.6;
+  word-break:keep-all;overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,p,figure{margin:0}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+img,svg{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--green-2);outline-offset:3px;border-radius:6px}
+::selection{background:#CFE4D6}
+
+/* ---------- layout ---------- */
+.app{display:grid;grid-template-columns:264px minmax(0,1fr);min-height:100vh}
+.content{min-width:0;display:flex;flex-direction:column}
+.main{width:100%;max-width:1240px;margin:0 auto;padding:30px 34px 90px}
+
+/* ---------- sidebar ---------- */
+.sidebar{
+  position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+  background:linear-gradient(180deg,#FFFDF8 0%,#FBF8F1 100%);
+  border-right:1px solid var(--line);
+  padding:22px 18px 26px;display:flex;flex-direction:column;gap:6px;z-index:60;
+}
+.brand{display:flex;align-items:center;gap:11px;padding:6px 6px 20px}
+.brand-mark{
+  width:42px;height:42px;flex:0 0 42px;border-radius:14px;background:var(--green);
+  display:grid;place-items:center;box-shadow:0 6px 14px rgba(27,77,62,.22);
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-text strong{font-size:18px;letter-spacing:-.02em;font-weight:800}
+.brand-text small{font-size:9.5px;letter-spacing:.11em;color:var(--muted);font-weight:700;margin-top:3px}
+.nav-label{font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:700;padding:6px 8px 8px}
+.nav{display:flex;flex-direction:column;gap:3px}
+.nav-item{
+  display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:13px;
+  font-size:15px;font-weight:600;color:var(--ink-2);transition:background .16s,color .16s;
+}
+.nav-item:hover{background:#F1EDE3}
+.nav-item.is-active{background:var(--green-soft);color:var(--green);font-weight:750}
+.nav-ico{display:grid;place-items:center;width:22px;height:22px;flex:0 0 22px;color:#6C7C71}
+.nav-item.is-active .nav-ico{color:var(--green)}
+.nav-ico svg{width:20px;height:20px}
+.side-card{
+  margin:22px 2px 0;padding:16px 15px;border-radius:var(--r-md);
+  background:linear-gradient(150deg,#EAF3EC 0%,#F6F1E3 100%);
+  border:1px solid #E2EDE4;
+}
+.side-card-ico{width:34px;height:34px;border-radius:11px;background:#fff;display:grid;place-items:center;margin-bottom:9px;box-shadow:var(--shadow-sm)}
+.side-card-title{font-size:14px;font-weight:800;letter-spacing:-.01em}
+.side-card-text{font-size:12.5px;color:#6E7B6F;margin-top:4px;line-height:1.55}
+.scrim{position:fixed;inset:0;background:rgba(28,38,32,.38);opacity:0;pointer-events:none;transition:.22s;z-index:50}
+.side-settings{margin-top:auto;padding:20px 4px 0;display:flex;flex-direction:column;gap:7px}
+.side-label{font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.voice-status{font-size:12px;color:#5D6B60;line-height:1.5}
+.voice-status b{color:var(--green);font-weight:750}
+.voice-status .ok{color:var(--green)}
+.voice-status .no{color:#B4703C}
+
+/* ---------- topbar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;height:66px;display:flex;align-items:center;gap:14px;
+  padding:0 34px;background:rgba(255,253,249,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.menu-btn{display:none;width:40px;height:40px;border-radius:12px;background:#F1EDE3;align-items:center;justify-content:center;color:var(--green)}
+.crumb{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted)}
+.crumb b{color:var(--ink);font-weight:700}
+.crumb-sep{color:#C6BFB0}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.ghost-btn{
+  display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:11px;
+  border:1px solid var(--line);background:#fff;font-size:13px;font-weight:650;color:var(--ink-2);
+  transition:.16s;
+}
+.ghost-btn:hover{border-color:#D6CEBD;background:#FEFCF7}
+.top-chip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:12px;font-weight:700}
+
+/* ---------- typography bits ---------- */
+.eyebrow{display:inline-block;font-size:10.5px;letter-spacing:.16em;font-weight:800;color:#9C9484;text-transform:uppercase}
+.page-head{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.page-head h2{font-family:var(--serif);font-size:31px;letter-spacing:-.03em;font-weight:800;line-height:1.25;margin-top:4px}
+.page-head p{font-size:14.5px;color:var(--muted);margin-top:6px}
+.page-head .head-tools{margin-left:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.section-head{display:flex;align-items:flex-end;gap:12px;margin:34px 0 14px;flex-wrap:wrap}
+.section-head h3{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.section-head .count{font-size:12.5px;color:var(--muted);font-weight:700;background:#F1ECE2;padding:3px 9px;border-radius:999px}
+.section-head .hint{margin-left:auto;font-size:13px;color:var(--muted)}
+
+/* ---------- buttons / segmented ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:48px;padding:0 22px;border-radius:13px;font-size:15px;font-weight:750;transition:.16s}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 8px 18px rgba(27,77,62,.2)}
+.btn-primary:hover{background:#173F33;transform:translateY(-1px)}
+.btn-soft{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn-soft:hover{background:#FDFBF6}
+.btn-mini{height:38px;padding:0 14px;border-radius:11px;font-size:13px;font-weight:700}
+
+.seg{display:inline-flex;background:#EFEAE0;padding:4px;border-radius:13px;gap:2px;flex-wrap:wrap}
+.seg-btn{padding:9px 15px;border-radius:10px;font-size:13.5px;font-weight:700;color:#77736A;white-space:nowrap;transition:.15s}
+.seg-btn:hover{color:var(--ink)}
+.seg-btn.is-active{background:#fff;color:var(--green);box-shadow:0 2px 8px rgba(36,49,41,.1)}
+.seg-sm .seg-btn{padding:6px 12px;font-size:12.5px;border-radius:8px}
+.seg-wrap{display:flex;flex-direction:column;gap:7px}
+.seg-caption{font-size:12px;color:var(--muted);font-weight:700}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:650;color:#6D6A61;transition:.15s;white-space:nowrap}
+.chip:hover{border-color:#D7CFBE;background:#FDFBF6}
+.chip.is-active{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 5px 12px rgba(27,77,62,.18)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;
+  background:linear-gradient(115deg,#FCE7D9 0%,#FBEEDF 55%,#F7F1E2 100%);
+  border-radius:var(--r-lg);padding:34px 34px 30px;border:1px solid #F4E0CF;
+}
+.hero::after{content:"";position:absolute;right:-70px;top:-90px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.35)}
+.hero-copy{position:relative;z-index:2}
+.hero h1{font-family:var(--serif);font-size:clamp(26px,3.2vw,40px);line-height:1.22;letter-spacing:-.035em;font-weight:800;margin:8px 0 8px}
+.hero p{font-size:15px;color:#6E6558;max-width:44ch}
+.hero-meta{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0 22px;font-size:13px;color:#7A7266;font-weight:600}
+.hero-meta span{display:inline-flex;align-items:center;gap:6px}
+.hero-art{position:relative;z-index:1;display:grid;place-items:center}
+.hero-art svg{width:100%;max-width:330px;height:auto}
+
+/* ---------- quick cards ---------- */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:20px}
+.quick-card{
+  display:flex;flex-direction:column;gap:10px;text-align:left;padding:20px;border-radius:var(--r-md);
+  background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow-sm);
+  transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.quick-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#DFD7C7}
+.quick-top{display:flex;align-items:center;gap:10px}
+.quick-ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:0 0 40px}
+.quick-ico svg{width:22px;height:22px}
+.quick-card h4{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.quick-card p{font-size:13px;color:var(--muted);line-height:1.55}
+.quick-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px;font-size:12.5px;font-weight:700;color:var(--green)}
+.quick-count{color:#9C9484;font-weight:700}
+
+/* ---------- kana ---------- */
+.kana-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:16px}
+.kana-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;
+  transition:transform .18s,box-shadow .18s;
+}
+.kana-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.kana-art{position:relative;aspect-ratio:1.15/1;background:#F6F1E7;overflow:hidden}
+.kana-art svg{width:100%;height:100%}
+.kana-body{padding:13px 14px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
+.kana-line{display:flex;align-items:center;gap:9px}
+.kana-char{font-family:var(--jp);font-size:30px;font-weight:600;line-height:1;color:var(--green)}
+.kana-ro{font-size:12px;font-weight:750;color:#9A9384;letter-spacing:.06em;text-transform:lowercase;padding-bottom:2px}
+.kana-ko{font-size:13px;font-weight:750;color:var(--ink-2)}
+.kana-story{font-size:12.5px;color:#7C776C;line-height:1.5;margin-top:2px}
+.kana-body .spk-row{margin-top:auto;padding-top:9px;display:flex;align-items:center;gap:8px}
+
+/* ---------- speaker ---------- */
+.spk{
+  display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 13px;border-radius:999px;
+  background:var(--green-soft);color:var(--green);font-size:12.5px;font-weight:750;
+  border:1px solid #D6E6DA;transition:.16s;white-space:nowrap;
+}
+.spk:hover{background:#DBEBE0;border-color:#C6DCCD}
+.spk svg{width:16px;height:16px}
+.spk.is-playing{background:var(--green);color:#fff;border-color:var(--green);animation:pulse 1.1s ease-in-out infinite}
+.spk.is-fallback{background:#FCEBD7;color:#9A5B1E;border-color:#F3D5B0}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(27,77,62,.35)}45%{box-shadow:0 0 0 8px rgba(27,77,62,0)}}
+.spk-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* ---------- vocab ---------- */
+.word-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:16px}
+.word-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:16px;
+  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:11px;transition:box-shadow .18s;
+}
+.word-card:hover{box-shadow:var(--shadow)}
+.word-top{display:flex;align-items:flex-start;gap:12px}
+.word-art{width:88px;height:88px;flex:0 0 88px;border-radius:16px;overflow:hidden;background:#F7F2E8}
+.word-art svg{width:100%;height:100%}
+.word-headings{min-width:0;flex:1}
+.word-main{font-family:var(--jp);font-size:28px;line-height:1.15;font-weight:600;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere;transition:color .15s}
+.word-main[data-tone="hira"]{color:#2C5B4A}
+.word-main[data-tone="kata"]{color:#8A5A2B}
+.word-meaning{font-size:13.5px;color:#6E6A60;margin-top:4px;font-weight:600}
+.word-read{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;margin-top:5px}
+.word-read .ko{background:#EFF4EC;color:#3E6B51;padding:2px 8px;border-radius:7px;font-weight:750}
+.word-read .ro{color:#9A9384;font-style:italic;font-weight:600;letter-spacing:.02em}
+.word-actions{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:4px;flex-wrap:wrap}
+.mode-mini{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 11px;border-radius:10px;border:1px dashed #DCD3C2;background:#FCFAF4;font-size:12px;font-weight:700;color:#7E786C}
+.mode-mini:hover{border-color:#C9BEA8;color:var(--ink)}
+.mode-mini b{color:var(--green);font-weight:800}
+.kanji-box{background:#FBF7EE;border:1px solid #EFE6D3;border-radius:14px;padding:12px 13px}
+.kanji-box-top{display:flex;align-items:center;gap:10px}
+.kanji-glyph{font-family:var(--jp);font-size:30px;line-height:1;color:#7A5A28;font-weight:600}
+.kanji-lines{display:flex;flex-direction:column;gap:2px;font-size:12px;color:#6F6A5E}
+.kanji-lines b{color:#4C463A;font-weight:750}
+.kanji-tip{font-size:12px;color:#8A8172;line-height:1.5;margin-top:8px;padding-top:8px;border-top:1px dashed #E7DCC6}
+.kanji-empty{font-size:12px;color:#9A9384;background:#FAF7F0;border:1px dashed #E6DFD1;border-radius:14px;padding:11px 13px;line-height:1.5}
+
+/* ---------- sentences ---------- */
+.sent-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:18px}
+.sent-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.sent-art{position:relative;background:#F5EFE4;aspect-ratio:16/6.4;overflow:hidden}
+.sent-art svg{width:100%;height:100%}
+.sent-tag{position:absolute;left:14px;top:13px;background:rgba(255,255,255,.92);color:var(--green);padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:800;letter-spacing:.01em;box-shadow:0 3px 10px rgba(36,49,41,.08)}
+.sent-body{padding:17px 19px 19px;display:flex;flex-direction:column;gap:9px;flex:1}
+.sent-text{font-family:var(--jp);font-size:23px;line-height:1.6;font-weight:600;color:var(--ink);word-break:normal;line-break:strict;letter-spacing:.01em}
+.sent-text[data-tone="hira"]{color:#2C5B4A}
+.sent-text[data-tone="kata"]{color:#8A5A2B}
+.sent-text ruby{ruby-position:over}
+.sent-text rt{font-size:.42em;letter-spacing:.04em;color:#A0968A;font-weight:600}
+.sent-read{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px}
+.sent-read .ko{background:#EFF4EC;color:#3E6B51;padding:3px 9px;border-radius:8px;font-weight:750}
+.sent-read .ro{color:#9A9384;font-style:italic;font-weight:600}
+.sent-meaning{font-size:14.5px;color:#514C42;font-weight:700}
+.sent-tip{background:#F7F8F2;border-left:3px solid #BFD8C6;border-radius:0 12px 12px 0;padding:9px 12px;font-size:12.5px;color:#6B7468;line-height:1.6}
+.sent-tip b{color:#3D6B51;font-weight:800;margin-right:4px}
+.sent-actions{margin-top:auto;padding-top:6px;display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- english ---------- */
+.en-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.en-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px 18px 16px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:7px;position:relative;overflow:hidden}
+.en-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--mint)}
+.en-card[data-lang="en"]::before{background:var(--peach-2)}
+.en-text{font-size:19px;font-weight:750;letter-spacing:-.01em;line-height:1.35;color:var(--ink);margin-top:4px}
+.en-ko{font-size:13.5px;color:#6E6A60;font-weight:600}
+.en-pron{font-size:12.5px;color:#9A9384;background:#FAF7F0;display:inline-block;padding:3px 9px;border-radius:8px;font-weight:600;width:fit-content}
+.en-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.en-cat{font-size:11px;font-weight:800;color:#9C9484;letter-spacing:.1em;text-transform:uppercase}
+
+.dialogue{background:#FBF8F1;border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.dlg-row{display:flex;gap:11px;align-items:flex-start}
+.dlg-who{width:34px;height:34px;flex:0 0 34px;border-radius:11px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;background:var(--green)}
+.dlg-row.me{flex-direction:row-reverse}
+.dlg-row.me .dlg-who{background:#C97F4E}
+.dlg-bubble{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 14px;max-width:min(100%,560px);box-shadow:var(--shadow-sm)}
+.dlg-row.me .dlg-bubble{background:#FDF3E9;border-color:#F3E1CD;max-width:min(100%,480px)}
+.dlg-en{font-size:15.5px;font-weight:700}
+.dlg-ko{font-size:12.5px;color:#8A857A;margin-top:2px}
+.dlg-bubble .spk{height:30px;padding:0 10px;font-size:11.5px;margin-top:8px}
+
+/* ---------- misc panels ---------- */
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow-sm)}
+.panel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.stat{flex:1 1 140px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow-sm)}
+.stat b{display:block;font-size:23px;font-weight:800;letter-spacing:-.02em;color:var(--green)}
+.stat span{font-size:12.5px;color:var(--muted);font-weight:650}
+.note{display:flex;gap:10px;align-items:flex-start;background:#F4F8F2;border:1px solid #E1EBDD;border-radius:14px;padding:12px 14px;font-size:12.5px;color:#5F6E5C;line-height:1.6}
+.note svg{flex:0 0 18px;margin-top:2px}
+
+/* ---------- toast ---------- */
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);z-index:200;
+  background:rgba(30,50,40,.95);color:#fff;font-size:13.5px;font-weight:600;
+  padding:12px 18px;border-radius:13px;box-shadow:0 12px 30px rgba(20,35,28,.28);
+  opacity:0;pointer-events:none;transition:.22s;max-width:min(92vw,520px);text-align:center;line-height:1.5;
+}
+.toast.is-on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- tabbar (mobile) ---------- */
+.tabbar{display:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .hero{grid-template-columns:1fr;padding:28px}
+  .hero-art{order:-1;max-width:260px;margin:0 auto}
+  .sent-list{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .sidebar{
+    position:fixed;left:0;top:0;bottom:0;width:min(84vw,320px);height:100dvh;
+    transform:translateX(-102%);transition:transform .25s ease;box-shadow:0 20px 60px rgba(20,35,28,.2);
+    padding-top:calc(20px + env(safe-area-inset-top));
+  }
+  body.menu-open .sidebar{transform:none}
+  body.menu-open .scrim{opacity:1;pointer-events:auto}
+  .menu-btn{display:inline-flex}
+  .topbar{padding:0 16px;height:60px;padding-top:env(safe-area-inset-top)}
+  .crumb span:first-child,.crumb-sep{display:none}
+  .crumb{font-size:13px}
+  .ghost-btn span{display:none}
+  .ghost-btn{width:38px;padding:0;justify-content:center}
+  .top-chip{display:none}
+  .main{padding:18px 16px calc(var(--tab-h) + 46px + env(safe-area-inset-bottom))}
+  .chips{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;margin:12px -16px 16px;padding:0 16px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto}
+  .hide-sm{display:none !important}
+  .stat{flex:1 1 44%;padding:12px 13px}
+  .stat b{font-size:20px}
+  .stat span{font-size:11.5px;line-height:1.45}
+  .hero{padding:20px 18px 20px}
+  .hero-art{max-width:180px;margin-top:-4px}
+  .hero-meta{gap:9px 12px;font-size:12px;margin:14px 0 18px}
+  .hero p{font-size:14.5px}
+  .page-head p{font-size:13.5px}
+  .word-grid{gap:12px}
+  .en-actions .spk{height:34px}
+  .page-head h2{font-size:25px}
+  .page-head .head-tools{width:100%;margin-left:0}
+  .seg{width:100%;justify-content:space-between}
+  .seg-btn{flex:1;text-align:center;padding:9px 8px;font-size:12.5px}
+  .tabbar{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;
+    height:calc(var(--tab-h) + env(safe-area-inset-bottom));
+    padding-bottom:env(safe-area-inset-bottom);
+    background:rgba(255,253,249,.97);backdrop-filter:blur(14px);border-top:1px solid var(--line);
+  }
+  .tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10.5px;font-weight:700;color:#8D887C}
+  .tab-item.is-active{color:var(--green)}
+  .tab-ico svg{width:21px;height:21px}
+  .kana-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .kana-char{font-size:26px}
+  .word-grid{grid-template-columns:1fr}
+  .en-grid{grid-template-columns:1fr}
+  .hero h1{font-size:27px}
+  .hero-art{max-width:210px}
+  .sent-text{font-size:21px}
+  .toast{bottom:calc(var(--tab-h) + 18px + env(safe-area-inset-bottom))}
+}
+@media (max-width:520px){
+  .kana-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .kana-body{padding:11px 11px 13px}
+  .kana-story{font-size:11.5px}
+  .kana-char{font-size:24px}
+  .word-art{width:76px;height:76px;flex-basis:76px}
+  .word-main{font-size:25px}
+  .hero{padding:20px 18px 18px;border-radius:20px}
+  .hero-art{max-width:160px}
+  .hero h1{font-size:25px}
+  .hero-meta{gap:10px;font-size:12px}
+  .btn{height:46px;padding:0 18px;font-size:14.5px}
+  .sent-body{padding:15px 15px 17px}
+  .sent-text{font-size:20px}
+  .quick-grid{gap:12px}
+  .quick-card{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="주요 메뉴">
+    <a class="brand" href="#home" data-act="nav" data-view="home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="24" height="24"><path d="M6 12c0-3.3 2.7-6 6-6h8c3.3 0 6 2.7 6 6v3c0 3.3-2.7 6-6 6h-4.6l-5.1 4.1c-.7.5-1.6 0-1.6-.8V21C6.9 20.4 6 18.3 6 16v-4z" fill="#F9F7F3"/><circle cx="12" cy="14" r="1.4" fill="#1B4D3E"/><circle cx="16" cy="14" r="1.4" fill="#1B4D3E"/><circle cx="20" cy="14" r="1.4" fill="#1B4D3E"/></svg>
+      </span>
+      <span class="brand-text">
+        <strong>한마디 여행</strong>
+        <small>LESS WORDS, MORE WORLD</small>
+      </span>
+    </a>
+
+    <p class="nav-label">나의 작은 여행 준비</p>
+    <nav class="nav" id="nav">
+      <a href="#home" class="nav-item" data-act="nav" data-view="home"><span class="nav-ico" data-ico="home"></span>오늘의 학습</a>
+      <a href="#kana" class="nav-item" data-act="nav" data-view="kana"><span class="nav-ico" data-ico="kana"></span>가나 첫 수업</a>
+      <a href="#vocab" class="nav-item" data-act="nav" data-view="vocab"><span class="nav-ico" data-ico="book"></span>필수 단어장</a>
+      <a href="#sentences" class="nav-item" data-act="nav" data-view="sentences"><span class="nav-ico" data-ico="chat"></span>자주 쓰는 문장</a>
+      <a href="#english" class="nav-item" data-act="nav" data-view="english"><span class="nav-ico" data-ico="globe"></span>영어 한마디</a>
+    </nav>
+
+    <div class="side-card">
+      <div class="side-card-ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1B4D3E" stroke-width="1.7" stroke-linecap="round"><path d="M4 14c2-1 3-3 3-5a5 5 0 0 1 10 0c0 3 2 4 3 5"/><path d="M8 18h8"/><path d="M10 21h4"/></svg>
+      </div>
+      <p class="side-card-title">조금씩, 더 넓은 세상으로</p>
+      <p class="side-card-text">완벽한 문장보다<br>오늘 써볼 한마디.</p>
+    </div>
+
+    <div class="side-settings">
+      <p class="side-label">발음 속도</p>
+      <div class="seg seg-sm" role="group" aria-label="발음 속도">
+        <button type="button" data-act="rate" data-rate="1" class="seg-btn" data-rate-btn="1">보통</button>
+        <button type="button" data-act="rate" data-rate="0.85" class="seg-btn" data-rate-btn="0.85">천천히</button>
+      </div>
+      <p class="side-label">이 기기의 음성</p>
+      <div class="voice-status" id="voiceStatus" aria-live="polite">확인 중…</div>
+    </div>
+  </aside>
+
+  <div class="scrim" id="scrim" data-act="close-menu" aria-hidden="true"></div>
+
+  <div class="content">
+    <header class="topbar">
+      <button type="button" class="menu-btn" data-act="open-menu" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <p class="crumb"><span>나의 학습 공간</span><span class="crumb-sep">›</span><b id="crumbNow">오늘의 학습</b></p>
+      <div class="topbar-right">
+        <button type="button" class="ghost-btn" data-act="test-voice">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 10v4h3l4 4V6L7 10H4z"/><path d="M16 9c1.3 1 1.3 5 0 6"/><path d="M19 6.5c2.6 2.2 2.6 8.8 0 11"/></svg>
+          <span>발음 확인</span>
+        </button>
+        <span class="top-chip" id="topVoiceChip">🔊 ja · en</span>
+      </div>
+    </header>
+
+    <main class="main" id="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<nav class="tabbar" aria-label="하단 메뉴">
+  <a href="#home" class="tab-item" data-act="nav" data-view="home"><span class="tab-ico" data-ico="home"></span><span>학습</span></a>
+  <a href="#kana" class="tab-item" data-act="nav" data-view="kana"><span class="tab-ico" data-ico="kana"></span><span>가나</span></a>
+  <a href="#vocab" class="tab-item" data-act="nav" data-view="vocab"><span class="tab-ico" data-ico="book"></span><span>단어</span></a>
+  <a href="#sentences" class="tab-item" data-act="nav" data-view="sentences"><span class="tab-ico" data-ico="chat"></span><span>문장</span></a>
+  <a href="#english" class="tab-item" data-act="nav" data-view="english"><span class="tab-ico" data-ico="globe"></span><span>영어</span></a>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   Shared UI assets: icons + hero illustration
+   ============================================================ */
+var JP_FONT = "'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP','Hiragino Sans','Malgun Gothic',sans-serif";
+
+var ICONS = {
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.6 12 4l8 6.6V19a1.4 1.4 0 0 1-1.4 1.4H15v-6H9v6H5.4A1.4 1.4 0 0 1 4 19v-8.4z"/></svg>',
+  kana: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="5" width="7.6" height="14" rx="2"/><rect x="13" y="5" width="7.6" height="14" rx="2"/><path d="M6 9.4h2.2M6 13h2.2M15.6 9.4h2.2M15.6 13h2.2"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.6A2 2 0 0 1 6 3.6h5v16.8H6a2 2 0 0 0-2 2V5.6z"/><path d="M20 5.6a2 2 0 0 0-2-2h-5v16.8h5a2 2 0 0 1 2 2V5.6z"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12.4c0 3.6-3.6 6.5-8 6.5-1 0-2-.1-2.9-.4L4 20.5l1.3-3.4A6.4 6.4 0 0 1 4 12.4C4 8.8 7.6 6 12 6s8 2.8 8 6.4z"/><path d="M8.6 11.6h6.8M8.6 14.4h4.2"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8"/><path d="M12 3.6c2.4 2.3 3.6 5 3.6 8.4S14.4 18.1 12 20.4C9.6 18.1 8.4 15.4 8.4 12S9.6 5.9 12 3.6z"/></svg>',
+  arrow: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h14"/><path d="m13 6.5 5.5 5.5L13 17.5"/></svg>',
+  info: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#5C7A63" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.4"/><circle cx="12" cy="7.9" r="1" fill="#5C7A63" stroke="none"/></svg>'
+};
+
+var HERO_ART = '' +
+  '<svg viewBox="0 0 340 280" role="img" aria-label="커피 한 잔과 인사말 그림" preserveAspectRatio="xMidYMid meet">' +
+  '<ellipse cx="176" cy="146" rx="146" ry="118" fill="#FFF7ED" opacity=".72"/>' +
+  /* left bubble */
+  '<g><rect x="6" y="52" width="136" height="44" rx="15" fill="#1B4D3E"/>' +
+  '<path d="M34 94l-7 15 22-13z" fill="#1B4D3E"/>' +
+  '<text x="24" y="81" font-family="' + JP_FONT + '" font-size="17" fill="#F7F1E4">こんにちは</text></g>' +
+  /* right bubble */
+  '<g><rect x="196" y="20" width="140" height="46" rx="15" fill="#FFFFFF"/>' +
+  '<path d="M300 64l10 14-24-11z" fill="#FFFFFF"/>' +
+  '<text x="210" y="49" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13.5" font-weight="600" fill="#3E4C43">A coffee, please.</text></g>' +
+  /* plant */
+  '<g><path d="M276 196h46l-6 38h-34z" fill="#DCC3A2"/>' +
+  '<path d="M299 196c-2-26-14-38-28-44 3 20 11 34 28 44z" fill="#7FB392"/>' +
+  '<path d="M299 196c2-24 12-36 26-42-2 20-10 33-26 42z" fill="#96C2A5"/>' +
+  '<path d="M299 196c0-18 0-30 0-44" stroke="#4F7E60" stroke-width="3" stroke-linecap="round"/></g>' +
+  /* mug */
+  '<g><path d="M112 152h78v30c0 19-14 32-32 32h-14c-18 0-32-13-32-32z" fill="#EFA96B"/>' +
+  '<path d="M190 162h9a17 17 0 0 1 0 34h-9" fill="none" stroke="#EFA96B" stroke-width="11" stroke-linecap="round"/>' +
+  '<ellipse cx="151" cy="153" rx="39" ry="9" fill="#B17A4B"/>' +
+  '<ellipse cx="151" cy="152" rx="31" ry="6.5" fill="#7B4A2A"/>' +
+  '<ellipse cx="143" cy="150" rx="10" ry="2.6" fill="#C79A70" opacity=".55"/>' +
+  '<path d="M136 190c0 8 7 14 15 14s15-6 15-14" fill="#F7C99D" opacity=".5"/>' +
+  '<path d="M134 132c-6-9 6-14 0-23" stroke="#E7C7A6" stroke-width="4" fill="none" stroke-linecap="round"/>' +
+  '<path d="M152 128c-6-10 6-15 0-25" stroke="#E7C7A6" stroke-width="4" fill="none" stroke-linecap="round"/>' +
+  '<path d="M170 133c-6-9 6-14 0-22" stroke="#E7C7A6" stroke-width="4" fill="none" stroke-linecap="round"/>' +
+  '</g>' +
+  '<ellipse cx="151" cy="224" rx="56" ry="10" fill="#EBD4B9"/>' +
+  '<path d="M36 244h272" stroke="#E7CDB1" stroke-width="7" stroke-linecap="round"/>' +
+  /* sparkles */
+  '<path d="M72 150l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#F2CE6B"/>' +
+  '<path d="M262 116l2.4 7.2 7.2 2.4-7.2 2.4-2.4 7.2-2.4-7.2-7.2-2.4 7.2-2.4z" fill="#E9A88D"/>' +
+  '<path d="M86 96l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#9DC3AA"/>' +
+  '</svg>';
+
+
+/* ============================================================
+   가나 데이터 — 히라가나 46자 (연상 그림 포함)
+   ============================================================ */
+var KANA_HIRA = [
+  { ch: 'あ', ro: 'a', ko: '아', row: 'あ행', story: '사과에 칼을 콕! 놀라서 "아!"', art:
+    '<circle cx="58" cy="136" r="30" fill="#E98B74"/><path d="M58 106c0-7 3-12 8-16" stroke="#8A6242" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M66 110c8-9 19-10 25-4-7 8-18 10-25 4z" fill="#7FB68F"/><path d="M104 52l40 88" stroke="#A4835C" stroke-width="7" stroke-linecap="round"/><path d="M104 52l-12-6" stroke="#A4835C" stroke-width="7" stroke-linecap="round"/><circle cx="44" cy="126" r="5" fill="#fff" opacity=".5"/>' },
+  { ch: 'い', ro: 'i', ko: '이', row: 'あ행', story: '나란히 선 두 사람, 키가 달라요. "이~"', art:
+    '<circle cx="74" cy="62" r="13" fill="#F2C6A0"/><path d="M74 76v56" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M74 96l-13 20" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><circle cx="126" cy="74" r="11" fill="#F2C6A0"/><path d="M126 86v36" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><path d="M126 100l-11 16" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round"/>' },
+  { ch: 'う', ro: 'u', ko: '우', row: 'あ행', story: '모자 쓴 얼굴이 입을 쭉 내밀어 "우"', art:
+    '<path d="M70 48h56" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M104 56c-16 4-22 14-18 24" stroke="#1B4D3E" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="102" cy="100" rx="17" ry="21" fill="#F2C6A0"/><ellipse cx="102" cy="106" rx="7" ry="9" fill="#C9785F"/><circle cx="112" cy="84" r="3.4" fill="#3E4C43"/>' },
+  { ch: 'え', ro: 'e', ko: '에', row: 'あ행', story: '두 팔 벌리고 "에너지!" 춤추는 사람', art:
+    '<circle cx="96" cy="58" r="14" fill="#F2C6A0"/><path d="M96 72v36" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><path d="M96 82L72 70M96 82l24-12" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M96 108l-16 30M96 108l16 30" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M138 44l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F2CE6B"/>' },
+  { ch: 'お', ro: 'o', ko: '오', row: 'あ행', story: '볼이 통통한 사람이 "오!" 하고 감탄해요', art:
+    '<circle cx="94" cy="104" r="34" fill="#F2C6A0"/><circle cx="116" cy="116" r="13" fill="#EE9F8B"/><path d="M52 52h46" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M94 60c-14 6-18 16-14 26" stroke="#1B4D3E" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="82" cy="98" r="3.5" fill="#3E4C43"/><circle cx="104" cy="98" r="3.5" fill="#3E4C43"/><path d="M86 116c5 5 12 5 17 0" stroke="#3E4C43" stroke-width="3" fill="none" stroke-linecap="round"/>' },
+  { ch: 'か', ro: 'ka', ko: '카', row: 'か행', story: '부리에 힘을 준 새가 "카" 하고 물어요', art:
+    '<circle cx="82" cy="86" r="27" fill="#8FBE9E"/><path d="M108 86l30 12-30 12z" fill="#F2B33D"/><circle cx="90" cy="78" r="3.6" fill="#1B4D3E"/><path d="M72 112c-10 12-12 24-6 34" stroke="#7FA8C9" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M124 48l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#F2CE6B"/>' },
+  { ch: 'き', ro: 'ki', ko: '키', row: 'か행', story: '노트에 두 줄, "키" 하고 줄을 그어요', art:
+    '<rect x="56" y="86" width="90" height="62" rx="11" fill="#fff" stroke="#1B4D3E" stroke-width="3.5"/><path d="M72 104h58M72 124h58" stroke="#9DBFA9" stroke-width="5" stroke-linecap="round"/><path d="M62 62h78M62 78h78" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/>' },
+  { ch: 'く', ro: 'ku', ko: '쿠', row: 'か행', story: '뾰족한 부리를 옆으로, "쿠"', art:
+    '<path d="M124 58L78 96l46 38" stroke="#1B4D3E" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="148" r="13" fill="#F2B33D"/><path d="M60 135c4-6 10-8 16-6" stroke="#C98A6C" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="56" cy="144" r="2.6" fill="#3E4C43"/>' },
+  { ch: 'け', ro: 'ke', ko: '케', row: 'か행', story: '깃대에 깃발을 단 모습, "케"', art:
+    '<path d="M64 52v96" stroke="#8A6242" stroke-width="8" stroke-linecap="round"/><path d="M64 62h46l-11 17 11 17H64z" fill="#8FBE9E"/><path d="M126 92h22" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M126 100v44" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/>' },
+  { ch: 'こ', ro: 'ko', ko: '코', row: 'か행', story: '위아래로 굽은 두 길, "코"', art:
+    '<path d="M58 66c34-18 66-18 84 0" stroke="#D9A94E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M58 132c34-18 66-18 84 0" stroke="#D9A94E" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="140" cy="106" r="9" fill="#E98B74"/>' },
+  { ch: 'さ', ro: 'sa', ko: '사', row: 'さ행', story: '낚싯대를 드리우고 "사" 하고 기다려요', art:
+    '<path d="M56 46c38 12 54 48 46 96" stroke="#8A6242" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M102 142c-8-8-8-18 0-26" stroke="#9AA7B5" stroke-width="3" fill="none"/><ellipse cx="130" cy="146" rx="22" ry="12" fill="#7FA8C9"/><path d="M152 146l14-9v18z" fill="#7FA8C9"/><circle cx="122" cy="142" r="2.6" fill="#fff"/>' },
+  { ch: 'し', ro: 'shi', ko: '시', row: 'さ행', story: '미끄럼틀을 타고 "시~" 내려와요', art:
+    '<path d="M108 50c0 46-20 78-50 94" stroke="#E58A76" stroke-width="11" fill="none" stroke-linecap="round"/><circle cx="100" cy="64" r="12" fill="#F2C6A0"/><path d="M58 146c8-6 18-6 26 0" stroke="#9DC3AA" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'す', ro: 'su', ko: '스', row: 'さ행', story: '바늘에 실을 꿰어 "스"', art:
+    '<path d="M100 36v128" stroke="#9AA7B5" stroke-width="6" stroke-linecap="round"/><path d="M74 54h52" stroke="#9AA7B5" stroke-width="6" stroke-linecap="round"/><circle cx="100" cy="106" r="24" fill="none" stroke="#E58A76" stroke-width="6"/><path d="M124 106c16 10 16 28 0 38" stroke="#E58A76" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'せ', ro: 'se', ko: '세', row: 'さ행', story: '세 사람이 손을 잡고 "세"', art:
+    '<circle cx="62" cy="76" r="11" fill="#F2C6A0"/><circle cx="100" cy="66" r="11" fill="#F2C6A0"/><circle cx="138" cy="76" r="11" fill="#F2C6A0"/><path d="M62 87v34M100 77v42M138 87v34" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M62 104h76" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M62 121l-8 16M138 121l8 16" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round"/>' },
+  { ch: 'そ', ro: 'so', ko: '소', row: 'さ행', story: '지그재그로 지나가는 뱀, "소~"', art:
+    '<path d="M58 54h60L76 88h50l-46 48" stroke="#7FB392" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82" cy="134" r="4" fill="#1B4D3E"/><path d="M76 138l-10 8 12 2" stroke="#E98B74" stroke-width="3" fill="none" stroke-linecap="round"/>' },
+  { ch: 'た', ro: 'ta', ko: '타', row: 'た행', story: '지붕 아래 사람이 앉아 있어요, "타"', art:
+    '<path d="M52 64L96 40l44 24" stroke="#B4703C" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="84" cy="106" r="13" fill="#F2C6A0"/><path d="M84 120v28h28" stroke="#1B4D3E" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M126 92h18" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/>' },
+  { ch: 'ち', ro: 'chi', ko: '치', row: 'た행', story: '깃발이 펄럭펄럭, "치"', art:
+    '<path d="M60 50h56" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M100 52v58c0 20-12 32-30 34" stroke="#1B4D3E" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M128 58l16 22-18 14" stroke="#F2B33D" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' },
+  { ch: 'つ', ro: 'tsu', ko: '츠', row: 'た행', story: '둥글게 감긴 파도, "츠"', art:
+    '<path d="M62 60c50-12 82 8 82 34 0 24-22 38-46 32" stroke="#7FA8C9" stroke-width="11" fill="none" stroke-linecap="round"/><circle cx="150" cy="108" r="5" fill="#fff" opacity=".75"/><path d="M52 132c14 8 28 10 42 6" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'て', ro: 'te', ko: '테', row: 'た행', story: '팔을 쭉 뻗은 손, "테"', art:
+    '<path d="M56 70c32-16 66-16 86 2" stroke="#F2C6A0" stroke-width="15" stroke-linecap="round"/><path d="M106 80c0 32-7 54-20 70" stroke="#F2C6A0" stroke-width="15" fill="none" stroke-linecap="round"/><path d="M78 64c10-6 20-8 30-8" stroke="#E9A88D" stroke-width="4" fill="none" stroke-linecap="round"/>' },
+  { ch: 'と', ro: 'to', ko: '토', row: 'た행', story: '갈고리에 열매가 매달렸어요, "토"', art:
+    '<path d="M74 58c28 8 32 32 22 52-6 12-4 22 8 30" stroke="#8A6242" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="128" cy="70" r="15" fill="#E98B74"/><path d="M128 55c2-7 7-10 13-11" stroke="#7FB68F" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="123" cy="66" r="3" fill="#fff" opacity=".6"/>' },
+  { ch: 'な', ro: 'na', ko: '나', row: 'な행', story: '십자에 날개를 단 나비, "나"', art:
+    '<path d="M62 96h76M100 54v92" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><ellipse cx="74" cy="74" rx="21" ry="14" fill="#E9A88D" transform="rotate(-22 74 74)"/><ellipse cx="126" cy="74" rx="21" ry="14" fill="#E9A88D" transform="rotate(22 126 74)"/><path d="M100 54c-4-10 1-17 9-19" stroke="#1B4D3E" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="100" cy="98" r="14" fill="none" stroke="#F2CE6B" stroke-width="6"/>' },
+  { ch: 'に', ro: 'ni', ko: '니', row: 'な행', story: '두 사람이 나란히, "니"', art:
+    '<circle cx="72" cy="70" r="13" fill="#F2C6A0"/><path d="M72 84v46" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><circle cx="130" cy="80" r="12" fill="#F2C6A0"/><path d="M130 92v38" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><path d="M112 108h38" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/>' },
+  { ch: 'ぬ', ro: 'nu', ko: '누', row: 'な행', story: '실뭉치가 동그랗게 말려 있어요, "누"', art:
+    '<circle cx="112" cy="116" r="31" fill="#F6D3BC"/><path d="M88 100c16 6 30 18 36 34M92 130c14-2 28 2 36 8" stroke="#C98A6C" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M84 92c-10 8-14 20-12 32" stroke="#C98A6C" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M72 128c-14 6-20 16-16 26" stroke="#C98A6C" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ね', ro: 'ne', ko: '네', row: 'な행', story: '꼬리를 동그랗게 말은 고양이, "네"', art:
+    '<circle cx="86" cy="96" r="27" fill="#F2C6A0"/><path d="M74 74l-5-18 18 9M100 74l5-18-18 9" fill="#F2C6A0"/><circle cx="78" cy="94" r="3.2" fill="#3E4C43"/><circle cx="96" cy="94" r="3.2" fill="#3E4C43"/><path d="M86 104l-4 6h8z" fill="#E98B74"/><path d="M112 108c26 2 32 24 22 42" stroke="#F2C6A0" stroke-width="9" fill="none" stroke-linecap="round"/>' },
+  { ch: 'の', ro: 'no', ko: '노', row: 'な행', story: '한 붓으로 그린 소용돌이, "노"', art:
+    '<path d="M124 60c-32-6-60 14-60 42 0 30 32 46 56 30 18-12 16-36-4-42-16-5-28 8-24 20" stroke="#7FB392" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="150" cy="140" r="5" fill="#F2CE6B"/>' },
+  { ch: 'は', ro: 'ha', ko: '하', row: 'は행', story: '하마처럼 입을 크게 벌려 "하"', art:
+    '<circle cx="84" cy="88" r="27" fill="#F2C6A0"/><circle cx="76" cy="82" r="3" fill="#3E4C43"/><circle cx="92" cy="82" r="3" fill="#3E4C43"/><ellipse cx="84" cy="100" rx="12" ry="9" fill="#C9785F"/><path d="M126 56v84M126 96h22" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M126 124h16" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round"/>' },
+  { ch: 'ひ', ro: 'hi', ko: '히', row: 'は행', story: '히죽 웃는 입 모양, "히"', art:
+    '<path d="M54 92c28-28 58-28 86 0" stroke="#E9A88D" stroke-width="11" fill="none" stroke-linecap="round"/><circle cx="76" cy="124" r="6" fill="#1B4D3E"/><path d="M102 114c12 9 25 8 35-1" stroke="#1B4D3E" stroke-width="6" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ふ', ro: 'fu', ko: '후', row: 'は행', story: '후~ 하고 바람을 불어요, "후"', art:
+    '<circle cx="78" cy="102" r="23" fill="#F2C6A0"/><circle cx="70" cy="98" r="2.6" fill="#3E4C43"/><circle cx="84" cy="98" r="2.6" fill="#3E4C43"/><ellipse cx="90" cy="110" rx="5" ry="4.5" fill="#C9785F"/><path d="M106 106c22-4 36-16 42-32M108 118c20 0 32 6 40 16" stroke="#9DC3AA" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'へ', ro: 'he', ko: '헤', row: 'は행', story: '낮은 산 하나, "헤"', art:
+    '<path d="M46 120l50-42 58 42" stroke="#8FBE9E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="146" cy="66" r="13" fill="#F2CE6B"/><path d="M52 140h96" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>' },
+  { ch: 'ほ', ro: 'ho', ko: '호', row: 'は행', story: '기둥에 사람이 기대어 "호"', art:
+    '<path d="M126 52v92" stroke="#8A6242" stroke-width="8" stroke-linecap="round"/><path d="M112 70h34M112 86h34" stroke="#8A6242" stroke-width="6" stroke-linecap="round"/><circle cx="80" cy="90" r="25" fill="#F2C6A0"/><circle cx="72" cy="84" r="3" fill="#3E4C43"/><circle cx="88" cy="84" r="3" fill="#3E4C43"/><path d="M70 100c7 7 17 7 24 0" stroke="#3E4C43" stroke-width="3" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ま', ro: 'ma', ko: '마', row: 'ま행', story: '실을 감은 실패, "마"', art:
+    '<ellipse cx="100" cy="66" rx="36" ry="13" fill="#E9A88D"/><ellipse cx="100" cy="134" rx="36" ry="13" fill="#E9A88D"/><path d="M66 74c0 18 0 40 0 48M134 74c0 18 0 40 0 48" stroke="#C98A6C" stroke-width="5" fill="none"/><path d="M74 90h52M74 104h52M74 118h52" stroke="#F6D3BC" stroke-width="7" stroke-linecap="round"/>' },
+  { ch: 'み', ro: 'mi', ko: '미', row: 'ま행', story: '물결에 비친 모습, "미"', art:
+    '<path d="M50 66c14-11 28-11 42 0s28 11 42 0" stroke="#7FA8C9" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 90c14-11 28-11 42 0s28 11 42 0" stroke="#9DC3AA" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="126" cy="128" r="19" fill="#F6D3BC"/><path d="M112 122c10-5 18-5 28 0" stroke="#C98A6C" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M100 148c14 6 30 6 44 0" stroke="#7FA8C9" stroke-width="4" fill="none" stroke-linecap="round"/>' },
+  { ch: 'む', ro: 'mu', ko: '무', row: 'ま행', story: '뿔을 세운 소가 "무"', art:
+    '<ellipse cx="96" cy="112" rx="30" ry="27" fill="#F2C6A0"/><path d="M74 88c-8-10-8-20-2-26M118 88c8-10 8-20 2-26" stroke="#8A6242" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="86" cy="108" r="3.4" fill="#3E4C43"/><circle cx="106" cy="108" r="3.4" fill="#3E4C43"/><ellipse cx="96" cy="124" rx="9" ry="6" fill="#E9A88D"/><path d="M96 60c0-11 10-17 19-12" stroke="#1B4D3E" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'め', ro: 'me', ko: '메', row: 'ま행', story: '동그란 눈을 크게 뜨고 "메"', art:
+    '<path d="M50 90c24-28 60-28 84 0-24 28-60 28-84 0z" fill="#fff" stroke="#1B4D3E" stroke-width="4"/><circle cx="92" cy="90" r="13" fill="#3E4C43"/><circle cx="97" cy="85" r="4.5" fill="#fff"/><path d="M132 106c15 13 19 27 13 40" stroke="#1B4D3E" stroke-width="6" fill="none" stroke-linecap="round"/>' },
+  { ch: 'も', ro: 'mo', ko: '모', row: 'ま행', story: '갈고리 두 개, 물고기 뼈 "모"', art:
+    '<path d="M100 54v94" stroke="#9AA7B5" stroke-width="7" stroke-linecap="round"/><path d="M64 82c22-13 46-13 68 0M64 118c22-13 46-13 68 0" stroke="#7FA8C9" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="132" cy="146" r="5" fill="#F2CE6B"/>' },
+  { ch: 'や', ro: 'ya', ko: '야', row: 'や행', story: '손을 흔들며 "야!"', art:
+    '<circle cx="88" cy="72" r="14" fill="#F2C6A0"/><path d="M88 86v40" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><path d="M88 96L62 78M88 96l26-20" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M88 126l-14 26M88 126l14 26" stroke="#1B4D3E" stroke-width="7" stroke-linecap="round"/><path d="M142 44l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F2CE6B"/>' },
+  { ch: 'ゆ', ro: 'yu', ko: '유', row: 'や행', story: '따뜻한 목욕물이 담긴 통, "유"', art:
+    '<path d="M58 88h80v24c0 18-15 30-40 30s-40-12-40-30z" fill="#E9A88D"/><path d="M58 96h80" stroke="#fff" stroke-width="5" opacity=".45"/><path d="M118 78c9-11 21-13 29-6" stroke="#9DC3AA" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M82 74c6-8 6-14 0-20M100 76c6-8 6-14 0-20" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'よ', ro: 'yo', ko: '요', row: 'や행', story: '요요 줄이 팽팽, "요"', art:
+    '<circle cx="102" cy="116" r="27" fill="#F2CE6B"/><circle cx="102" cy="116" r="10" fill="#E9A88D"/><path d="M102 89V56" stroke="#8A6242" stroke-width="5"/><path d="M102 56c0-13 12-19 23-13" stroke="#8A6242" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ら', ro: 'ra', ko: '라', row: 'ら행', story: '물가에 앉은 오리, "라"', art:
+    '<ellipse cx="94" cy="114" rx="34" ry="24" fill="#7FA8C9"/><circle cx="120" cy="86" r="16" fill="#7FA8C9"/><path d="M136 86l18 7-18 8z" fill="#F2B33D"/><circle cx="125" cy="83" r="2.8" fill="#fff"/><path d="M56 140c16-7 32-7 48 0" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M74 122c6 6 12 8 18 8" stroke="#fff" stroke-width="3" opacity=".5" fill="none"/>' },
+  { ch: 'り', ro: 'ri', ko: '리', row: 'ら행', story: '두 사람이 나란히 서 있어요, "리"', art:
+    '<circle cx="80" cy="52" r="9" fill="#F2C6A0"/><path d="M80 62c-6 20-6 40 2 62" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="122" cy="66" r="9" fill="#F2C6A0"/><path d="M122 76v46" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/>' },
+  { ch: 'る', ro: 'ru', ko: '루', row: 'ら행', story: '소용돌이 끝에 동그라미, "루"', art:
+    '<path d="M58 58h60l-36 36h26c15 0 19 17 8 25-11 8-27 2-27-11" stroke="#E58A76" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="150" cy="146" r="5" fill="#F2CE6B"/>' },
+  { ch: 'れ', ro: 're', ko: '레', row: 'ら행', story: '고양이 꼬리가 길게 말려요, "레"', art:
+    '<path d="M82 54v40c0 16 8 24 20 24" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M112 58c-9 30-4 54 15 64 12 6 22 0 22-10" stroke="#F2C6A0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="82" cy="48" r="8" fill="#F2C6A0"/>' },
+  { ch: 'ろ', ro: 'ro', ko: '로', row: 'ら행', story: '동그라미를 뺀 소용돌이, "로"', art:
+    '<path d="M58 58h58l-34 34h25c14 0 18 15 7 23-10 7-24 1-24-9" stroke="#7FA8C9" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 140c14 6 28 6 42 0" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'わ', ro: 'wa', ko: '와', row: 'わ행', story: '둥근 테두리를 그리며 "와"', art:
+    '<circle cx="100" cy="104" r="33" fill="none" stroke="#7FB392" stroke-width="10"/><path d="M133 100c15 9 21 23 17 36" stroke="#7FB392" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="88" cy="96" r="4" fill="#fff" opacity=".7"/>' },
+  { ch: 'を', ro: 'wo', ko: '오', row: 'わ행', story: '한 바퀴 돌며 춤추는 사람, "오"', art:
+    '<circle cx="100" cy="58" r="13" fill="#F2C6A0"/><path d="M100 72v32" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><path d="M100 80L76 70M100 80l24-4" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round"/><path d="M100 104c-15 10-19 25-12 36 7 10 24 10 30 0" stroke="#1B4D3E" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M146 44l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F2CE6B"/>' },
+  { ch: 'ん', ro: 'n', ko: '응', row: 'わ행', story: '한 붓으로 꾹, 콧소리 "응"', art:
+    '<path d="M62 58c0 36 17 56 40 62 13 4 22 12 22 24" stroke="#1B4D3E" stroke-width="11" fill="none" stroke-linecap="round"/><circle cx="136" cy="56" r="7" fill="#F2CE6B"/><path d="M56 132c10 8 22 10 34 6" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' }
+];
+
+var KANA_KATA = [
+  { ch: 'ア', ro: 'a', ko: '아', row: 'ア행', story: '사과를 한 입 베어 문 모양, "아"', art:
+    '<path d="M60 64h58" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M114 64v26" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M114 90c0 28-16 44-38 52" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="64" cy="140" r="17" fill="#E98B74"/><path d="M58 126c-1-6 2-10 6-12" stroke="#7FB68F" stroke-width="4" fill="none" stroke-linecap="round"/>' },
+  { ch: 'イ', ro: 'i', ko: '이', row: 'ア행', story: '기둥 옆에 사람 하나, "이"', art:
+    '<path d="M72 60c-4 20-12 34-22 46" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M110 54v90" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><circle cx="110" cy="46" r="8" fill="#F2C6A0"/><path d="M90 132c8 6 18 8 28 6" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ウ', ro: 'u', ko: '우', row: 'ア행', story: '모자를 눌러쓴 얼굴, "우"', art:
+    '<path d="M100 40v12" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M62 68l38-16 38 16" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 68v42h76V68" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linejoin="round"/><circle cx="86" cy="92" r="3.4" fill="#3E4C43"/><circle cx="114" cy="92" r="3.4" fill="#3E4C43"/><path d="M94 102c4 3 8 3 12 0" stroke="#3E4C43" stroke-width="3" fill="none" stroke-linecap="round"/>' },
+  { ch: 'エ', ro: 'e', ko: '에', row: 'ア행', story: '공사장의 工자 기둥, "에"', art:
+    '<path d="M60 66h80M60 132h80M100 66v66" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M60 66h80" stroke="#F2CE6B" stroke-width="4" opacity=".75"/><path d="M50 148c14 6 28 6 42 0" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'オ', ro: 'o', ko: '오', row: 'ア행', story: '팔을 쫙 벌린 사람, "오"', art:
+    '<path d="M58 66h76" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M98 66v74" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M98 98l24-30M98 98L74 68" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><circle cx="98" cy="150" r="7" fill="#F2C6A0"/>' },
+  { ch: 'カ', ro: 'ka', ko: '카', row: 'カ행', story: '갈고리로 무언가를 당겨요, "카"', art:
+    '<path d="M60 68h48v34c0 24-14 38-30 42" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M78 58c-6 18-14 32-24 44" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="132" cy="128" r="14" fill="#F2CE6B"/>' },
+  { ch: 'キ', ro: 'ki', ko: '키', row: 'カ행', story: '열쇠의 이빨 두 개, "키"', art:
+    '<path d="M62 78h74M62 104h74" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M98 54v84" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><circle cx="140" cy="91" r="7" fill="none" stroke="#D9A94E" stroke-width="4"/><path d="M62 78h74" stroke="#D9A94E" stroke-width="3" opacity=".55"/>' },
+  { ch: 'ク', ro: 'ku', ko: '쿠', row: 'カ행', story: '새의 뾰족한 부리, "쿠"', art:
+    '<path d="M94 50c-6 16-14 28-26 38" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M64 86h56l-8 40c-2 13-11 20-22 22" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="74" cy="74" r="3.4" fill="#3E4C43"/>' },
+  { ch: 'ケ', ro: 'ke', ko: '케', row: 'カ행', story: '하늘에 뜬 연, "케"', art:
+    '<path d="M90 48c-8 18-16 30-28 42" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M60 82h62" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M106 82v44c0 13-6 21-16 25" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M128 52l16 14-16 14z" fill="#E58A76"/>' },
+  { ch: 'コ', ro: 'ko', ko: '코', row: 'カ행', story: '상자의 모서리, "코"', art:
+    '<path d="M60 68h68v50H60" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="60" y="68" width="68" height="50" fill="#F2CE6B" opacity=".18"/><circle cx="132" cy="130" r="12" fill="#E9A88D"/>' },
+  { ch: 'サ', ro: 'sa', ko: '사', row: 'サ행', story: '풀잎 세 갈래, "사"', art:
+    '<path d="M76 56v58M124 56v58" stroke="#7FB392" stroke-width="9" stroke-linecap="round"/><path d="M56 94h86" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M56 94c-8 12-12 24-12 36" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="76" cy="50" r="5" fill="#F2CE6B"/><circle cx="124" cy="50" r="5" fill="#F2CE6B"/>' },
+  { ch: 'シ', ro: 'shi', ko: '시', row: 'サ행', story: '눈물 세 방울이 뚝뚝, "시"', art:
+    '<circle cx="74" cy="62" r="7" fill="#7FA8C9"/><circle cx="74" cy="88" r="7" fill="#7FA8C9"/><path d="M76 56l24 18" stroke="#7FA8C9" stroke-width="8" stroke-linecap="round"/><path d="M58 122c16 16 38 22 60 16 10-2 16-8 18-16" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ス', ro: 'su', ko: '스', row: 'サ행', story: '그네를 타고 "스~"', art:
+    '<path d="M64 64h48l-30 34h36" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M106 98c-2 22-14 38-30 46" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M108 140h34" stroke="#8A6242" stroke-width="5" stroke-linecap="round"/><path d="M116 140v-14M134 140v-14" stroke="#8A6242" stroke-width="4"/>' },
+  { ch: 'セ', ro: 'se', ko: '세', row: 'サ행', story: '사람 위에 십자 표시, "세"', art:
+    '<path d="M58 74h46M82 54v76" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M108 74c11 0 17 8 17 20v36" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="82" cy="48" r="6" fill="#F2C6A0"/>' },
+  { ch: 'ソ', ro: 'so', ko: '소', row: 'サ행', story: '물방울 두 개가 떨어져요, "소"', art:
+    '<circle cx="70" cy="62" r="7" fill="#7FA8C9"/><circle cx="100" cy="74" r="7" fill="#7FA8C9"/><path d="M60 104c18 20 40 26 62 20" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="140" cy="132" r="10" fill="#9DC3AA" opacity=".6"/>' },
+  { ch: 'タ', ro: 'ta', ko: '타', row: 'タ행', story: '해가 지는 저녁 하늘, "타"', art:
+    '<path d="M90 48c-8 18-16 30-28 40" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M58 82h64" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M102 82c0 30-10 48-28 56" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="146" cy="50" r="15" fill="#F2CE6B"/><path d="M46 140h108" stroke="#E7CDB1" stroke-width="5" stroke-linecap="round"/>' },
+  { ch: 'チ', ro: 'chi', ko: '치', row: 'タ행', story: '야자수 한 그루, "치"', art:
+    '<path d="M58 64h72M58 92h72" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M94 64v52c0 16-8 26-22 30" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M140 64c-8-10-18-14-28-12M140 64c8-8 18-8 26-2" stroke="#7FB392" stroke-width="6" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ツ', ro: 'tsu', ko: '츠', row: 'タ행', story: '파도 두 개가 밀려와요, "츠"', art:
+    '<circle cx="72" cy="56" r="7" fill="#7FA8C9"/><circle cx="100" cy="50" r="7" fill="#7FA8C9"/><path d="M56 84c14 22 38 30 64 24" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M56 84c-4 16-6 30-4 42" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M50 142c16 8 32 10 48 6" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'テ', ro: 'te', ko: '테', row: 'タ행', story: 'T자 기둥, "테"', art:
+    '<path d="M62 62h72M62 86h72" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M98 86v52c0 9 5 14 14 14" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M62 62h72" stroke="#F2CE6B" stroke-width="4" opacity=".7"/>' },
+  { ch: 'ト', ro: 'to', ko: '토', row: 'タ행', story: '나무에 가지 하나, "토"', art:
+    '<path d="M86 52v96" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M86 96l36-32" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M86 140c12-6 24-6 36 0" stroke="#7FB392" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ナ', ro: 'na', ko: '나', row: 'タ행', story: '나이프 하나, "나"', art:
+    '<path d="M58 74h82" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M100 54v58" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M100 112c-8 14-19 24-34 30" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ニ', ro: 'ni', ko: '니', row: 'タ행', story: '젓가락 두 개, "니"', art:
+    '<path d="M60 74h80M60 118h80" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M60 74v-6M140 74v-6M60 118v6M140 118v6" stroke="#8A6242" stroke-width="3" stroke-linecap="round"/><circle cx="146" cy="96" r="9" fill="#E9A88D" opacity=".7"/>' },
+  { ch: 'ヌ', ro: 'nu', ko: '누', row: 'タ행', story: '국수가 엇갈려요, "누"', art:
+    '<path d="M62 64h46l-28 32h36" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M98 96L62 142" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M104 142c14-6 28-6 42 0" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ネ', ro: 'ne', ko: '네', row: 'タ행', story: '신사 앞 도리이, "네"', art:
+    '<path d="M94 44v16" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><path d="M56 72h88M68 72v64M132 72v64" stroke="#C97F4E" stroke-width="9" stroke-linecap="round"/><path d="M52 98h96" stroke="#C97F4E" stroke-width="8" stroke-linecap="round"/><path d="M96 98v38" stroke="#C97F4E" stroke-width="6" stroke-linecap="round"/>' },
+  { ch: 'ノ', ro: 'no', ko: '노', row: 'タ행', story: '바람이 사선으로, "노"', art:
+    '<path d="M126 50c-14 36-31 58-52 70" stroke="#1B4D3E" stroke-width="11" fill="none" stroke-linecap="round"/><path d="M52 138c16 8 32 10 48 6" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="146" cy="40" r="6" fill="#F2CE6B"/>' },
+  { ch: 'ハ', ro: 'ha', ko: '하', row: 'ハ행', story: '두 날개를 편 새, "하"', art:
+    '<path d="M70 66c-6 26-15 46-28 58" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M126 58c5 26 13 48 26 62" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M96 96c4 10 4 18 0 26" stroke="#8FBE9E" stroke-width="4" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ヒ', ro: 'hi', ko: '히', row: 'ハ행', story: '갈고리 하나, "히"', art:
+    '<path d="M68 66v48" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M68 92h42c15 0 24 9 24 22" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="68" cy="58" r="6" fill="#F2C6A0"/>' },
+  { ch: 'フ', ro: 'fu', ko: '후', row: 'ハ행', story: '밀려오는 파도, "후"', art:
+    '<path d="M60 66h70l-9 36c-3 14-14 23-30 27" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 130c16 9 34 11 52 6" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ヘ', ro: 'he', ko: '헤', row: 'ハ행', story: '낮은 언덕 하나, "헤"', art:
+    '<path d="M56 108l42-38 48 38" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="148" cy="56" r="13" fill="#F2CE6B"/><path d="M48 136h104" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>' },
+  { ch: 'ホ', ro: 'ho', ko: '호', row: 'ハ행', story: '십자에 날개, "호"', art:
+    '<path d="M58 72h84" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M100 54v88" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M100 98L72 132M100 98l28 34" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/>' },
+  { ch: 'マ', ro: 'ma', ko: '마', row: 'マ행', story: '콧수염, "마"', art:
+    '<path d="M60 70h68l-30 34" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M104 104c-4 12-11 21-20 27" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M128 128c-8 6-16 8-24 8M128 128c8 6 16 8 24 8" stroke="#8A6242" stroke-width="4" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ミ', ro: 'mi', ko: '미', row: 'マ행', story: '세 줄 사선, "미"', art:
+    '<path d="M64 64l28 14M64 92l34 17M64 120l38 19" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M132 54l10 10" stroke="#F2CE6B" stroke-width="6" stroke-linecap="round"/>' },
+  { ch: 'ム', ro: 'mu', ko: '무', row: 'マ행', story: '벌린 입, "무"', art:
+    '<path d="M70 58c-7 26-9 48-4 64h62" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M100 104l20-22" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><circle cx="128" cy="118" r="9" fill="#E9A88D" opacity=".55"/>' },
+  { ch: 'メ', ro: 'me', ko: '메', row: 'マ행', story: '엑스 표시, "메"', art:
+    '<path d="M62 60c19 15 34 36 42 66" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M130 68c-17 21-34 36-53 45" stroke="#E58A76" stroke-width="10" fill="none" stroke-linecap="round"/>' },
+  { ch: 'モ', ro: 'mo', ko: '모', row: 'マ행', story: '물고기와 갈고리, "모"', art:
+    '<path d="M60 68h76M60 96h76" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M100 68v54c0 14 8 22 22 22" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M60 138c18 7 36 7 54 0" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ヤ', ro: 'ya', ko: '야', row: 'ヤ행', story: '손을 든 모양, "야"', art:
+    '<path d="M58 76h48c0 20-7 35-20 44" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M100 58v86" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M100 58l-16 18" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/>' },
+  { ch: 'ユ', ro: 'yu', ko: '유', row: 'ヤ행', story: 'U자 통, "유"', art:
+    '<path d="M60 66h66v46H60" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 114h70" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M74 66v30" stroke="#9DC3AA" stroke-width="4" opacity=".7"/>' },
+  { ch: 'ヨ', ro: 'yo', ko: '요', row: 'ヤ행', story: '빗살 세 줄, "요"', art:
+    '<path d="M66 62v72M66 62h62M66 98h62M66 134h62" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M66 62v72" stroke="#8A6242" stroke-width="3" opacity=".6"/>' },
+  { ch: 'ラ', ro: 'ra', ko: '라', row: 'ラ행', story: '모자 위에 장식, "라"', art:
+    '<path d="M60 64h74" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M70 86h52" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><path d="M96 106c0 15-6 26-17 33" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="142" cy="48" r="7" fill="#F2CE6B"/>' },
+  { ch: 'リ', ro: 'ri', ko: '리', row: 'ラ행', story: '두 사람 중 한 명은 길쭉, "리"', art:
+    '<path d="M76 60v46" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M118 60c0 36-4 58-13 74" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="76" cy="52" r="7" fill="#F2C6A0"/><circle cx="118" cy="52" r="7" fill="#F2C6A0"/>' },
+  { ch: 'ル', ro: 'ru', ko: '루', row: 'ラ행', story: '두 다리로 서 있어요, "루"', art:
+    '<path d="M74 66c-4 26-4 47 3 61" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M114 66v40c0 15 8 24 22 26" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M66 138c10 5 22 5 32 0" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/>' },
+  { ch: 'レ', ro: 're', ko: '레', row: 'ラ행', story: '체크 표시처럼, "레"', art:
+    '<path d="M70 60v54c0 15 9 22 22 22" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M92 136l32-28" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/>' },
+  { ch: 'ロ', ro: 'ro', ko: '로', row: 'ラ행', story: '네모난 입, "로"', art:
+    '<rect x="66" y="58" width="68" height="82" rx="4" fill="none" stroke="#1B4D3E" stroke-width="10"/><rect x="66" y="58" width="68" height="82" rx="4" fill="#F2CE6B" opacity=".16"/>' },
+  { ch: 'ワ', ro: 'wa', ko: '와', row: 'ワ행', story: '크게 벌린 입, "와"', art:
+    '<path d="M58 66h78l-9 34c-4 21-17 32-32 34" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 66c-2 8-5 13-9 17" stroke="#1B4D3E" stroke-width="9" fill="none" stroke-linecap="round"/>' },
+  { ch: 'ヲ', ro: 'wo', ko: '오', row: 'ワ행', story: '사람이 서 있어요, "오"', art:
+    '<path d="M58 68h74M58 96h58" stroke="#1B4D3E" stroke-width="10" stroke-linecap="round"/><path d="M90 96v40c0 11 6 17 17 17" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="90" cy="88" r="6" fill="#F2C6A0"/>' },
+  { ch: 'ン', ro: 'n', ko: '응', row: 'ワ행', story: '한 획 미끄러지듯, "응"', art:
+    '<path d="M112 58l-16 12" stroke="#1B4D3E" stroke-width="9" stroke-linecap="round"/><circle cx="74" cy="70" r="7" fill="#7FA8C9"/><path d="M62 118c18 18 38 24 58 17" stroke="#1B4D3E" stroke-width="10" fill="none" stroke-linecap="round"/>' }
+];
+
+
+/* ============================================================
+   필수 단어장 — 41개 (명사 16 · 동사 13 · 형용사 12)
+   orig: 원래 표기 / reading: 히라가나 읽기 / ko: 한국어 발음 / romaji
+   ============================================================ */
+var WORDS = [
+  /* ---------------- 주어 · 명사 ---------------- */
+  { id: 'watashi', cat: 'noun', orig: '私', reading: 'わたし', ko: '와타시', romaji: 'watashi', mean: '나 · 저', bg: '#E2EDF6', art:
+    '<circle cx="100" cy="60" r="18" fill="#F2C6A0"/><path d="M100 80c-20 0-32 14-32 34v44h64V114c0-20-12-34-32-34z" fill="#7FA8C9"/><path d="M84 112c10 6 22 6 32 0" stroke="#fff" stroke-width="4" fill="none" opacity=".6"/><path d="M76 96l-14 22" stroke="#F2C6A0" stroke-width="10" stroke-linecap="round"/>',
+    kanji: { chars: '私', hun: '나 사(私)', on: 'シ', kun: 'わたし', tip: '벼(禾)를 사사로이(厶) 나눠 가진 사람 → 나. 회사(会社)의 社와 같은 글자 뿌리예요.' } },
+  { id: 'anata', cat: 'noun', orig: 'あなた', reading: 'あなた', ko: '아나타', romaji: 'anata', mean: '당신 · 너', bg: '#F9E3E7', art:
+    '<circle cx="78" cy="66" r="15" fill="#F2C6A0"/><path d="M78 84c-16 0-26 12-26 28v34h52v-34c0-16-10-28-26-28z" fill="#9DC3AA"/><path d="M124 96h30M146 88l8 8-8 8" stroke="#E58A76" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="124" cy="70" r="12" fill="none" stroke="#E58A76" stroke-width="4"/>',
+    kanji: null },
+  { id: 'mizu', cat: 'noun', orig: '水', reading: 'みず', ko: '미즈', romaji: 'mizu', mean: '물', bg: '#E2EDF6', art:
+    '<path d="M100 46c0 0-34 44-34 64a34 34 0 0 0 68 0c0-20-34-64-34-64z" fill="#7FA8C9"/><path d="M84 108c0 12 8 20 18 22" stroke="#fff" stroke-width="5" fill="none" opacity=".65" stroke-linecap="round"/><path d="M44 150c10-6 20-6 30 0s20 6 30 0 20-6 30 0 20 6 30 0" stroke="#9DC3AA" stroke-width="5" fill="none" stroke-linecap="round"/>',
+    kanji: { chars: '水', hun: '물 수(水)', on: 'スイ', kun: 'みず', tip: '가운데 세로줄이 흐르는 물줄기, 양옆은 물이 튀는 방울이에요.' } },
+  { id: 'ocha', cat: 'noun', orig: 'お茶', reading: 'おちゃ', ko: '오차', romaji: 'ocha', mean: '차 · 녹차', bg: '#E2EFE6', art:
+    '<path d="M62 96h64v22c0 20-14 34-32 34s-32-14-32-34z" fill="#7FB392"/><path d="M126 104h8a14 14 0 0 1 0 28h-8" fill="none" stroke="#7FB392" stroke-width="9" stroke-linecap="round"/><path d="M62 96h64" stroke="#fff" stroke-width="4" opacity=".65"/><path d="M86 72c-6-8 6-12 0-20M104 74c-6-8 6-12 0-20" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M100 154c14 0 24-6 30-14" stroke="#C9DED2" stroke-width="4" fill="none"/><path d="M60 158h80" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '茶', hun: '차 다(茶)', on: 'チャ · サ', kun: 'ちゃ', tip: '위의 초두머리(艹)는 찻잎, 아래 人+木은 사람이 나무에서 잎을 따는 모습이에요.' } },
+  { id: 'gohan', cat: 'noun', orig: 'ご飯', reading: 'ごはん', ko: '고한', romaji: 'gohan', mean: '밥', bg: '#FBF1CE', art:
+    '<path d="M54 98h92c0 28-20 46-46 46s-46-18-46-46z" fill="#E9A88D"/><path d="M54 98h92" stroke="#fff" stroke-width="5" opacity=".75"/><path d="M74 88c-4-14 8-18 4-32M100 86c-6-16 8-20 4-34M126 88c-4-14 8-18 4-32" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="86" cy="112" rx="7" ry="4" fill="#fff"/><ellipse cx="106" cy="118" rx="6" ry="3.5" fill="#fff"/><ellipse cx="118" cy="108" rx="5" ry="3" fill="#fff"/>',
+    kanji: { chars: '飯', hun: '밥 반(飯)', on: 'ハン', kun: 'めし', tip: '밥(食)을 반(反)쯤 먹는다고 기억하면 쉬워요. 아침밥은 朝ご飯.' } },
+  { id: 'eki', cat: 'noun', orig: '駅', reading: 'えき', ko: '에키', romaji: 'eki', mean: '역', bg: '#E2EDF6', art:
+    '<rect x="44" y="78" width="112" height="66" rx="8" fill="#EFF1EA"/><path d="M36 78h128" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round"/><rect x="56" y="94" width="34" height="50" fill="#C9DED2"/><rect x="108" y="94" width="34" height="26" fill="#F6D3BC"/><rect x="86" y="58" width="28" height="18" rx="4" fill="#1B4D3E"/><circle cx="100" cy="67" r="4" fill="#F9F7F3"/><path d="M44 144h112" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '駅', hun: '역 역(驛의 略字)', on: 'エキ', kun: '—', tip: '원래 驛은 말(馬)이 쉬어 가는 곳. 지금은 전철이 서는 곳이에요.' } },
+  { id: 'densha', cat: 'noun', orig: '電車', reading: 'でんしゃ', ko: '덴샤', romaji: 'densha', mean: '전철', bg: '#E2EDF6', art:
+    '<rect x="56" y="60" width="88" height="94" rx="22" fill="#7FA8C9"/><rect x="70" y="76" width="60" height="34" rx="8" fill="#EAF2F8"/><path d="M100 76v34" stroke="#B7D2E8" stroke-width="4"/><circle cx="80" cy="146" r="8" fill="#3E4C43"/><circle cx="120" cy="146" r="8" fill="#3E4C43"/><path d="M56 124h88" stroke="#fff" stroke-width="4" opacity=".7"/><path d="M84 54l-6-10M116 54l6-10" stroke="#9AA7B5" stroke-width="4" stroke-linecap="round"/>',
+    kanji: { chars: '電車', hun: '번개 전(電) · 수레 차(車)', on: 'デン · シャ', kun: '—', tip: '번개(電)처럼 빠르게 달리는 수레(車)가 전철. 電車 = でんしゃ.' } },
+  { id: 'kuukou', cat: 'noun', orig: '空港', reading: 'くうこう', ko: '쿠코', romaji: 'kūkō', mean: '공항', bg: '#F9E3E7', art:
+    '<path d="M46 110l44-14V60c0-8 4-12 10-12s10 4 10 12v36l44 14v14l-44-8v26l14 10v10l-24-6-24 6v-10l14-10v-26l-44 8z" fill="#7FA8C9" transform="rotate(20 100 100)"/><path d="M140 132c14-2 24-10 28-22" stroke="#C9DED2" stroke-width="5" fill="none" stroke-dasharray="7 8" stroke-linecap="round"/>',
+    kanji: { chars: '空港', hun: '하늘 공(空) · 항구 항(港)', on: 'クウ · コウ', kun: 'そら · みなと', tip: '하늘(空)로 떠나는 항구(港). 空港은 くうこう, 空은 そら라고도 읽어요.' } },
+  { id: 'hoteru', cat: 'noun', orig: 'ホテル', reading: 'ほてる', ko: '호테루', romaji: 'hoteru', mean: '호텔', bg: '#FBF1CE', art:
+    '<rect x="52" y="52" width="96" height="108" rx="10" fill="#F6D3BC"/><path d="M52 76h96" stroke="#fff" stroke-width="5" opacity=".8"/><rect x="68" y="88" width="20" height="20" fill="#fff" opacity=".85"/><rect x="112" y="88" width="20" height="20" fill="#fff" opacity=".85"/><rect x="66" y="120" width="68" height="26" rx="5" fill="#1B4D3E"/><text x="100" y="138" font-size="13" fill="#fff" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-weight="700">HOTEL</text>',
+    kanji: null },
+  { id: 'toire', cat: 'noun', orig: 'トイレ', reading: 'といれ', ko: '토이레', romaji: 'toire', mean: '화장실', bg: '#E2EFE6', art:
+    '<circle cx="76" cy="62" r="10" fill="#7FA8C9"/><path d="M76 74v38M76 86L62 98M76 86l14 12M76 112l-10 24M76 112l10 24" stroke="#7FA8C9" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="124" cy="62" r="10" fill="#E9A88D"/><path d="M124 74v24l-16 26h32l-16-26M110 124v12M138 124v12" stroke="#E9A88D" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="146" cy="52" r="6" fill="#C9DED2"/>',
+    kanji: null },
+  { id: 'okane', cat: 'noun', orig: 'お金', reading: 'おかね', ko: '오카네', romaji: 'okane', mean: '돈', bg: '#FBF1CE', art:
+    '<circle cx="98" cy="102" r="42" fill="#F2CE6B"/><circle cx="98" cy="102" r="34" fill="none" stroke="#D9A94E" stroke-width="4"/><text x="98" y="118" font-size="42" text-anchor="middle" fill="#8A6242" font-family="-apple-system,Segoe UI,sans-serif" font-weight="700">¥</text><circle cx="82" cy="86" r="7" fill="#fff" opacity=".5"/><path d="M146 138l10 10 16-20" stroke="#7FB392" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    kanji: { chars: '金', hun: '쇠 금(金)', on: 'キン · コン', kun: 'かね', tip: '흙(土) 속에 반짝이는 금 두 점. お金 = おかね, 돈이에요.' } },
+  { id: 'kyou', cat: 'noun', orig: '今日', reading: 'きょう', ko: '쿄', romaji: 'kyō', mean: '오늘', bg: '#FBE7D9', art:
+    '<rect x="54" y="60" width="92" height="88" rx="10" fill="#fff" stroke="#E4DACA" stroke-width="3"/><rect x="54" y="60" width="92" height="24" rx="10" fill="#E9A88D"/><circle cx="74" cy="72" r="3" fill="#fff"/><circle cx="126" cy="72" r="3" fill="#fff"/><circle cx="100" cy="112" r="17" fill="#F2CE6B"/><path d="M100 95v-6M100 129v6M83 112h-6M123 112h-6M88 100l-4-4M112 100l4-4M88 124l-4 4M112 124l4 4" stroke="#E8A33D" stroke-width="4" stroke-linecap="round"/><path d="M54 150h92" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '今日', hun: '이제 금(今) · 날 일(日)', on: 'コン · ニチ', kun: 'きょう · ひ', tip: '이제(今) 막 해(日)가 밝은 때 → 오늘. 今日은 きょう로 통째로 외워요.' } },
+  { id: 'ashita', cat: 'noun', orig: '明日', reading: 'あした', ko: '아시타', romaji: 'ashita', mean: '내일', bg: '#E9E4F4', art:
+    '<rect x="42" y="66" width="80" height="76" rx="10" fill="#fff" stroke="#E4DACA" stroke-width="3"/><rect x="42" y="66" width="80" height="20" rx="10" fill="#8FA8C9"/><path d="M56 118a16 16 0 1 0 16-16 12 12 0 1 0 12 12" fill="none" stroke="#F2CE6B" stroke-width="6" stroke-linecap="round"/><path d="M136 96h30M158 88l8 8-8 8" stroke="#E58A76" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="150" cy="132" r="14" fill="#F2CE6B"/><path d="M124 140h20" stroke="#C9DED2" stroke-width="4" stroke-linecap="round"/>',
+    kanji: { chars: '明日', hun: '밝을 명(明) · 날 일(日)', on: 'メイ · ニチ', kun: 'あした · あす', tip: '해(日)와 달(月)이 함께 밝아지는 다음 날. 明日은 あした, 격식 있게는 あす.' } },
+  { id: 'hito', cat: 'noun', orig: '人', reading: 'ひと', ko: '히토', romaji: 'hito', mean: '사람', bg: '#E2EFE6', art:
+    '<circle cx="100" cy="62" r="18" fill="#F2C6A0"/><path d="M100 82c-19 0-31 14-31 34v44h62V116c0-20-12-34-31-34z" fill="#7FB392"/><path d="M86 116v44M114 116v44" stroke="#fff" stroke-width="3" opacity=".45"/><circle cx="54" cy="140" r="10" fill="#C9DED2"/><circle cx="146" cy="140" r="10" fill="#C9DED2"/>',
+    kanji: { chars: '人', hun: '사람 인(人)', on: 'ジン · ニン', kun: 'ひと', tip: '두 다리로 서 있는 사람을 옆에서 본 모양. 一人(ひとり)은 한 사람.' } },
+  { id: 'michi', cat: 'noun', orig: '道', reading: 'みち', ko: '미치', romaji: 'michi', mean: '길', bg: '#FBE7D9', art:
+    '<path d="M66 160c0-44 66-42 66-86 0-24-20-36-38-36" fill="none" stroke="#E0D3BC" stroke-width="20" stroke-linecap="round"/><path d="M66 160c0-44 66-42 66-86 0-24-20-36-38-36" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="9 11"/><path d="M140 62c-11 0-20 9-20 20 0 15 20 34 20 34s20-19 20-34c0-11-9-20-20-20z" fill="#E58A76"/><circle cx="140" cy="82" r="7" fill="#fff"/>',
+    kanji: { chars: '道', hun: '길 도(道)', on: 'ドウ · トウ', kun: 'みち', tip: '머리(首)를 내밀고 걸어가는(辶) 길. 北海道(ほっかいどう)에도 쓰여요.' } },
+  { id: 'namae', cat: 'noun', orig: '名前', reading: 'なまえ', ko: '나마에', romaji: 'namae', mean: '이름', bg: '#FBF1CE', art:
+    '<rect x="44" y="78" width="112" height="58" rx="10" fill="#fff" stroke="#1B4D3E" stroke-width="4"/><circle cx="70" cy="108" r="13" fill="#F2C6A0"/><path d="M88 96h52M88 112h38M88 126h26" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/><path d="M100 78v-10" stroke="#8A6242" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="64" r="6" fill="none" stroke="#8A6242" stroke-width="4"/>',
+    kanji: { chars: '名前', hun: '이름 명(名) · 앞 전(前)', on: 'メイ · ゼン', kun: 'な · まえ', tip: '어두울 때(夕) 입(口)으로 부르는 것이 이름(名). 名前 = なまえ.' } },
+
+  /* ---------------- 동사 ---------------- */
+  { id: 'iku', cat: 'verb', orig: '行く', reading: 'いく', ko: '이쿠', romaji: 'iku', mean: '가다', bg: '#E2EDF6', art:
+    '<path d="M46 96h62" stroke="#1B4D3E" stroke-width="8" stroke-linecap="round"/><path d="M96 82l18 14-18 14" stroke="#1B4D3E" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="72" cy="132" rx="10" ry="14" fill="#C9DED2"/><ellipse cx="104" cy="146" rx="9" ry="13" fill="#9DC3AA"/><path d="M132 66h36v72h-36z" fill="#F6D3BC" opacity=".55"/><path d="M132 66h36v72h-36z" fill="none" stroke="#E0D3BC" stroke-width="3"/>',
+    kanji: { chars: '行', hun: '갈 행(行)', on: 'コウ · ギョウ', kun: 'い(く)', tip: '두 갈래 길을 걷는 발 모양. 行きます(いきます)는 정중한 "갑니다".' } },
+  { id: 'kuru', cat: 'verb', orig: '来る', reading: 'くる', ko: '쿠루', romaji: 'kuru', mean: '오다', bg: '#E2EFE6', art:
+    '<path d="M100 40v52" stroke="#E58A76" stroke-width="8" stroke-linecap="round"/><path d="M84 78l16 16 16-16" stroke="#E58A76" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M56 116h88v34H56z" fill="#F6D3BC"/><path d="M56 116h88" stroke="#C97F4E" stroke-width="4"/><circle cx="100" cy="133" r="4" fill="#C97F4E"/><path d="M46 158h108" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '来', hun: '올 래(來의 略字)', on: 'ライ', kun: 'く(る)', tip: '나무(木)에 열매가 열리러 오는 모양. 来ます = 옵니다.' } },
+  { id: 'taberu', cat: 'verb', orig: '食べる', reading: 'たべる', ko: '타베루', romaji: 'taberu', mean: '먹다', bg: '#FBE7D9', art:
+    '<path d="M50 104h100c0 28-22 48-50 48s-50-20-50-48z" fill="#E9A88D"/><path d="M50 104h100" stroke="#fff" stroke-width="5" opacity=".8"/><path d="M92 56v42M108 56v42" stroke="#8A6242" stroke-width="5" stroke-linecap="round"/><ellipse cx="78" cy="122" rx="8" ry="5" fill="#fff"/><ellipse cx="100" cy="128" rx="7" ry="4" fill="#fff"/><ellipse cx="120" cy="120" rx="6" ry="4" fill="#fff"/>',
+    kanji: { chars: '食', hun: '밥 식(食)', on: 'ショク', kun: 'た(べる)', tip: '뚜껑(人)이 덮인 그릇(良)에 밥이 가득. 食べる = たべる.' } },
+  { id: 'nomu', cat: 'verb', orig: '飲む', reading: 'のむ', ko: '노무', romaji: 'nomu', mean: '마시다', bg: '#E2EDF6', art:
+    '<path d="M72 84h56l-6 56c-1 10-10 16-22 16s-21-6-22-16z" fill="#7FA8C9"/><path d="M72 84h56" stroke="#fff" stroke-width="4" opacity=".75"/><path d="M128 56l-16 32" stroke="#E58A76" stroke-width="6" stroke-linecap="round"/><path d="M86 104c8 6 20 6 28 0" stroke="#EAF2F8" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M62 158h76" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '飲', hun: '마실 음(飮의 略字)', on: 'イン', kun: 'の(む)', tip: '술(酉)을 입 벌린 사람(欠)이 마시는 모양. 飲み物 = 음료.' } },
+  { id: 'kau', cat: 'verb', orig: '買う', reading: 'かう', ko: '카우', romaji: 'kau', mean: '사다', bg: '#FBF1CE', art:
+    '<path d="M60 80h80l-9 74H69z" fill="#F2CE6B"/><path d="M82 80c0-16 8-26 18-26s18 10 18 26" fill="none" stroke="#8A6242" stroke-width="6" stroke-linecap="round"/><circle cx="100" cy="116" r="16" fill="#fff" opacity=".55"/><path d="M92 116l6 6 12-14" stroke="#C97F4E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    kanji: { chars: '買', hun: '살 매(買)', on: 'バイ', kun: 'か(う)', tip: '그물(网)로 돈을 담아 장터에서 사는 모양. 買い物 = 쇼핑.' } },
+  { id: 'miru', cat: 'verb', orig: '見る', reading: 'みる', ko: '미루', romaji: 'miru', mean: '보다', bg: '#E2EFE6', art:
+    '<path d="M42 102c22-28 40-38 58-38s36 10 58 38c-22 28-40 38-58 38s-36-10-58-38z" fill="#fff" stroke="#1B4D3E" stroke-width="4"/><circle cx="100" cy="102" r="18" fill="#7FA8C9"/><circle cx="100" cy="102" r="8" fill="#3E4C43"/><circle cx="107" cy="95" r="5" fill="#fff"/><path d="M60 72l-8-10M140 72l8-10" stroke="#C9DED2" stroke-width="4" stroke-linecap="round"/>',
+    kanji: { chars: '見', hun: '볼 견(見)', on: 'ケン', kun: 'み(る)', tip: '눈(目)이 다리 위에 얹힌 모양 — 멀리 보는 사람이에요.' } },
+  { id: 'kiku', cat: 'verb', orig: '聞く', reading: 'きく', ko: '키쿠', romaji: 'kiku', mean: '듣다 · 묻다', bg: '#F9E3E7', art:
+    '<path d="M124 76c0-24-16-40-36-40S52 52 52 76c0 18 10 28 20 36 8 6 11 14 9 24-2 10 4 18 14 18" fill="none" stroke="#E9A88D" stroke-width="10" stroke-linecap="round"/><path d="M110 82c0-12-8-22-20-22" fill="none" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round"/><path d="M140 54c12 13 17 28 15 44M152 44c14 16 20 34 18 54" fill="none" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '聞', hun: '들을 문(聞)', on: 'ブン', kun: 'き(く)', tip: '귀(耳)가 문(門) 안에 — 문밖의 소리를 듣는다는 뜻이에요.' } },
+  { id: 'hanasu', cat: 'verb', orig: '話す', reading: 'はなす', ko: '하나스', romaji: 'hanasu', mean: '말하다', bg: '#E2EDF6', art:
+    '<path d="M44 54h72a12 12 0 0 1 12 12v30a12 12 0 0 1-12 12H78l-18 16V108H44a12 12 0 0 1-12-12V66a12 12 0 0 1 12-12z" fill="#7FA8C9"/><path d="M100 54h56a12 12 0 0 1 12 12v98l-16-14h-52a12 12 0 0 1-12-12V66a12 12 0 0 1 12-12z" fill="#F6D3BC"/><path d="M60 76h44M60 90h30M112 76h40M112 90h28" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".85"/>',
+    kanji: { chars: '話', hun: '말씀 화(話)', on: 'ワ', kun: 'はな(す)', tip: '말(言)이 혀(舌)로 나온다. 電話(でんわ)는 전화.' } },
+  { id: 'matsu', cat: 'verb', orig: '待つ', reading: 'まつ', ko: '마츠', romaji: 'matsu', mean: '기다리다', bg: '#FBF1CE', art:
+    '<circle cx="100" cy="100" r="42" fill="#fff" stroke="#1B4D3E" stroke-width="5"/><path d="M100 76v26l18 11" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M100 58v6M142 100h-6M100 142v-6M58 100h6" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="100" r="5" fill="#E58A76"/>',
+    kanji: { chars: '待', hun: '기다릴 대(待)', on: 'タイ', kun: 'ま(つ)', tip: '두인변(彳)은 길 — 길가 절(寺) 앞에서 사람을 기다리는 모양.' } },
+  { id: 'harau', cat: 'verb', orig: '払う', reading: 'はらう', ko: '하라우', romaji: 'harau', mean: '지불하다', bg: '#E2EFE6', art:
+    '<rect x="46" y="62" width="100" height="62" rx="10" fill="#7FA8C9"/><rect x="46" y="78" width="100" height="12" fill="#1B4D3E" opacity=".55"/><rect x="58" y="100" width="34" height="8" rx="4" fill="#fff" opacity=".8"/><circle cx="136" cy="136" r="18" fill="#F2CE6B"/><text x="136" y="143" font-size="18" text-anchor="middle" fill="#8A6242" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">¥</text>',
+    kanji: { chars: '払', hun: '떨칠 불(拂의 略字)', on: 'フツ', kun: 'はら(う)', tip: '재방변(扌)은 손 — 손으로 돈을 털어 내듯 지불해요. 払います = 계산합니다.' } },
+  { id: 'tomaru', cat: 'verb', orig: '泊まる', reading: 'とまる', ko: '토마루', romaji: 'tomaru', mean: '묵다', bg: '#E9E4F4', art:
+    '<rect x="46" y="98" width="104" height="42" rx="8" fill="#7FA8C9"/><rect x="56" y="86" width="32" height="18" rx="7" fill="#fff"/><path d="M46 140h104" stroke="#8A6242" stroke-width="6" stroke-linecap="round"/><path d="M46 98h104" stroke="#fff" stroke-width="4" opacity=".55"/><path d="M150 60c-8 0-14 6-14 14H46" fill="none" stroke="#C9DED2" stroke-width="4" stroke-linecap="round"/>',
+    kanji: { chars: '泊', hun: '머물 박(泊)', on: 'ハク', kun: 'と(まる)', tip: '삼수변(氵) 곁에 배(白)를 대고 하룻밤 머무는 모양. 一泊 = 1박.' } },
+  { id: 'wakaru', cat: 'verb', orig: '分かる', reading: 'わかる', ko: '와카루', romaji: 'wakaru', mean: '알다 · 이해하다', bg: '#FBF1CE', art:
+    '<circle cx="100" cy="84" r="30" fill="#F2CE6B"/><path d="M86 112h28v10H86z" fill="#D9A94E"/><path d="M84 130h32M88 140h24" stroke="#D9A94E" stroke-width="6" stroke-linecap="round"/><path d="M100 52v6M68 66l6 6M132 66l-6 6M60 88h6M134 88h6" stroke="#E8A33D" stroke-width="5" stroke-linecap="round"/><path d="M88 84l9 9 17-19" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    kanji: { chars: '分', hun: '나눌 분(分)', on: 'ブン · フン', kun: 'わ(かる) · わ(ける)', tip: '칼(刀)로 나누면 속이 보여요 → 이해하다. 分かりました = 알겠습니다.' } },
+  { id: 'noru', cat: 'verb', orig: '乗る', reading: 'のる', ko: '노루', romaji: 'noru', mean: '타다', bg: '#E2EDF6', art:
+    '<rect x="44" y="68" width="104" height="68" rx="12" fill="#F2CE6B"/><rect x="56" y="82" width="30" height="22" rx="4" fill="#fff"/><rect x="94" y="82" width="30" height="22" rx="4" fill="#fff"/><circle cx="68" cy="140" r="9" fill="#3E4C43"/><circle cx="124" cy="140" r="9" fill="#3E4C43"/><path d="M158 102h-14M150 94l8 8-8 8" stroke="#E58A76" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 118h104" stroke="#fff" stroke-width="3" opacity=".6"/>',
+    kanji: { chars: '乗', hun: '탈 승(乘의 略字)', on: 'ジョウ', kun: 'の(る)', tip: '나무(木) 위에 올라탄 모양. 乗ります = 탑니다.' } },
+
+  /* ---------------- 형용사 ---------------- */
+  { id: 'ookii', cat: 'adj', orig: '大きい', reading: 'おおきい', ko: '오오키이', romaji: 'ōkii', mean: '크다', bg: '#FBE7D9', art:
+    '<circle cx="84" cy="102" r="42" fill="#E9A88D"/><circle cx="150" cy="132" r="16" fill="#C9DED2"/><path d="M64 84c6-6 14-10 22-10" stroke="#fff" stroke-width="5" fill="none" opacity=".6" stroke-linecap="round"/><path d="M148 44l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F2CE6B"/>',
+    kanji: { chars: '大', hun: '큰 대(大)', on: 'ダイ · タイ', kun: 'おお(きい)', tip: '팔을 벌린 사람 모양 → 크다. 大学(だいがく)는 대학.' } },
+  { id: 'chiisai', cat: 'adj', orig: '小さい', reading: 'ちいさい', ko: '치이사이', romaji: 'chīsai', mean: '작다', bg: '#E2EFE6', art:
+    '<circle cx="100" cy="100" r="15" fill="#E9A88D"/><circle cx="58" cy="66" r="5" fill="#C9DED2"/><circle cx="144" cy="70" r="6" fill="#C9DED2"/><circle cx="56" cy="136" r="4" fill="#C9DED2"/><circle cx="146" cy="132" r="5" fill="#C9DED2"/><path d="M100 78v-8M100 130v8M78 100h-8M130 100h-8" stroke="#9DC3AA" stroke-width="4" stroke-linecap="round"/>',
+    kanji: { chars: '小', hun: '작을 소(小)', on: 'ショウ', kun: 'ちい(さい) · こ', tip: '작은 점 세 개가 흩어진 모양. 小さい = ちいさい.' } },
+  { id: 'takai', cat: 'adj', orig: '高い', reading: 'たかい', ko: '타카이', romaji: 'takai', mean: '비싸다 · 높다', bg: '#FBF1CE', art:
+    '<path d="M52 106l52-52h44v44l-52 52z" fill="#F6D3BC"/><circle cx="136" cy="66" r="6" fill="#fff"/><path d="M100 128V96M86 110l14-14 14 14" stroke="#C05F45" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="72" y="146" font-size="20" fill="#8A6242" font-family="-apple-system,Segoe UI,sans-serif" font-weight="700">¥</text>',
+    kanji: { chars: '高', hun: '높을 고(高)', on: 'コウ', kun: 'たか(い)', tip: '높이 솟은 탑 모양. 가격도 높으면 高い — 비싸다는 뜻도 돼요.' } },
+  { id: 'yasui', cat: 'adj', orig: '安い', reading: 'やすい', ko: '야스이', romaji: 'yasui', mean: '싸다', bg: '#E2EFE6', art:
+    '<path d="M52 94l52-52h44v44l-52 52z" fill="#C9DED2"/><circle cx="136" cy="54" r="6" fill="#fff"/><path d="M100 80v34M86 100l14 14 14-14" stroke="#3E6B51" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="130" cy="140" r="14" fill="#F2CE6B"/><text x="130" y="146" font-size="15" text-anchor="middle" fill="#8A6242" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">¥</text>',
+    kanji: { chars: '安', hun: '편안 안(安)', on: 'アン', kun: 'やす(い)', tip: '갓머리(宀) 아래 여자(女)가 편안히 쉬는 모양 → 값이 편안하다 = 싸다.' } },
+  { id: 'oishii', cat: 'adj', orig: '美味しい', reading: 'おいしい', ko: '오이시이', romaji: 'oishii', mean: '맛있다', bg: '#FBE7D9', art:
+    '<path d="M52 100h96c0 28-22 48-48 48s-48-20-48-48z" fill="#E9A88D"/><path d="M52 100h96" stroke="#fff" stroke-width="5" opacity=".8"/><path d="M80 76c-6-9 6-13 0-22M100 74c-6-9 6-13 0-22M120 76c-6-9 6-13 0-22" stroke="#C9DED2" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="86" cy="118" rx="8" ry="5" fill="#fff"/><ellipse cx="110" cy="124" rx="7" ry="4" fill="#fff"/><path d="M62 156h76" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '美味', hun: '아름다울 미(美) · 맛 미(味)', on: 'ビ · ミ', kun: 'うつく(しい) · あじ', tip: '아름다운(美) 맛(味). 美味しい는 일상에서 おいしい로 더 많이 읽어요.' } },
+  { id: 'chikai', cat: 'adj', orig: '近い', reading: 'ちかい', ko: '치카이', romaji: 'chikai', mean: '가깝다', bg: '#E2EDF6', art:
+    '<path d="M78 56c-11 0-20 9-20 20 0 15 20 34 20 34s20-19 20-34c0-11-9-20-20-20z" fill="#E58A76"/><circle cx="78" cy="76" r="7" fill="#fff"/><path d="M122 72c-9 0-16 7-16 16 0 12 16 27 16 27s16-15 16-27c0-9-7-16-16-16z" fill="#7FA8C9"/><circle cx="122" cy="88" r="5" fill="#fff"/><path d="M78 128c16 6 30 6 44 0" stroke="#C9DED2" stroke-width="4" fill="none" stroke-linecap="round"/>',
+    kanji: { chars: '近', hun: '가까울 근(近)', on: 'キン', kun: 'ちか(い)', tip: '책받침(辶) 위를 걸어가는 사람 옆에 도끼(斤) — 바로 가까운 거리.' } },
+  { id: 'tooi', cat: 'adj', orig: '遠い', reading: 'とおい', ko: '토오이', romaji: 'tōi', mean: '멀다', bg: '#E9E4F4', art:
+    '<path d="M52 62c-10 0-18 8-18 18 0 14 18 30 18 30s18-16 18-30c0-10-8-18-18-18z" fill="#E58A76"/><circle cx="52" cy="80" r="6" fill="#fff"/><path d="M148 84c-10 0-18 8-18 18 0 14 18 30 18 30s18-16 18-30c0-10-8-18-18-18z" fill="#7FA8C9"/><circle cx="148" cy="102" r="6" fill="#fff"/><path d="M74 108c14-12 38-16 56-6" stroke="#C9DED2" stroke-width="4" fill="none" stroke-dasharray="6 9" stroke-linecap="round"/>',
+    kanji: { chars: '遠', hun: '멀 원(遠)', on: 'エン', kun: 'とお(い)', tip: '옷(袁)을 입고 책받침(辶)을 따라 먼 길을 떠나는 모양. 遠慮(えんりょ)는 사양.' } },
+  { id: 'atsui', cat: 'adj', orig: '暑い', reading: 'あつい', ko: '아츠이', romaji: 'atsui', mean: '덥다', bg: '#FBE7D9', art:
+    '<circle cx="92" cy="88" r="30" fill="#F2CE6B"/><path d="M92 46v-8M92 138v8M50 88h-8M142 88h-8M122 58l6-6M62 118l-6 6M122 118l6 6M62 58l-6 6" stroke="#E8A33D" stroke-width="5" stroke-linecap="round"/><path d="M148 54v56a11 11 0 1 1-7 0V54a3.5 3.5 0 0 1 7 0z" fill="#E58A76"/><circle cx="144.5" cy="116" r="7" fill="#fff" opacity=".7"/><path d="M42 150h112" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '暑', hun: '더울 서(暑)', on: 'ショ', kun: 'あつ(い)', tip: '해(日)가 내리쬐는 한여름. 덥다는 暑い, 뜨겁다는 熱い(あつい)예요.' } },
+  { id: 'samui', cat: 'adj', orig: '寒い', reading: 'さむい', ko: '사무이', romaji: 'samui', mean: '춥다', bg: '#E2EDF6', art:
+    '<path d="M100 44v112M58 72l84 56M142 72l-84 56" stroke="#7FA8C9" stroke-width="7" stroke-linecap="round"/><path d="M100 62l-10-10M100 62l10-10M100 138l-10 10M100 138l10 10M72 86l-12-4M72 114l-12 4M128 86l12-4M128 114l12 4" stroke="#7FA8C9" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="100" r="10" fill="#fff"/><circle cx="100" cy="100" r="4" fill="#9DC3AA"/>',
+    kanji: { chars: '寒', hun: '찰 한(寒)', on: 'カン', kun: 'さむ(い)', tip: '갓머리(宀) 아래 이수변(冫)이 있는 모양. 寒い = さむい.' } },
+  { id: 'kirei', cat: 'adj', orig: 'きれい', reading: 'きれい', ko: '키레이', romaji: 'kirei', mean: '예쁘다 · 깨끗하다', bg: '#F9E3E7', art:
+    '<circle cx="100" cy="78" r="14" fill="#F2CE6B"/><circle cx="76" cy="98" r="14" fill="#F6D3BC"/><circle cx="124" cy="98" r="14" fill="#F6D3BC"/><circle cx="86" cy="122" r="14" fill="#F6D3BC"/><circle cx="114" cy="122" r="14" fill="#F6D3BC"/><circle cx="100" cy="102" r="11" fill="#E58A76"/><path d="M100 138v26" stroke="#7FB392" stroke-width="6" stroke-linecap="round"/><path d="M100 150c-8 0-14-4-16-10M100 158c8 0 14-4 16-10" stroke="#7FB392" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M146 54l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F2CE6B"/>',
+    kanji: null },
+  { id: 'benri', cat: 'adj', orig: '便利', reading: 'べんり', ko: '벤리', romaji: 'benri', mean: '편리하다', bg: '#E2EFE6', art:
+    '<circle cx="96" cy="98" r="30" fill="#9DC3AA"/><circle cx="96" cy="98" r="12" fill="#fff"/><path d="M96 58v-10M96 148v-10M56 98h-10M146 98h-10M68 70l-7-7M124 70l7-7M68 126l-7 7M124 126l7 7" stroke="#7FB392" stroke-width="7" stroke-linecap="round"/><path d="M138 138l8 8 16-20" stroke="#E58A76" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    kanji: { chars: '便利', hun: '편할 편(便) · 이로울 리(利)', on: 'ベン · リ', kun: '—', tip: '사람인변(亻)에 이로움(利)이 붙은 글자 → 편리함. 便利ですね = 편리하네요.' } },
+  { id: 'genki', cat: 'adj', orig: '元気', reading: 'げんき', ko: '겐키', romaji: 'genki', mean: '건강하다 · 기운차다', bg: '#FBF1CE', art:
+    '<circle cx="70" cy="122" r="18" fill="#F2C6A0"/><path d="M70 104c0-30 16-46 40-46 16 0 26 10 26 24 0 12-10 20-22 20h-10" fill="none" stroke="#F2C6A0" stroke-width="16" stroke-linecap="round"/><path d="M132 56l-14 26h16l-10 24" stroke="#F2CE6B" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M54 156h92" stroke="#D9C9AE" stroke-width="5" stroke-linecap="round"/>',
+    kanji: { chars: '元気', hun: '으뜸 원(元) · 기운 기(気)', on: 'ゲン · キ', kun: '—', tip: '근본(元)이 되는 기운(気). お元気ですか? = 잘 지내세요?' } }
+];
+
+
+/* ============================================================
+   자주 쓰는 문장 — 20개 (여행 · 일상)
+   orig: 원래 표기 / kana: 히라가나 전체 읽기 / furi: 후리가나 표기
+   ============================================================ */
+var SENTENCES = [
+  { cat: '인사', orig: 'こんにちは', kana: 'こんにちは', furi: 'こんにちは', koPron: '콘니치와', romaji: 'konnichiwa', meaning: '안녕하세요', bg: '#FBE7D9',
+    tip: '낮에 두루 쓰는 인사예요. 아침에는 おはようございます, 저녁에는 こんばんは.',
+    art: '<circle cx="322" cy="44" r="22" fill="#F2CE6B"/><circle cx="86" cy="56" r="16" fill="#F2C6A0"/><path d="M86 74c-18 0-30 13-30 32v34h60v-34c0-19-12-32-30-32z" fill="#7FA8C9"/><path d="M64 84l-16-14M108 84l16-14" stroke="#7FA8C9" stroke-width="9" stroke-linecap="round"/><circle cx="210" cy="52" r="16" fill="#F2C6A0"/><path d="M210 70c-18 0-30 13-30 32v34h60v-34c0-19-12-32-30-32z" fill="#7FB392"/><path d="M232 80l16-14M188 80l-16-14" stroke="#7FB392" stroke-width="9" stroke-linecap="round"/><path d="M40 148h320" stroke="#E7CDB1" stroke-width="6" stroke-linecap="round"/><path d="M258 96h52a10 10 0 0 1 0 20h-40l-12 10z" fill="#fff"/>' },
+  { cat: '인사', orig: 'ありがとうございます', kana: 'ありがとうございます', furi: 'ありがとうございます', koPron: '아리가토- 고자이마스', romaji: 'arigatō gozaimasu', meaning: '감사합니다', bg: '#E2EFE6',
+    tip: 'ありがとう는 가까운 사이에서, 가게·처음 보는 사람에게는 ございます까지 붙여요.',
+    art: '<circle cx="120" cy="64" r="18" fill="#F2C6A0"/><path d="M120 84c-22 0-36 18-36 40v22h72v-22c0-22-14-40-36-40z" fill="#7FB392"/><path d="M84 100L68 116M156 100l16 16" stroke="#F2C6A0" stroke-width="10" stroke-linecap="round"/><path d="M228 64c-10 0-18 8-18 18 0 16 18 34 18 34s18-18 18-34c0-10-8-18-18-18z" fill="#E58A76"/><path d="M282 76c-8 0-14 6-14 14 0 12 14 26 14 26s14-14 14-26c0-8-6-14-14-14z" fill="#F2CE6B"/><path d="M52 148h296" stroke="#D8E4DA" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '일상', orig: 'すみません', kana: 'すみません', furi: 'すみません', koPron: '스미마센', romaji: 'sumimasen', meaning: '실례합니다 · 저기요', bg: '#FBF1CE',
+    tip: '사과·호출·감사까지 되는 만능말. 가게에서 직원을 부를 때 가장 유용해요.',
+    art: '<circle cx="140" cy="60" r="18" fill="#F2C6A0"/><path d="M140 80c-20 0-34 16-34 38v30h68v-30c0-22-14-38-34-38z" fill="#9DC3AA"/><path d="M106 92L86 66" stroke="#9DC3AA" stroke-width="11" stroke-linecap="round"/><path d="M100 60l-2-16M84 68l-10-12" stroke="#E58A76" stroke-width="5" stroke-linecap="round"/><path d="M228 74h96v34h-72l-24 18z" fill="#fff"/><circle cx="250" cy="91" r="4" fill="#C97F4E"/><circle cx="268" cy="91" r="4" fill="#C97F4E"/><circle cx="286" cy="91" r="4" fill="#C97F4E"/><path d="M56 146h292" stroke="#E7D9B8" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '카페', orig: 'コーヒーを一つください', kana: 'こーひーをひとつください', furi: 'コーヒーを[一|ひと]つください', koPron: '코-히-오 히토츠 쿠다사이', romaji: 'kōhī o hitotsu kudasai', meaning: '커피 하나 주세요', bg: '#FBE7D9',
+    tip: 'を는 목적어, 一つ(ひとつ)는 "하나". ください = 주세요. 二つ(ふたつ), 三つ(みっつ)로 이어져요.',
+    art: '<path d="M84 62h72v26c0 22-16 38-36 38s-36-16-36-38z" fill="#EFA96B"/><path d="M156 70h10a16 16 0 0 1 0 32h-10" fill="none" stroke="#EFA96B" stroke-width="11" stroke-linecap="round"/><ellipse cx="120" cy="62" rx="36" ry="8" fill="#7B4A2A"/><path d="M104 42c-6-9 6-13 0-22M132 42c-6-9 6-13 0-22" stroke="#E7C7A6" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="120" cy="134" rx="52" ry="9" fill="#EBD4B9"/><circle cx="256" cy="66" r="24" fill="#fff"/><text x="256" y="76" font-size="24" text-anchor="middle" fill="#C97F4E" font-weight="700" font-family="Hiragino Kaku Gothic ProN,sans-serif">1</text><path d="M286 96l24 24M310 96l-24 24" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/><path d="M40 150h320" stroke="#E7CDB1" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '카페', orig: 'お会計をお願いします', kana: 'おかいけいをおねがいします', furi: 'お[会計|かいけい]を[願|ねが]いします', koPron: '오카이케이오 오네가이시마스', romaji: 'okaikei o onegai shimasu', meaning: '계산 부탁드립니다', bg: '#E2EFE6',
+    tip: 'お会計 = 계산. お願いします = 부탁합니다. 손을 살짝 들며 말하면 어디서든 통해요.',
+    art: '<rect x="70" y="34" width="86" height="106" rx="6" fill="#fff" stroke="#DCD2BE" stroke-width="3"/><path d="M86 56h54M86 72h54M86 88h38M86 104h46M86 120h24" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/><path d="M72 130l24-14 22 10 30-16" stroke="#E58A76" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="212" y="62" width="104" height="64" rx="10" fill="#7FA8C9"/><rect x="212" y="78" width="104" height="12" fill="#1B4D3E" opacity=".55"/><circle cx="296" cy="108" r="10" fill="#F2CE6B"/><path d="M40 150h320" stroke="#D8E4DA" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '쇼핑', orig: 'これ、いくらですか', kana: 'これ、いくらですか', furi: 'これ、いくらですか', koPron: '코레, 이쿠라데스카', romaji: 'kore, ikura desu ka', meaning: '이거 얼마예요?', bg: '#FBF1CE',
+    tip: 'これ = 이것, いくら = 얼마. 물건을 손가락으로 가리키며 말하면 충분해요.',
+    art: '<path d="M74 58l44-40h58v58l-44 40z" fill="#F6D3BC"/><circle cx="164" cy="30" r="6" fill="#fff"/><path d="M118 76v40M104 92l14-14 14 14" stroke="#C97F4E" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="262" y="104" font-size="62" text-anchor="middle" fill="#E58A76" font-weight="800" font-family="-apple-system,Segoe UI,sans-serif">?</text><circle cx="330" cy="54" r="12" fill="#9DC3AA"/><path d="M40 148h320" stroke="#E7D9B8" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '식당', orig: 'メニューをください', kana: 'めにゅーをください', furi: 'メニューをください', koPron: '메뉴-오 쿠다사이', romaji: 'menyū o kudasai', meaning: '메뉴 주세요', bg: '#E2EDF6',
+    tip: 'をください = ~을 주세요. メニューはありますか(메뉴 있나요?)도 자주 써요.',
+    art: '<rect x="96" y="34" width="108" height="104" rx="8" fill="#fff" stroke="#1B4D3E" stroke-width="4"/><path d="M96 34v104" stroke="#1B4D3E" stroke-width="4"/><path d="M114 58h74M114 76h56M114 94h66M114 112h38" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/><text x="150" y="128" font-size="12" fill="#8A857A" font-family="Hiragino Kaku Gothic ProN,sans-serif">MENU</text><circle cx="258" cy="70" r="20" fill="#F2CE6B"/><path d="M250 70l6 6 12-14" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 150h320" stroke="#D6E2EC" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '식당', orig: 'これは何ですか', kana: 'これはなんですか', furi: 'これは[何|なん]ですか', koPron: '코레와 난데스카', romaji: 'kore wa nan desu ka', meaning: '이게 뭐예요?', bg: '#F9E3E7',
+    tip: '何은 뒤에 です가 오면 なん으로 읽어요. 모르는 메뉴를 가리키며 물어보세요.',
+    art: '<ellipse cx="140" cy="104" rx="62" ry="20" fill="#fff" stroke="#E4DACA" stroke-width="3"/><path d="M92 92c0 26 22 44 48 44s48-18 48-44z" fill="#E9A88D"/><path d="M92 92h96" stroke="#fff" stroke-width="4" opacity=".8"/><ellipse cx="124" cy="104" rx="14" ry="7" fill="#F6D3BC"/><ellipse cx="158" cy="110" rx="12" ry="6" fill="#F6D3BC"/><path d="M180 78c8-10 8-18 0-28" stroke="#C9DED2" stroke-width="4" fill="none" stroke-linecap="round"/><text x="286" y="100" font-size="54" text-anchor="middle" fill="#C9807C" font-weight="800" font-family="-apple-system,Segoe UI,sans-serif">?</text><path d="M40 150h320" stroke="#F0D6DA" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '길찾기', orig: '駅はどこですか', kana: 'えきはどこですか', furi: '[駅|えき]はどこですか', koPron: '에키와 도코데스카', romaji: 'eki wa doko desu ka', meaning: '역이 어디예요?', bg: '#E2EDF6',
+    tip: 'は는 "은/는", どこ는 "어디". 장소를 물을 때 〜はどこですか를 그대로 쓰면 돼요.',
+    art: '<rect x="78" y="52" width="128" height="76" rx="8" fill="#EFF1EA"/><path d="M68 52h148" stroke="#1B4D3E" stroke-width="6" stroke-linecap="round"/><rect x="92" y="68" width="36" height="60" fill="#C9DED2"/><rect x="156" y="68" width="36" height="26" fill="#F6D3BC"/><rect x="126" y="34" width="32" height="18" rx="4" fill="#1B4D3E"/><circle cx="142" cy="43" r="4" fill="#F9F7F3"/><path d="M272 42c-14 0-25 11-25 25 0 19 25 42 25 42s25-23 25-42c0-14-11-25-25-25z" fill="#E58A76" transform="translate(0,-4)"/><circle cx="272" cy="66" r="8" fill="#fff"/><path d="M40 150h320" stroke="#D6E2EC" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '길찾기', orig: 'トイレはどこですか', kana: 'といれはどこですか', furi: 'トイレはどこですか', koPron: '토이레와 도코데스카', romaji: 'toire wa doko desu ka', meaning: '화장실이 어디예요?', bg: '#E2EFE6',
+    tip: 'トイレ는 영어 toilet에서 온 말. 급할 때 이 한 문장만 기억해도 든든해요.',
+    art: '<rect x="76" y="40" width="88" height="108" rx="8" fill="#fff" stroke="#DCD2BE" stroke-width="3"/><rect x="76" y="40" width="88" height="26" rx="8" fill="#9DC3AA"/><circle cx="104" cy="82" r="11" fill="#7FA8C9"/><path d="M104 96v26M104 104l-10 10M104 104l10 10M104 122l-8 18M104 122l8 18" stroke="#7FA8C9" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="140" cy="82" r="11" fill="#E9A88D"/><path d="M140 96v20l-14 24h28l-14-24M128 140v6M152 140v6" stroke="#E9A88D" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M250 46l14 88M282 46l-14 88" stroke="#E7CDB1" stroke-width="5" stroke-linecap="round"/><circle cx="312" cy="66" r="9" fill="#F2CE6B"/><path d="M40 150h320" stroke="#D8E4DA" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '교통', orig: '空港まで行きたいです', kana: 'くうこうまでいきたいです', furi: '[空港|くうこう]まで[行|い]きたいです', koPron: '쿠-코-마데 이키타이데스', romaji: 'kūkō made ikitai desu', meaning: '공항까지 가고 싶어요', bg: '#FBE7D9',
+    tip: 'まで = ~까지, 行きたい = 가고 싶다. 行く의 ます형 行き + たい로 만들어요.',
+    art: '<path d="M60 96l40-12V54c0-7 4-11 9-11s9 4 9 11v30l40 12v12l-40-7v22l13 9v9l-22-6-22 6v-9l13-9v-22l-40 7z" fill="#7FA8C9" transform="rotate(24 108 88)"/><path d="M186 76c16-2 26-10 30-24" stroke="#C9DED2" stroke-width="5" fill="none" stroke-dasharray="7 8" stroke-linecap="round"/><rect x="244" y="92" width="64" height="42" rx="7" fill="#E9A88D"/><path d="M244 104h64" stroke="#fff" stroke-width="4" opacity=".7"/><path d="M264 92V78a6 6 0 0 1 12 0v14" fill="none" stroke="#8A6242" stroke-width="4"/><path d="M40 150h320" stroke="#E7CDB1" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '교통', orig: 'この電車は東京に行きますか', kana: 'このでんしゃはとうきょうにいきますか', furi: 'この[電車|でんしゃ]は[東京|とうきょう]に[行|い]きますか', koPron: '코노 덴샤와 토-쿄-니 이키마스카', romaji: 'kono densha wa tōkyō ni ikimasu ka', meaning: '이 전철 도쿄에 가나요?', bg: '#E2EDF6',
+    tip: 'この + 명사 = 이 ~. に는 도착 지점. か를 붙이면 질문이 돼요.',
+    art: '<rect x="64" y="34" width="120" height="102" rx="18" fill="#7FA8C9"/><rect x="80" y="52" width="88" height="40" rx="7" fill="#EAF2F8"/><path d="M124 52v40" stroke="#B7D2E8" stroke-width="4"/><circle cx="94" cy="126" r="8" fill="#3E4C43"/><circle cx="154" cy="126" r="8" fill="#3E4C43"/><path d="M64 106h120" stroke="#fff" stroke-width="4" opacity=".7"/><path d="M212 86h52M248 74l14 12-14 12" stroke="#E58A76" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M286 46h30v12h-30zM292 58h18v46h-18zM286 84h30v12h-30z" fill="#C9DED2"/><path d="M40 150h320" stroke="#D6E2EC" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '일상', orig: '英語を話せますか', kana: 'えいごをはなせますか', furi: '[英語|えいご]を[話|はな]せますか', koPron: '에이고오 하나세마스카', romaji: 'eigo o hanasemasu ka', meaning: '영어 할 수 있어요?', bg: '#FBF1CE',
+    tip: '話せます는 話す의 가능형. 동사 가능형은 え단 + ます (話す→話せます)로 만들어요.',
+    art: '<path d="M70 44h120a14 14 0 0 1 14 14v48a14 14 0 0 1-14 14h-56l-26 22v-22H70a14 14 0 0 1-14-14V58a14 14 0 0 1 14-14z" fill="#fff"/><text x="132" y="96" font-size="38" text-anchor="middle" fill="#7FA8C9" font-weight="800" font-family="-apple-system,Segoe UI,sans-serif">EN</text><path d="M228 78c0-10 8-18 18-18s18 8 18 18c0 8-5 12-10 16-3 3-4 6-4 10" stroke="#9DC3AA" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="246" cy="126" r="6" fill="#9DC3AA"/><path d="M40 150h320" stroke="#E7D9B8" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '일상', orig: 'もう一度言ってください', kana: 'もういちどいってください', furi: 'もう[一度|いちど][言|い]ってください', koPron: '모- 이치도 잇테 쿠다사이', romaji: 'mō ichido itte kudasai', meaning: '다시 한 번 말해 주세요', bg: '#E9E4F4',
+    tip: 'もう一度 = 한 번 더. 言って는 言う의 て형이라 "말하고"로 이어져요. ゆっくり(천천히)를 붙여도 좋아요.',
+    art: '<path d="M64 48h104a12 12 0 0 1 12 12v40a12 12 0 0 1-12 12h-52l-22 18V112H64a12 12 0 0 1-12-12V60a12 12 0 0 1 12-12z" fill="#fff"/><path d="M84 72h68M84 88h44" stroke="#C9DED2" stroke-width="6" stroke-linecap="round"/><path d="M226 84a34 34 0 1 1 10-24" fill="none" stroke="#9DC3AA" stroke-width="7" stroke-linecap="round"/><path d="M236 44l2 18-18-2" fill="none" stroke="#9DC3AA" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 150h320" stroke="#DED8EC" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '일상', orig: '日本語が少し話せます', kana: 'にほんごがすこしはなせます', furi: '[日本語|にほんご]が[少|すこ]し[話|はな]せます', koPron: '니혼고가 스코시 하나세마스', romaji: 'nihongo ga sukoshi hanasemasu', meaning: '일본어를 조금 할 수 있어요', bg: '#E2EFE6',
+    tip: '少し = 조금. 가능 표현에서는 を보다 が가 자연스러워요. 겸손하게 말할 때 딱 좋아요.',
+    art: '<rect x="70" y="40" width="110" height="104" rx="10" fill="#fff" stroke="#DCD2BE" stroke-width="3"/><text x="125" y="94" font-size="30" text-anchor="middle" fill="#3E6B51" font-family="Hiragino Kaku Gothic ProN,sans-serif" font-weight="700">日本語</text><path d="M92 112h66" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/><rect x="220" y="100" width="60" height="12" rx="6" fill="#C9DED2"/><rect x="220" y="100" width="18" height="12" rx="6" fill="#7FB392"/><text x="250" y="86" font-size="16" text-anchor="middle" fill="#8A857A" font-family="Hiragino Kaku Gothic ProN,sans-serif">少し</text><path d="M40 150h320" stroke="#D8E4DA" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '일상', orig: '写真を撮ってもいいですか', kana: 'しゃしんをとってもいいですか', furi: '[写真|しゃしん]を[撮|と]ってもいいですか', koPron: '샤신오 톳테모 이-데스카', romaji: 'shashin o tottemo ii desu ka', meaning: '사진 찍어도 될까요?', bg: '#F9E3E7',
+    tip: '〜てもいいですか = ~해도 됩니까? 허락을 구할 때 쓰는 정중한 표현이에요.',
+    art: '<rect x="86" y="54" width="130" height="84" rx="12" fill="#7FA8C9"/><rect x="122" y="40" width="42" height="18" rx="5" fill="#7FA8C9"/><circle cx="151" cy="96" r="30" fill="#EAF2F8"/><circle cx="151" cy="96" r="19" fill="#3E4C43"/><circle cx="145" cy="89" r="6" fill="#fff" opacity=".8"/><circle cx="196" cy="66" r="6" fill="#F2CE6B"/><path d="M252 64l4 12 12 4-12 4-4 12-4-12-12-4 12-4z" fill="#F2CE6B"/><path d="M40 150h320" stroke="#F0D6DA" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '쇼핑', orig: '免税できますか', kana: 'めんぜいできますか', furi: '[免税|めんぜい]できますか', koPron: '멘제- 데키마스카', romaji: 'menzei dekimasu ka', meaning: '면세 되나요?', bg: '#FBF1CE',
+    tip: '免税 = 면세. できます = 할 수 있습니다. 여권을 함께 내면 대부분 바로 처리돼요.',
+    art: '<path d="M66 60l46-42h58v58l-46 42z" fill="#fff" stroke="#E0D6C4" stroke-width="3"/><circle cx="158" cy="30" r="6" fill="#E9A88D"/><text x="118" y="86" font-size="16" text-anchor="middle" fill="#3E6B51" font-weight="800" font-family="-apple-system,Segoe UI,sans-serif">TAX</text><text x="118" y="106" font-size="16" text-anchor="middle" fill="#3E6B51" font-weight="800" font-family="-apple-system,Segoe UI,sans-serif">FREE</text><circle cx="262" cy="80" r="30" fill="#F2CE6B"/><path d="M248 80l10 10 20-22" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 150h320" stroke="#E7D9B8" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '호텔', orig: '部屋を予約したいです', kana: 'へやをよやくしたいです', furi: '[部屋|へや]を[予約|よやく]したいです', koPron: '헤야오 요야쿠시타이데스', romaji: 'heya o yoyaku shitai desu', meaning: '방을 예약하고 싶어요', bg: '#E9E4F4',
+    tip: '予約 = 예약, したいです = 하고 싶습니다. 체크인 때는 予約した者ですが도 자주 써요.',
+    art: '<rect x="60" y="88" width="120" height="44" rx="8" fill="#7FA8C9"/><rect x="72" y="72" width="34" height="18" rx="7" fill="#fff"/><path d="M60 132h120" stroke="#8A6242" stroke-width="6" stroke-linecap="round"/><path d="M60 88h120" stroke="#fff" stroke-width="4" opacity=".5"/><rect x="222" y="40" width="86" height="76" rx="9" fill="#fff" stroke="#DCD2BE" stroke-width="3"/><rect x="222" y="40" width="86" height="20" rx="9" fill="#B7A6D6"/><path d="M240 82h50M240 96h32" stroke="#C9DED2" stroke-width="5" stroke-linecap="round"/><circle cx="272" cy="104" r="6" fill="#E58A76"/><path d="M40 150h320" stroke="#DED8EC" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '식당', orig: 'お水をもらえますか', kana: 'おみずをもらえますか', furi: 'お[水|みず]をもらえますか', koPron: '오미즈오 모라에마스카', romaji: 'omizu o moraemasu ka', meaning: '물 좀 받을 수 있을까요?', bg: '#E2EDF6',
+    tip: 'もらえますか = 받을 수 있을까요? ください보다 한결 부드러운 부탁이에요.',
+    art: '<path d="M96 58h64l-8 74H104z" fill="#BFDCEB" opacity=".85"/><path d="M96 58h64" stroke="#fff" stroke-width="5"/><path d="M96 84h64" stroke="#fff" stroke-width="4" opacity=".7"/><ellipse cx="128" cy="136" rx="44" ry="8" fill="#D6E2EC"/><path d="M196 96c26-8 34-28 30-48" stroke="#F2C6A0" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M256 52c-8 10-12 20-12 30M276 44c-10 14-14 26-14 38" stroke="#9DC3AA" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M40 150h320" stroke="#D6E2EC" stroke-width="6" stroke-linecap="round"/>' },
+  { cat: '인사', orig: 'お元気ですか', kana: 'おげんきですか', furi: 'お[元気|げんき]ですか', koPron: '오겐키데스카', romaji: 'ogenki desu ka', meaning: '잘 지내세요?', bg: '#E2EFE6',
+    tip: 'お元気 = 기운·건강. 오랜만에 만난 사람에게 이 한마디면 분위기가 풀려요.',
+    art: '<circle cx="110" cy="54" r="17" fill="#F2C6A0"/><path d="M110 72c-19 0-31 14-31 33v35h62v-35c0-19-12-33-31-33z" fill="#7FB392"/><circle cx="206" cy="58" r="17" fill="#F2C6A0"/><path d="M206 76c-19 0-31 14-31 33v31h62v-31c0-19-12-33-31-33z" fill="#9DC3AA"/><path d="M126 88h60" stroke="#E7CDB1" stroke-width="5" stroke-linecap="round"/><path d="M282 62c-9 0-16 7-16 16 0 14 16 30 16 30s16-16 16-30c0-9-7-16-16-16z" fill="#E58A76"/><path d="M40 150h320" stroke="#D8E4DA" stroke-width="6" stroke-linecap="round"/>' }
+];
+
+
+/* ============================================================
+   영어 한마디 — 12개 표현 + 카페 대화 4마디
+   ============================================================ */
+var ENGLISH = [
+  { cat: '카페', tag: 'COFFEE', en: 'A coffee, please.', ko: '커피 한 잔 주세요.', pron: '어 커피 플리즈' },
+  { cat: '카페', tag: 'ORDER', en: 'I’ll have an iced americano.', ko: '아이스 아메리카노로 할게요.', pron: '아일 해브 언 아이스드 아메리카노' },
+  { cat: '카페', tag: 'HERE / TO GO', en: 'For here, please.', ko: '여기서 마실게요.', pron: '포 히어, 플리즈' },
+  { cat: '카페', tag: 'TO GO', en: 'To go, please.', ko: '포장해 주세요.', pron: '투 고, 플리즈' },
+  { cat: '카페', tag: 'RECEIPT', en: 'Could I get a receipt?', ko: '영수증 받을 수 있을까요?', pron: '쿠드 아이 겟 어 리시트' },
+  { cat: '식당', tag: 'MENU', en: 'Can I see the menu?', ko: '메뉴 좀 볼 수 있을까요?', pron: '캔 아이 씨 더 메뉴' },
+  { cat: '식당', tag: 'PAY', en: 'The check, please.', ko: '계산서 주세요.', pron: '더 체크, 플리즈' },
+  { cat: '호텔', tag: 'CHECK-IN', en: 'I have a reservation.', ko: '예약했어요.', pron: '아이 해브 어 레저베이션' },
+  { cat: '호텔', tag: 'CHECK-OUT', en: 'What time is check-out?', ko: '체크아웃이 몇 시예요?', pron: '왓 타임 이즈 체크아웃' },
+  { cat: '길찾기', tag: 'DIRECTIONS', en: 'How do I get to the station?', ko: '역에 어떻게 가요?', pron: '하우 두 아이 겟 투 더 스테이션' },
+  { cat: '쇼핑', tag: 'PRICE', en: 'How much is this?', ko: '이거 얼마예요?', pron: '하우 머치 이즈 디스' },
+  { cat: '공항', tag: 'AIRPORT', en: 'Where is the gate?', ko: '게이트가 어디예요?', pron: '웨어 이즈 더 게이트' }
+];
+
+var DIALOGUE = [
+  { who: 'mia', en: 'Hi, welcome! What can I get for you?', ko: '안녕하세요! 뭐 드릴까요?' },
+  { who: 'me', en: 'A coffee, please.', ko: '커피 한 잔 주세요.' },
+  { who: 'mia', en: 'For here or to go?', ko: '드시고 가세요, 포장이세요?' },
+  { who: 'me', en: 'For here, please. Thank you!', ko: '여기서 마실게요. 감사합니다!' }
+];
+
+</script>
+<script>
+/* ============================================================
+   한마디 여행 · 영어와 일본어
+   Single-file app logic: routing, rendering, mobile-safe TTS
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* ---------------- error capture (for verification) ---------------- */
+  window.__errors = [];
+  window.addEventListener('error', function (e) {
+    window.__errors.push(String((e && e.message) || e));
+  });
+  window.addEventListener('unhandledrejection', function (e) {
+    window.__errors.push('promise: ' + String((e && e.reason) || e));
+  });
+
+  /* ---------------- utils ---------------- */
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return ESC[c]; }); }
+
+  var H2K = {}, K2H = {};
+  (function () {
+    for (var c = 0x3041; c <= 0x3096; c++) {
+      var h = String.fromCharCode(c), k = String.fromCharCode(c + 0x60);
+      H2K[h] = k; K2H[k] = h;
+    }
+    H2K['ゔ'] = 'ヴ'; K2H['ヴ'] = 'ゔ';
+  })();
+  function toKata(s) { return Array.from(String(s)).map(function (c) { return H2K[c] || c; }).join(''); }
+  function toHira(s) { return Array.from(String(s)).map(function (c) { return K2H[c] || c; }).join(''); }
+
+  /* ---------------- persisted state ---------------- */
+  var KEY = 'daytrip-language-studio-v1';
+  var DEFAULTS = {
+    view: 'home', kanaScript: 'hiragana', kanaRow: 'all',
+    vocabCat: 'all', vocabMode: 'orig', cardModes: {},
+    sentCat: '전체', sentMode: 'orig', rate: 1
+  };
+  var state = Object.assign({}, DEFAULTS);
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var saved = JSON.parse(raw);
+        Object.keys(DEFAULTS).forEach(function (k) {
+          if (saved[k] === undefined) return;
+          if (k === 'cardModes') { state.cardModes = saved[k] || {}; return; }
+          state[k] = saved[k];
+        });
+      }
+    } catch (e) { /* private mode: ignore */ }
+    if (state.sentCat === 'all') state.sentCat = '전체';
+    if (typeof SITUATIONS !== 'undefined' && SITUATIONS.indexOf(state.sentCat) === -1) state.sentCat = '전체';
+    var h = (location.hash || '').replace('#', '');
+    if (h && TITLES[h]) state.view = h;
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { }
+  }
+
+  /* ============================================================
+     Speech engine
+     - speechSynthesis called synchronously inside the click handler
+     - voiceschanged / late voice list handling (iOS Safari)
+     - cancel() + immediate speak race guarded by watchdog
+     - Google Translate TTS audio fallback with visible state
+     ============================================================ */
+  var Speech = (function () {
+    var synth = (typeof window !== 'undefined' && 'speechSynthesis' in window) ? window.speechSynthesis : null;
+    var voices = [];
+    var token = 0;
+    var audio = null;
+    var currentBtn = null;
+
+    var LANG = { ja: 'ja-JP', en: 'en-US', ko: 'ko-KR' };
+    var PREFERRED = {
+      'ja-JP': ['kyoko', 'o-ren', 'otoya', 'nanami', 'haruka', 'ayumi', 'google 日本語', 'google japanese', 'japanese', 'siri'],
+      'en-US': ['samantha', 'alex', 'ava', 'allison', 'susan', 'google us english', 'google english', 'english (united states)', 'siri'],
+      'ko-KR': ['yuna', 'sora', 'google 한국의', 'korean']
+    };
+
+    function refresh() {
+      try { voices = synth ? (synth.getVoices() || []) : []; } catch (e) { voices = []; }
+      updateStatus();
+      return voices;
+    }
+    if (synth) {
+      if (typeof synth.addEventListener === 'function') synth.addEventListener('voiceschanged', refresh);
+      else synth.onvoiceschanged = refresh;
+      refresh();
+      setTimeout(refresh, 250);
+      setTimeout(refresh, 900);
+      setTimeout(refresh, 2200);
+    }
+
+    function norm(l) { return String(l || '').toLowerCase().replace('_', '-'); }
+
+    function score(v, target) {
+      var lang = norm(v.lang), base = target.split('-')[0];
+      if (lang.indexOf(base) !== 0) return -1;
+      var s = 0;
+      if (lang === norm(target)) s += 6;
+      if (lang.indexOf('-') === -1) s -= 1;
+      var name = norm(v.name || '');
+      var pref = PREFERRED[target] || [];
+      for (var i = 0; i < pref.length; i++) {
+        if (name.indexOf(pref[i]) >= 0) { s += (pref.length - i) * 1.2; break; }
+      }
+      if (v.localService) s += 2.5;
+      if (/compact|espeak|festival|pico/.test(name)) s -= 2.5;
+      if (v.default) s += 0.3;
+      return s;
+    }
+
+    function pick(target) {
+      var best = null, bestScore = -1;
+      for (var i = 0; i < voices.length; i++) {
+        var s = score(voices[i], target);
+        if (s > bestScore) { bestScore = s; best = voices[i]; }
+      }
+      return bestScore >= 0 ? best : null;
+    }
+
+    function setPlaying(btn, on, how) {
+      if (!btn) return;
+      btn.classList.toggle('is-playing', !!on);
+      if (on && how === 'fallback') btn.classList.add('is-fallback');
+      if (!on) setTimeout(function () { btn.classList.remove('is-fallback'); }, 400);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+
+    function clearBtn() {
+      if (currentBtn) { setPlaying(currentBtn, false); currentBtn = null; }
+    }
+
+    var GTTS = [
+      function (t, l) { return 'https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=' + l + '&q=' + encodeURIComponent(t); },
+      function (t, l) { return 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=' + l + '&q=' + encodeURIComponent(t); }
+    ];
+
+    function fallback(text, lang, rate, btn, myToken) {
+      var l = String(lang || 'ja').slice(0, 2);
+      var q = String(text).slice(0, 180);
+      var i = 0;
+      var tried = 0;
+      function next() {
+        if (myToken !== token) return;
+        if (i >= GTTS.length) {
+          setPlaying(btn, false);
+          toast('이 기기에서 음성을 재생하지 못했어요 · 읽기: ' + text);
+          return;
+        }
+        var url = GTTS[i++](q, l);
+        tried++;
+        try {
+          var a = new Audio(url);
+          a.preload = 'auto';
+          audio = a;
+          a.onplaying = function () {
+            if (myToken !== token) return;
+            setPlaying(btn, true, 'fallback');
+            toast('기본 음성 대신 온라인 음성으로 재생했어요');
+          };
+          a.onended = function () { if (myToken === token) setPlaying(btn, false); };
+          a.onerror = function () { if (myToken === token) next(); };
+          var p = a.play();
+          if (p && typeof p.catch === 'function') {
+            p.catch(function () { if (myToken === token) setTimeout(next, 10); });
+          }
+        } catch (e) { next(); }
+        if (tried > 4) { setPlaying(btn, false); }
+      }
+      next();
+    }
+
+    function speak(text, lang, rate, btn) {
+      text = String(text || '');
+      if (!text) return;
+      var target = LANG[lang] || lang || 'ja-JP';
+      var r = rate || 1;
+      var myToken = ++token;
+      clearBtn();
+      currentBtn = btn || null;
+      setPlaying(btn, true);
+
+      if (audio) { try { audio.pause(); audio = null; } catch (e) { } }
+      if (synth) {
+        try { synth.cancel(); } catch (e) { }
+        try { if (synth.paused) synth.resume(); } catch (e) { }
+      }
+
+      var voice = synth ? pick(target) : null;
+      if (!synth) { fallback(text, target, r, btn, myToken); return; }
+      if (!voice) { fallback(text, target, r, btn, myToken); return; }
+
+      var started = false, ended = false;
+
+      function makeUtter() {
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = target;
+        u.rate = r;
+        u.pitch = 1;
+        u.volume = 1;
+        try { u.voice = voice; } catch (e) { }
+        u.onstart = function () { started = true; };
+        u.onend = function () { ended = true; if (myToken === token) { setPlaying(btn, false); currentBtn = null; } };
+        u.onerror = function (ev) {
+          var err = ev && ev.error;
+          if (err === 'interrupted' || err === 'canceled') { ended = true; return; }
+          if (!started) { if (myToken === token) fallback(text, target, r, btn, myToken); }
+          else { ended = true; if (myToken === token) setPlaying(btn, false); }
+        };
+        return u;
+      }
+
+      try {
+        synth.speak(makeUtter());
+      } catch (e) {
+        fallback(text, target, r, btn, myToken);
+        return;
+      }
+
+      /* Chrome/Safari drop an utterance spoken immediately after cancel();
+         re-queue once if nothing started (still inside the same gesture task). */
+      setTimeout(function () {
+        if (myToken !== token || started || ended) return;
+        try { synth.speak(makeUtter()); } catch (e) { }
+      }, 140);
+
+      /* still silent? use the online voice so it never ends in silence */
+      setTimeout(function () {
+        if (myToken !== token || started || ended) return;
+        fallback(text, target, r, btn, myToken);
+      }, 2400);
+    }
+
+    var statusBusy = false;
+    function updateStatus() {
+      if (statusBusy) return;
+      statusBusy = true;
+      try { paintStatus(); } finally { statusBusy = false; }
+    }
+
+    function paintStatus() {
+      var box = document.getElementById('voiceStatus');
+      var chip = document.getElementById('topVoiceChip');
+      var ja = synth ? pick('ja-JP') : null;
+      var en = synth ? pick('en-US') : null;
+      if (!synth) {
+        if (box) box.innerHTML = '<span class="no">이 브라우저는 음성 합성이 없어</span><br>온라인 음성으로 재생합니다';
+        if (chip) chip.textContent = '온라인 음성';
+        return;
+      }
+      if (box) {
+        box.innerHTML =
+          '<span class="' + (ja ? 'ok' : 'no') + '">일본어 ' + (ja ? '✓' : '온라인') + '</span> · ' +
+          '<span class="' + (en ? 'ok' : 'no') + '">영어 ' + (en ? '✓' : '온라인') + '</span>' +
+          (ja ? '<br><span style="color:#8A857A">' + esc(ja.name) + '</span>' : '');
+      }
+      if (chip) chip.textContent = '🔊 ' + (ja ? 'ja' : 'ja?') + ' · ' + (en ? 'en' : 'en?');
+    }
+
+    function voiceName(lang) {
+      var v = synth ? pick(LANG[lang] || lang) : null;
+      return v ? v.name + ' (' + v.lang + ')' : null;
+    }
+
+    return {
+      speak: speak,
+      refresh: refresh,
+      updateStatus: updateStatus,
+      voiceName: voiceName,
+      hasSynth: !!synth,
+      pick: pick
+    };
+  })();
+
+  window.__refreshVoiceStatus = Speech.updateStatus;
+  window.__speechRefresh = Speech.refresh;
+
+  /* ---------------- toast ---------------- */
+  var toastTimer = null;
+  function toast(msg, ms) {
+    var el = document.getElementById('toast');
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.classList.remove('is-on'); }, ms || 2600);
+  }
+
+  /* ---------------- SVG frames ---------------- */
+  var KANA_BG = ['#FBE7D9', '#E2EFE6', '#FBF1CE', '#E2EDF6', '#F9E3E7', '#E9E4F4', '#F7E9D8', '#E3F0EA', '#FAEFD9', '#E6EEF6'];
+  var JPF = "'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP','Hiragino Sans','Malgun Gothic',sans-serif";
+
+  function kanaSVG(ch, inner, idx) {
+    var bg = KANA_BG[idx % KANA_BG.length];
+    return '<svg viewBox="0 0 200 200" role="img" aria-label="' + esc(ch) + ' 연상 그림" preserveAspectRatio="xMidYMid meet">' +
+      '<rect width="200" height="200" fill="' + bg + '"/>' +
+      '<circle cx="26" cy="28" r="18" fill="#fff" opacity=".34"/>' +
+      '<circle cx="178" cy="174" r="24" fill="#fff" opacity=".28"/>' +
+      '<text x="100" y="104" text-anchor="middle" dominant-baseline="central" font-family="' + JPF + '" font-size="150" font-weight="600" fill="#1B4D3E" opacity=".10" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="3" paint-order="stroke">' + esc(ch) + '</text>' +
+      inner +
+      '</svg>';
+  }
+
+  function iconSVG(inner, bg) {
+    return '<svg viewBox="0 0 200 200" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet">' +
+      '<rect width="200" height="200" fill="' + (bg || '#F6F1E7') + '"/>' +
+      '<circle cx="30" cy="30" r="16" fill="#fff" opacity=".4"/>' +
+      inner +
+      '</svg>';
+  }
+
+  function sceneSVG(inner, bg) {
+    return '<svg viewBox="0 0 400 160" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">' +
+      '<rect width="400" height="160" fill="' + (bg || '#F7EFE2') + '"/>' + inner + '</svg>';
+  }
+
+  /* ============================================================
+     Views
+     ============================================================ */
+  var TITLES = { home: '오늘의 학습', kana: '가나 첫 수업', vocab: '필수 단어장', sentences: '자주 쓰는 문장', english: '영어 한마디' };
+  var SUBTITLES = {
+    kana: '글자 모양이 그림과 겹쳐지는 순간, 가나가 저절로 외워져요.',
+    vocab: '여행에서 바로 쓰는 41개 단어. 표기를 바꿔 가며 눈에 익혀 보세요.',
+    sentences: '상황별 20문장. 듣고, 표기를 바꾸고, 한 번 따라 말해 보세요.',
+    english: '카페 주문부터 길 찾기까지, 짧고 쓸모 있는 영어 한마디.'
+  };
+
+  var SPEAKER_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4z"/><path d="M16 9.2c1.2 1.1 1.2 4.5 0 5.6"/><path d="M18.8 6.6c2.4 2.4 2.4 8.4 0 10.8"/></svg>';
+  var SLOW_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></svg>';
+
+  function spkBtn(text, lang, rate, label) {
+    return '<button type="button" class="spk" data-act="speak" data-text="' + esc(text) + '" data-lang="' + lang + '" data-rate="' + (rate || 1) + '" aria-label="' + esc(label || (text + ' 발음 듣기')) + '" aria-pressed="false">' +
+      SPEAKER_ICON + '<span>' + esc(label || '듣기') + '</span></button>';
+  }
+
+  /* ---------------- home ---------------- */
+  function todaySentence() {
+    var d = new Date();
+    var seed = (d.getFullYear() * 372 + d.getMonth() * 31 + d.getDate()) % Math.max(1, SENTENCES.length);
+    return SENTENCES[seed] || SENTENCES[0];
+  }
+
+  function viewHome() {
+    var s = todaySentence();
+    var hira = KANA_HIRA.length, kata = KANA_KATA.length;
+    var cards = [
+      { view: 'kana', title: '일본어 첫 수업', desc: '히라가나 · 가타카나 92자를 그림으로', count: hira + kata + '자', icon: 'kana', bg: '#E4EFE6', color: '#2F6B4F' },
+      { view: 'vocab', title: '필수 단어장', desc: '동사 · 형용사 · 명사 + 한자 카드', count: WORDS.length + '개', icon: 'book', bg: '#FBEADB', color: '#A9693A' },
+      { view: 'sentences', title: '자주 쓰는 문장', desc: '여행 · 일상 20문장, 4가지 표기', count: SENTENCES.length + '문장', icon: 'chat', bg: '#FBF0CC', color: '#937228' },
+      { view: 'english', title: '영어 한마디', desc: '카페 주문부터 호텔 체크인까지', count: ENGLISH.length + '마디', icon: 'globe', bg: '#E3EBF6', color: '#3E5F86' }
+    ];
+    var quick = cards.map(function (c) {
+      return '<button type="button" class="quick-card" data-act="go" data-view="' + c.view + '" style="text-align:left">' +
+        '<span class="quick-top"><span class="quick-ico" style="background:' + c.bg + ';color:' + c.color + '">' + ICONS[c.icon] + '</span>' +
+        '<span><h4>' + esc(c.title) + '</h4></span></span>' +
+        '<p>' + esc(c.desc) + '</p>' +
+        '<span class="quick-foot"><span>바로 시작하기 →</span><span class="quick-count">' + esc(c.count) + '</span></span>' +
+        '</button>';
+    }).join('');
+
+    return '' +
+      '<section class="hero">' +
+      '<div class="hero-copy">' +
+      '<span class="eyebrow">YOUR DAILY LITTLE TRIP</span>' +
+      '<h1>주성 님, 오늘도<br>한마디 어때요?</h1>' +
+      '<p>영어 한마디, 일본어 한마디. 완벽하지 않아도 괜찮아요. 여행지에서 쓸 문장 하나면 충분해요.</p>' +
+      '<div class="hero-meta"><span>🎧 모든 글자·단어·문장 듣기</span><span>🖼️ 그림으로 익히는 가나</span><span>🔁 표기 3·4단 변환</span></div>' +
+      '<button type="button" class="btn btn-primary" data-act="go" data-view="kana">오늘의 학습 시작 ' + ICONS.arrow + '</button>' +
+      '</div>' +
+      '<div class="hero-art">' + HERO_ART + '</div>' +
+      '</section>' +
+
+      '<div class="stat-row">' +
+      '<div class="stat"><b>' + (hira + kata) + '자</b><span>히라가나 ' + hira + ' · 가타카나 ' + kata + '</span></div>' +
+      '<div class="stat"><b>' + WORDS.length + '개</b><span>필수 단어 + 한자 카드</span></div>' +
+      '<div class="stat"><b>' + SENTENCES.length + '문장</b><span>여행 · 일상 회화</span></div>' +
+      '<div class="stat"><b>' + ENGLISH.length + '마디</b><span>영어 기초 회화</span></div>' +
+      '</div>' +
+
+      '<div class="quick-grid">' + quick + '</div>' +
+
+      '<div class="section-head"><h3>오늘의 한마디</h3><span class="hint">매일 바뀌어요</span></div>' +
+      '<div class="panel" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">' +
+      '<div style="flex:1 1 280px;min-width:0">' +
+      '<span class="eyebrow" style="color:#A9693A">' + esc(s.cat) + '</span>' +
+      '<p style="font-family:var(--jp);font-size:23px;font-weight:600;margin:6px 0 4px">' + esc(s.orig) + '</p>' +
+      '<p style="font-size:13px;color:#8A857A">' + esc(s.koPron) + ' · ' + esc(s.romaji) + '</p>' +
+      '<p style="font-size:15px;font-weight:700;margin-top:6px">' + esc(s.meaning) + '</p>' +
+      '</div>' +
+      '<div class="spk-row">' + spkBtn(s.orig, 'ja', 1, '보통') + spkBtn(s.orig, 'ja', 0.85, '천천히') + '</div>' +
+      '</div>' +
+
+      '<div class="section-head"><h3>이 기기의 발음</h3><span class="hint">휴대폰에서도 소리가 나는지 먼저 확인해 보세요</span></div>' +
+      '<div class="panel">' +
+      '<p style="font-size:13.5px;color:#6E6A60;line-height:1.7">듣기 버튼은 <b>기기에 내장된 일본어·영어 음성</b>을 먼저 찾아 재생하고, 없으면 <b>온라인 음성</b>으로 자동 전환해요. 소리가 나지 않으면 이 기기의 무음 모드를 확인해 주세요.</p>' +
+      '<div class="spk-row" style="margin-top:12px">' +
+      '<button type="button" class="btn btn-soft btn-mini" data-act="test-voice">일본어 음성 확인</button>' +
+      '<button type="button" class="btn btn-soft btn-mini" data-act="test-voice-en">영어 음성 확인</button>' +
+      '</div>' +
+      '</div>';
+  }
+
+  /* ---------------- kana ---------------- */
+  function viewKana() {
+    var isHira = state.kanaScript !== 'katakana';
+    var list = isHira ? KANA_HIRA : KANA_KATA;
+    var rows = [];
+    list.forEach(function (k) { if (rows.indexOf(k.row) === -1) rows.push(k.row); });
+    var shown = list.filter(function (k) { return state.kanaRow === 'all' || k.row === state.kanaRow; });
+
+    var rowChips = '<button type="button" class="chip' + (state.kanaRow === 'all' ? ' is-active' : '') + '" data-act="kana-row" data-row="all">전체 ' + list.length + '</button>' +
+      rows.map(function (r) {
+        return '<button type="button" class="chip' + (state.kanaRow === r ? ' is-active' : '') + '" data-act="kana-row" data-row="' + esc(r) + '">' + esc(r) + '</button>';
+      }).join('');
+
+    var cards = shown.map(function (k, i) {
+      var idx = list.indexOf(k);
+      return '<article class="kana-card">' +
+        '<div class="kana-art">' + kanaSVG(k.ch, k.art, idx) + '</div>' +
+        '<div class="kana-body">' +
+        '<div class="kana-line"><span class="kana-char">' + esc(k.ch) + '</span><span class="kana-ro">' + esc(k.ro) + '</span></div>' +
+        '<div class="kana-ko">' + esc(k.ko) + ' 소리</div>' +
+        '<p class="kana-story">' + esc(k.story) + '</p>' +
+        '<div class="spk-row">' + spkBtn(k.ch, 'ja', 1, '듣기') + '</div>' +
+        '</div></article>';
+    }).join('');
+
+    return '' +
+      '<div class="page-head">' +
+      '<div><span class="eyebrow">STEP 1 · かな</span><h2>일본어 첫 수업</h2><p>' + esc(SUBTITLES.kana) + '</p></div>' +
+      '<div class="head-tools">' +
+      '<div class="seg" role="group" aria-label="가나 종류">' +
+      '<button type="button" class="seg-btn' + (isHira ? ' is-active' : '') + '" data-act="kana-script" data-script="hiragana">히라가나 ' + KANA_HIRA.length + '자</button>' +
+      '<button type="button" class="seg-btn' + (!isHira ? ' is-active' : '') + '" data-act="kana-script" data-script="katakana">가타카나 ' + KANA_KATA.length + '자</button>' +
+      '</div></div></div>' +
+      '<div class="chips">' + rowChips + '</div>' +
+      '<div class="kana-grid">' + cards + '</div>' +
+      '<div class="note" style="margin-top:22px">' + ICONS.info +
+      '<div>그림 속 글자 모양을 손가락으로 따라 그려 보세요. 카드의 <b>듣기</b>를 누르면 실제 일본어 발음이 나옵니다. 소리가 안 나면 자동으로 온라인 음성으로 넘어가요.</div></div>';
+  }
+
+  /* ---------------- vocab ---------------- */
+  var CATS = [{ k: 'all', label: '전체' }, { k: 'noun', label: '주어·명사' }, { k: 'verb', label: '동사' }, { k: 'adj', label: '형용사' }];
+  var MODES = [{ k: 'orig', label: '원래대로' }, { k: 'hira', label: '히라가나' }, { k: 'kata', label: '가타카나' }];
+
+  function wordForm(w, mode) {
+    if (mode === 'hira') return w.reading;
+    if (mode === 'kata') return toKata(w.reading);
+    return w.orig;
+  }
+  function modeLabel(mode) {
+    return mode === 'hira' ? '히라가나' : mode === 'kata' ? '가타카나' : '원래대로';
+  }
+
+  function viewVocab() {
+    var list = WORDS.filter(function (w) { return state.vocabCat === 'all' || w.cat === state.vocabCat; });
+    var chips = CATS.map(function (c) {
+      var n = c.k === 'all' ? WORDS.length : WORDS.filter(function (w) { return w.cat === c.k; }).length;
+      return '<button type="button" class="chip' + (state.vocabCat === c.k ? ' is-active' : '') + '" data-act="vocab-cat" data-cat="' + c.k + '">' + c.label + ' <span style="opacity:.65">' + n + '</span></button>';
+    }).join('');
+
+    var segs = MODES.map(function (m) {
+      return '<button type="button" class="seg-btn' + (state.vocabMode === m.k ? ' is-active' : '') + '" data-act="v-mode" data-mode="' + m.k + '">' + m.label + '</button>';
+    }).join('');
+
+    var cards = list.map(function (w) {
+      var mode = state.cardModes[w.id] || state.vocabMode;
+      var form = wordForm(w, mode);
+      var kanji = w.kanji
+        ? '<div class="kanji-box">' +
+        '<div class="kanji-box-top"><span class="kanji-glyph">' + esc(w.kanji.chars) + '</span>' +
+        '<span class="kanji-lines"><span>훈 <b>' + esc(w.kanji.hun) + '</b></span><span>음독 <b>' + esc(w.kanji.on || '—') + '</b> · 훈독 <b>' + esc(w.kanji.kun || '—') + '</b></span></span></div>' +
+        '<p class="kanji-tip">' + esc(w.kanji.tip) + '</p></div>'
+        : '<div class="kanji-empty">한자 없이 쓰는 말이에요 · ' + esc(w.reading) + ' (' + esc(w.romaji) + ')</div>';
+
+      return '<article class="word-card">' +
+        '<div class="word-top">' +
+        '<div class="word-art">' + iconSVG(w.art, w.bg) + '</div>' +
+        '<div class="word-headings">' +
+        '<div class="word-main" data-tone="' + mode + '">' + esc(form) + '</div>' +
+        '<div class="word-meaning">' + esc(w.mean) + '</div>' +
+        '<div class="word-read"><span class="ko">' + esc(w.ko) + '</span><span class="ro">' + esc(w.romaji) + '</span></div>' +
+        '</div></div>' +
+        kanji +
+        '<div class="word-actions">' + spkBtn(form, 'ja', 1, '듣기') +
+        '<button type="button" class="mode-mini" data-act="card-mode" data-id="' + esc(w.id) + '" title="이 카드만 표기 바꾸기">표기 <b>' + modeLabel(mode) + '</b> ⇄</button>' +
+        '</div>' +
+        '</article>';
+    }).join('');
+
+    var note = state.vocabMode !== 'orig'
+      ? '<div class="note" style="margin-bottom:16px">' + ICONS.info + '<div>지금은 <b>' + modeLabel(state.vocabMode) + ' 표기</b>로 보고 있어요. 카드마다 <b>표기 ⇄</b> 버튼으로 하나씩만 바꿀 수도 있습니다.</div></div>'
+      : '';
+
+    return '' +
+      '<div class="page-head">' +
+      '<div><span class="eyebrow">STEP 2 · 単語</span><h2>필수 단어장</h2><p>' + esc(SUBTITLES.vocab) + '</p></div>' +
+      '</div>' +
+      '<div class="chips">' + chips + '</div>' +
+      '<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:14px">' +
+      '<div class="seg-wrap"><span class="seg-caption">전체 표기 한 번에 바꾸기</span>' +
+      '<div class="seg" role="group" aria-label="표기 전환">' + segs + '</div></div>' +
+      '</div>' + note +
+      '<div class="word-grid">' + cards + '</div>' +
+      '<div class="note" style="margin-top:22px">' + ICONS.info +
+      '<div>발음은 <b>한국어 표기</b>와 <b>로마자</b>로 항상 함께 보여요. 히라가나·가타카나로 바꿔도 읽는 법은 그대로 확인할 수 있습니다.</div></div>';
+  }
+
+  /* ---------------- sentences ---------------- */
+  var SITUATIONS = ['전체', '인사', '카페', '식당', '길찾기', '쇼핑', '호텔', '교통', '일상'];
+  var SENT_MODES = [{ k: 'orig', label: '원래대로' }, { k: 'hira', label: '히라가나' }, { k: 'kata', label: '가타카나' }, { k: 'furi', label: '한자+후리가나' }];
+
+  function furiHTML(s) {
+    var out = '';
+    var re = /\[([^\]|]+)\|([^\]]+)\]/g;
+    var last = 0, m;
+    while ((m = re.exec(s))) {
+      out += esc(s.slice(last, m.index));
+      out += '<ruby>' + esc(m[1]) + '<rt>' + esc(m[2]) + '</rt></ruby>';
+      last = m.index + m[0].length;
+    }
+    out += esc(s.slice(last));
+    return out;
+  }
+
+  function sentDisplay(s, mode) {
+    if (mode === 'hira') return { html: esc(s.kana), tone: 'hira' };
+    if (mode === 'kata') return { html: esc(toKata(s.kana)), tone: 'kata' };
+    if (mode === 'furi') return { html: furiHTML(s.furi), tone: 'orig' };
+    return { html: esc(s.orig), tone: 'orig' };
+  }
+
+  function viewSentences() {
+    var list = SENTENCES.filter(function (s) { return state.sentCat === '전체' || s.cat === state.sentCat; });
+    var chips = SITUATIONS.map(function (c) {
+      var n = c === '전체' ? SENTENCES.length : SENTENCES.filter(function (s) { return s.cat === c; }).length;
+      if (!n) return '';
+      return '<button type="button" class="chip' + (state.sentCat === c ? ' is-active' : '') + '" data-act="sent-cat" data-cat="' + esc(c) + '">' + esc(c) + ' <span style="opacity:.65">' + n + '</span></button>';
+    }).join('');
+
+    var segs = SENT_MODES.map(function (m) {
+      return '<button type="button" class="seg-btn' + (state.sentMode === m.k ? ' is-active' : '') + '" data-act="s-mode" data-mode="' + m.k + '">' + m.label + '</button>';
+    }).join('');
+
+    var cards = list.map(function (s, i) {
+      var d = sentDisplay(s, state.sentMode);
+      return '<article class="sent-card">' +
+        '<div class="sent-art">' + sceneSVG(s.art, s.bg) + '<span class="sent-tag">' + esc(s.cat) + '</span></div>' +
+        '<div class="sent-body">' +
+        '<p class="sent-text" data-tone="' + d.tone + '">' + d.html + '</p>' +
+        '<div class="sent-read"><span class="ko">' + esc(s.koPron) + '</span><span class="ro">' + esc(s.romaji) + '</span></div>' +
+        '<p class="sent-meaning">' + esc(s.meaning) + '</p>' +
+        '<div class="sent-tip"><b>포인트</b>' + esc(s.tip) + '</div>' +
+        '<div class="sent-actions">' + spkBtn(s.orig, 'ja', 1, '보통') + spkBtn(s.orig, 'ja', 0.85, '천천히') + '</div>' +
+        '</div></article>';
+    }).join('');
+
+    return '' +
+      '<div class="page-head">' +
+      '<div><span class="eyebrow">STEP 3 · 会話</span><h2>자주 쓰는 문장</h2><p>' + esc(SUBTITLES.sentences) + '</p></div>' +
+      '<div class="head-tools"><div class="seg" role="group" aria-label="문장 표기">' + segs + '</div></div>' +
+      '</div>' +
+      '<div class="chips">' + chips + '</div>' +
+      '<div class="sent-list">' + cards + '</div>' +
+      '<div class="note" style="margin-top:22px">' + ICONS.info +
+      '<div><b>한자+후리가나</b>는 한자 위에 읽는 법이 작게 붙어요. <b>히라가나</b>·<b>가타카나</b>로 바꿔 읽는 연습을 하고, 마지막엔 <b>원래대로</b> 한자를 확인해 보세요.</div></div>';
+  }
+
+  /* ---------------- english ---------------- */
+  function viewEnglish() {
+    var cats = [];
+    ENGLISH.forEach(function (p) { if (cats.indexOf(p.cat) === -1) cats.push(p.cat); });
+
+    var groups = cats.map(function (c) {
+      var items = ENGLISH.filter(function (p) { return p.cat === c; });
+      var cards = items.map(function (p) {
+        return '<article class="en-card" data-lang="en">' +
+          '<span class="en-cat">' + esc(p.tag || c) + '</span>' +
+          '<p class="en-text">' + esc(p.en) + '</p>' +
+          '<p class="en-ko">' + esc(p.ko) + '</p>' +
+          '<p class="en-pron">[' + esc(p.pron) + ']</p>' +
+          '<div class="en-actions">' + spkBtn(p.en, 'en', 1, '보통') + spkBtn(p.en, 'en', 0.85, '천천히') + '</div>' +
+          '</article>';
+      }).join('');
+      return '<div class="section-head"><h3>' + esc(c) + '</h3><span class="count">' + items.length + '마디</span></div><div class="en-grid">' + cards + '</div>';
+    }).join('');
+
+    var dlg = DIALOGUE.map(function (d) {
+      var me = d.who === 'me';
+      return '<div class="dlg-row' + (me ? ' me' : '') + '">' +
+        '<span class="dlg-who">' + (me ? '나' : 'Mia') + '</span>' +
+        '<div class="dlg-bubble"><p class="dlg-en">' + esc(d.en) + '</p><p class="dlg-ko">' + esc(d.ko) + '</p>' +
+        spkBtn(d.en, 'en', 0.95, '듣기') + '</div></div>';
+    }).join('');
+
+    return '' +
+      '<div class="page-head">' +
+      '<div><span class="eyebrow">STEP 4 · ENGLISH</span><h2>영어 한마디</h2><p>' + esc(SUBTITLES.english) + '</p></div>' +
+      '</div>' +
+      '<div class="panel" style="margin-bottom:6px">' +
+      '<div class="section-head" style="margin:0 0 12px"><h3>카페에서의 첫 주문</h3><span class="count">대화 4마디</span><span class="hint">한 줄씩 듣고 따라 말해 보세요</span></div>' +
+      '<div class="dialogue">' + dlg + '</div>' +
+      '</div>' +
+      groups +
+      '<div class="note" style="margin-top:24px">' + ICONS.info +
+      '<div>영어는 <b>보통(1.0x)</b>과 <b>천천히(0.8x)</b>로 들을 수 있어요. 발음이 안 들리면 기기 음성 대신 온라인 음성으로 자동 전환됩니다.</div></div>';
+  }
+
+  var VIEWS = { home: viewHome, kana: viewKana, vocab: viewVocab, sentences: viewSentences, english: viewEnglish };
+
+  /* ============================================================
+     Render + routing
+     ============================================================ */
+  function render() {
+    var view = VIEWS[state.view] ? state.view : 'home';
+    var host = document.getElementById('view');
+    if (!host) return;
+    host.innerHTML = VIEWS[view]();
+    var crumb = document.getElementById('crumbNow');
+    if (crumb) crumb.textContent = TITLES[view];
+    $$('[data-view]').forEach(function (el) {
+      var on = el.getAttribute('data-view') === view;
+      el.classList.toggle('is-active', on);
+      if (on) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current');
+    });
+    syncRateButtons();
+    Speech.updateStatus();
+  }
+
+  function syncRateButtons() {
+    $$('[data-rate-btn]').forEach(function (b) {
+      b.classList.toggle('is-active', Number(b.getAttribute('data-rate')) === Number(state.rate));
+    });
+  }
+
+  function go(view) {
+    if (!VIEWS[view]) view = 'home';
+    var changed = state.view !== view;
+    state.view = view;
+    save();
+    if (location.hash !== '#' + view) {
+      try { history.replaceState(null, '', '#' + view); } catch (e) { location.hash = view; }
+    }
+    render();
+    if (changed) window.scrollTo({ top: 0, behavior: 'auto' });
+    document.body.classList.remove('menu-open');
+  }
+
+  /* ============================================================
+     Events (speech is invoked directly in the click task)
+     ============================================================ */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-act]') : null;
+    if (!el) return;
+    var act = el.getAttribute('data-act');
+
+    if (act === 'nav' || act === 'go') {
+      e.preventDefault();
+      go(el.getAttribute('data-view'));
+      return;
+    }
+    if (act === 'open-menu') { document.body.classList.add('menu-open'); return; }
+    if (act === 'close-menu') { document.body.classList.remove('menu-open'); return; }
+    if (act === 'rate') {
+      state.rate = Number(el.getAttribute('data-rate')) || 1;
+      save(); syncRateButtons();
+      toast(state.rate < 1 ? '발음 속도를 천천히(0.85x)로 바꿨어요' : '발음 속도를 보통(1.0x)으로 바꿨어요', 1800);
+      return;
+    }
+    if (act === 'test-voice' || act === 'test-voice-en') {
+      var lang = act === 'test-voice' ? 'ja' : 'en';
+      var name = Speech.voiceName(lang);
+      Speech.speak(lang === 'ja' ? 'こんにちは、はじめまして' : 'Hello, nice to meet you.', lang, 1, null);
+      toast(name ? (lang === 'ja' ? '일본어 음성: ' : '영어 음성: ') + name : '기기 음성이 없어 온라인 음성으로 재생합니다');
+      return;
+    }
+    if (act === 'speak') {
+      e.preventDefault();
+      Speech.speak(el.getAttribute('data-text'), el.getAttribute('data-lang'), Number(el.getAttribute('data-rate')) || 1, el);
+      return;
+    }
+    if (act === 'kana-script') {
+      state.kanaScript = el.getAttribute('data-script');
+      state.kanaRow = 'all';
+      save(); go('kana');
+      return;
+    }
+    if (act === 'kana-row') { state.kanaRow = el.getAttribute('data-row'); save(); render(); return; }
+    if (act === 'vocab-cat') { state.vocabCat = el.getAttribute('data-cat'); save(); render(); return; }
+    if (act === 'v-mode') {
+      state.vocabMode = el.getAttribute('data-mode');
+      state.cardModes = {};
+      save(); render();
+      return;
+    }
+    if (act === 'card-mode') {
+      var id = el.getAttribute('data-id');
+      var cur = state.cardModes[id] || state.vocabMode;
+      var order = ['orig', 'hira', 'kata'];
+      var nx = order[(order.indexOf(cur) + 1) % order.length];
+      state.cardModes[id] = nx;
+      save(); render();
+      return;
+    }
+    if (act === 's-mode') { state.sentMode = el.getAttribute('data-mode'); save(); render(); return; }
+    if (act === 'sent-cat') { state.sentCat = el.getAttribute('data-cat'); save(); render(); return; }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') document.body.classList.remove('menu-open');
+  });
+
+  window.addEventListener('hashchange', function () {
+    var h = (location.hash || '').replace('#', '');
+    if (VIEWS[h] && h !== state.view) { state.view = h; save(); render(); window.scrollTo({ top: 0, behavior: 'auto' }); }
+  });
+
+  /* mobile swipe: close drawer */
+  (function () {
+    var sx = 0, sy = 0;
+    document.addEventListener('touchstart', function (e) {
+      if (!e.touches || !e.touches[0]) return;
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', function (e) {
+      if (!document.body.classList.contains('menu-open')) return;
+      var t = e.changedTouches && e.changedTouches[0];
+      if (!t) return;
+      if (sx - t.clientX > 60 && Math.abs(sy - t.clientY) < 60) document.body.classList.remove('menu-open');
+    }, { passive: true });
+  })();
+
+  /* ============================================================
+     Boot
+     ============================================================ */
+  load();
+  $$('[data-ico]').forEach(function (el) {
+    el.innerHTML = ICONS[el.getAttribute('data-ico')] || '';
+  });
+  render();
+
+  window.__app = {
+    state: state,
+    counts: { hiragana: KANA_HIRA.length, katakana: KANA_KATA.length, words: WORDS.length, sentences: SENTENCES.length, english: ENGLISH.length },
+    go: go
+  };
+})();
+
+</script>
+</body>
+</html>
